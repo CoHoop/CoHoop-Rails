@@ -1,0 +1,14 @@
+@import 'bootstrap';
+
+body {
+  padding-top: 60px;
+}
+
+#content {
+  @include makeColumn(12);
+}
+
+#debug {
+  margin-top: 100px;
+  clear: both;
+}

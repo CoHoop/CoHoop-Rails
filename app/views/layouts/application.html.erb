@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CohoopRails</title>
+  <title><%= get_title @title %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<%=	render 'layouts/header' %>
+  <div class="container-fluid">
+    <%= render 'shared/flash_messages' %>
+    <div id="content">
+      <%= yield %>
+    </div>
+    <% if Rails.env.development? then %>
+      <div id="debug">
+        <%= debug(params) %>
+        <%= debug(cookies) %>
+      </div>
+    <% end %>
+  </div>
+  <%= javascript_include_tag "application" %>
 </body>
 </html>
+
