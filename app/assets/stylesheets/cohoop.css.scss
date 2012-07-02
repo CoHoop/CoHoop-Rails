@@ -5,10 +5,60 @@ body {
 }
 
 #content {
-  @include makeColumn(12);
+  width: 100%;
 }
 
 #debug {
   margin-top: 100px;
   clear: both;
+}
+
+// =Header menu
+#header {
+  color: white;
+}
+
+// ==Login
+#login-mini-form {
+  float: left;
+  margin-bottom: 0;
+
+  label {
+    color: white;
+    display: inline;
+    width: 150px;
+  }
+
+  input {
+    margin-bottom: 0;
+    max-width: 100px;
+  }
+  #user_email {
+    max-width: 150px;
+  }
+
+}
+
+// =Home
+#home-video {
+  text-align: center;
+}
+
+// =Registration
+#registration-form {
+  .first-name, .last-name {
+    float: left;
+    margin-right: 10px;
+
+    input {
+      width: 125px;
+    }
+  }
+  .email, .password {
+    clear: both;
+
+    input {
+      width: 270px;
+    }
+  }
 }

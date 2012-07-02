@@ -18,11 +18,17 @@
 #
 
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable, :trackable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :first_name, :last_name, :email, :avatar_id,
                   :university, :biography, :job, :birth_date,
-                  :password, :password_digest, :password_confirmation
-
-  has_secure_password
+                  :password, :password_confirmation
 
   before_save { |user| user.email.downcase! }
   #before_save :create_remember_token

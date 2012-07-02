@@ -9,4 +9,19 @@ module ApplicationHelper
     title = action_name.capitalize if title.nil?
     (action_name.nil? && title.nil?) ? application_name : "#{application_name} | #{title}"
   end
+
+  ## Used by devise to generate views
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+  #
+
 end
