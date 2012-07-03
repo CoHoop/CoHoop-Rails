@@ -24,4 +24,14 @@ module ApplicationHelper
   end
   #
 
+  # Public: display an inline user authentication interaction
+  #
+  # Returns the generated html String.
+  def display_user_authentication
+    if user_signed_in?
+      render 'devise/menu/logout_button'
+    else
+      render 'devise/menu/login_form'
+    end
+  end
 end
