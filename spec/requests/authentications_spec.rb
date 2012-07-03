@@ -8,13 +8,26 @@ describe "Authentication" do
 
       describe "shouldn't be able to register" do
         describe "with invalid credentials" do
+          before(:each) do
+            # With fill in with valid credentials at first
+            fill_in :user_first_name, with: 'Firstname'
+            fill_in :user_last_name,  with: 'Lastname'
+            fill_in :user_email,      with: 'foobar@foo.com'
+            fill_in :user_password,   with: 'foobar'
+            fill_in :user_password_confirmation,   with: 'foobar'
+          end
           describe 'without a name' do
+            before do
+              fill_in :user_first_name, with: ''
+              click_on 'Register'
+            end
 
+            it { should have_selector('error_explanation') }
           end
           describe 'without an email' do
 
           end
-          describe 'with a wring email' do
+          describe 'with a wrong email' do
 
           end
           describe 'with no credentials' do
@@ -73,11 +86,11 @@ describe "Authentication" do
         end
 
         describe 'he should be redirected to his feed' do
-          pending 'Need to integrate the feed'
+          #pending 'Need to integrate the feed'
         end
 
         describe 'he should be able to visit his profile' do
-          pending 'Need to integrate the profile'
+          #pending 'Need to integrate the profile'
         end
       end # once logged in
     end

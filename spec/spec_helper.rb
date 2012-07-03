@@ -1,6 +1,10 @@
 require 'rubygems'
 require 'spork'
+require 'capybara/rspec'
 # require 'spork/ext/ruby-debug'
+
+include Capybara::DSL
+
 
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
