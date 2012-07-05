@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe User do
   before do
      @user = FactoryGirl.create :user
@@ -14,6 +16,10 @@ describe User do
       before { @user.first_name = 'a' * 26 }
       it { should_not be_valid }
     end
+    describe 'contains digits or underscore' do
+      before { @user.first_name = 'Foo_b4r' }
+      it { should_not be_valid }
+    end
   end # when first name
 
   describe 'when last name' do
@@ -23,6 +29,10 @@ describe User do
     end
     describe 'is too long' do
       before { @user.last_name = 'a' * 26 }
+      it { should_not be_valid }
+    end
+    describe 'contains digits or underscore' do
+      before { @user.last_name = 'Foo_b4r' }
       it { should_not be_valid }
     end
   end # when last name

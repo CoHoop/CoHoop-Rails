@@ -29,9 +29,15 @@ module ApplicationHelper
   # Returns the generated html String.
   def display_user_authentication
     if user_signed_in?
-      render 'devise/menu/logout_button'
+      render 'devise/menu/logged_in_links'
     else
       render 'devise/menu/login_form'
     end
+  end
+
+  def current_user_profile_path
+    profile_path(id: current_user.id,
+                 first: current_user.first_name.downcase,
+                 last: current_user.last_name.downcase)
   end
 end

@@ -1,9 +1,11 @@
 FactoryGirl.define do
   factory :user do
-    sequence( :first_name )  { |n| "FirstName#{n}" }
-    sequence( :last_name )  { |n| "LastName#{n}" }
-    sequence( :email ) { |n| "foo#{n}@example.com" }
+    first_name            "FirstName"
+    last_name             "LastName"
+    sequence( :email ) { |n| "foo#{n}@ex#{n+1}ample.com" }
     password              'foobar'
     password_confirmation 'foobar'
+    created_at            Time.now
+    updated_at            Time.now
   end
 end
