@@ -5,7 +5,7 @@ class Ability
   def initialize(user)
     can :read, :all
     if user
-      can :update, User
+      can :update, User, id: user.id
     end
 
     # Define abilities for the passed in user here. For example:

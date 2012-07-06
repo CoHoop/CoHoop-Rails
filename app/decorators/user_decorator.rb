@@ -38,23 +38,4 @@ class UserDecorator < ApplicationDecorator
   # :content for the attribute value and
   # :class for the css error class attribute
   def job       ; may_not_be_specified :job        end
-
-  def error_classes
-    @error_classes
-  end
-
-  protected
-    # Protected: Provide a default content and hydrate the error classes
-    # for a specified attribute.
-    #
-    # attribute - the attribute as a Symbol.
-    #
-    # Returns an Hash containing a content and a class attribute.
-    def may_not_be_specified attribute
-      @error_classes ||= []
-      if model.send(attribute).blank?
-        @error_classes << [ "blank #{attribute}" ]
-      end
-      "#{attribute.capitalize} not specified"
-    end
 end

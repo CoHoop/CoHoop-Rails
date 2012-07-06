@@ -50,3 +50,4 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'best_in_place'

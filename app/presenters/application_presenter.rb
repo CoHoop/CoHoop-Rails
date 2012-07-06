@@ -39,6 +39,13 @@ class ApplicationPresenter
     @model
   end
 
+  # Public: Checks if the current user has edition rights
+  #
+  # Returns a Boolean.
+  def can_edit?
+    _.can? :update, model
+  end
+
   # Public: Generates a tag
   #  with error classes if the object returns error classes.
   #
@@ -49,13 +56,34 @@ class ApplicationPresenter
   # Returns an HTML String.
   def tag_with_error(tag, object, opts = {})
     options = {}
-    if can_edit?
-      # Retrieve the error_classes through the model.
-      # See UserDecorator#error_classes.
-      options[:class] = model.error_classes
-    end
+    # Retrieve the error_classes through the model. This attribute must be set.
+    # See UserDecorator#error_classes.
+    options[:class] = model.error_classes
     _.content_tag tag, object, options.deep_merge(opts)
   end
+
+  # Public : Missing doc
+  #
+  # TODO: [doc]
+  def handles_not_set(*objects)
+    opts = objects.extract_options!
+    opts[:check] ||= false
+
+    o = []
+    objects.each do |object|
+      # FIXME: Only the first object errors are returned
+      attr = OpenStruct.new
+      if opts[:check] && can_edit?
+        # Retrieve the error_classes through the model. This attribute must be set.
+        # See UserDecorator#error_classes.
+        attr.errors = model.error_classes
+      else
+        attr.errors = []
+      end
+      attr.content = object
+      o << attr
+    end
+    yield *o
+  end
+
 end
-
-
