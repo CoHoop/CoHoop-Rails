@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe 'User pages :' do
-  include DisplayCase::ExhibitsHelper
-  let(:user) { exhibit(FactoryGirl.create :user) }
+  let(:user) { FactoryGirl.create :user }
   subject { page }
 
   # TODO: Should refactor this
@@ -15,21 +14,20 @@ describe 'User pages :' do
   describe 'profile page' do
     describe 'with a wrong user' do
       it 'should render 404 page' do
-        visit(profile_path(id: 1, first: 'FirstName', last: 'Last'))
+        visit(profile_path(id: 1, first: 'firstname', last: 'last'))
         should have_selector('title', content: '404')
       end
     end
 
     describe 'with a correct user' do
       before do
-        user = FactoryGirl.create(:user)
         visit(profile_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase))
       end
-      let(:page_title) { user.user_name }
+      let(:page_title) { user.first_name.capitalize + ' ' + user.last_name.capitalize }
       it_should_behave_like 'all user pages'
 
       describe 'should display the user name' do
-        pending 'and should be tested'
+        it { should have_selector('h1', content: 'Firstname Lastname' ) }
       end
       describe 'should display the avatar' do
         pending 'and should be tested'
@@ -47,10 +45,10 @@ describe 'User pages :' do
         pending 'and should be tested'
       end
       describe 'should display the university' do
-        pending 'and should be tested'
+        it { should have_content(user.university) }
       end
       describe 'should display a job' do
-        pending 'and should be tested'
+        it { should have_content(user.job) }
       end
       describe 'should display a cursus' do
         pending 'and should be tested'
@@ -60,6 +58,7 @@ describe 'User pages :' do
       end
       describe 'should display a biography' do
         pending 'and should be tested'
+        it { should have_content(user.biography) }
       end
       describe 'should display a list of share documents' do
         pending 'and should be tested'
@@ -68,7 +67,7 @@ describe 'User pages :' do
         pending 'and should be tested'
       end
       describe 'should have a link to switch in document view mode' do
-        pending 'and should be tested'
+        it { should have_link('Documents')}
       end
     end
   end

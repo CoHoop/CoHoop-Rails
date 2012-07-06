@@ -1,1 +1,11 @@
-<h1><%= @user.user_name %></h1>
+<% present @user, presenters: [:user, :profile] do |presenter| %>
+  <div id="sidebar" class="profile well">
+  </div>
+  <div id="main-content">
+    <hgroup class="header">
+      <h1><%= presenter.user_name %></h1>
+      <%= presenter.professional_information %>
+    </hgroup>
+    <%= presenter.biography_paragraph %>
+  </div>
+<% end %>

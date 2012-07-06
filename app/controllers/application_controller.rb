@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
   rescue_from AbstractController::ActionNotFound,  with: :render_404
   rescue_from ActiveRecord::RecordNotFound,        with: :render_404
 
-  # Public: Redirect to a default page or back to another page
+  # Public: Redirect to a default page or back to another page.
   #
-  # path: a String or a RouteName to which to go back to (default: nil)
+  # path - The String or the RouteName to which to go back to (default: nil).
   #
-  # It returns Nothing.
+  # Returns nothing.
   def get_default_or_back_to path = nil
     # TODO: Should redirect to user feed
     path ||= root_path
@@ -17,14 +17,15 @@ class ApplicationController < ActionController::Base
   end
 
   private
-    # Private: Renders the 404 page
+    # Private: Renders the 404 page.
     #
-    # &block: a Block which will be executed before rendering
+    # &block - a Block which will be executed before rendering.
     #
-    # Examples:
+    # Examples
+    #
     #   render_404 { Flash[:alert] = 'User not found.' }
     #
-    # It returns Nothing.
+    # Returns nothing.
     def render_404
       @title = 404
       yield

@@ -1,9 +1,13 @@
+# Public: Cancan generated class for user authorization management
 class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new
     can :read, :all
+    if user
+      can :update, User
+    end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

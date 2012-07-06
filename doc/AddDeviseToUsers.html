@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: AddDeviseToUsers
+  
+    &mdash; Documentation by YARD 0.8.2.1
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (A)</a> &raquo;
+    
+    
+    <span class="title">AddDeviseToUsers</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: AddDeviseToUsers
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActiveRecord::Migration</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActiveRecord::Migration</li>
+          
+            <li class="next">AddDeviseToUsers</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">db/migrate/20120702133442_add_devise_to_users.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#change-instance_method" title="#change (instance method)">- (Object) <strong>change</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="change-instance_method">
+  
+    - (<tt>Object</tt>) <strong>change</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'db/migrate/20120702133442_add_devise_to_users.rb', line 2</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_change'>change</span>
+  <span class='id identifier rubyid_change_table'>change_table</span><span class='lparen'>(</span><span class='symbol'>:users</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
+    <span class='comment'>## Database authenticatable
+</span>    <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='symbol'>:encrypted_password</span><span class='comma'>,</span> <span class='symbol'>:null</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+
+    <span class='comment'>## Recoverable
+</span>    <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>   <span class='symbol'>:reset_password_token</span>
+    <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='symbol'>:reset_password_sent_at</span>
+
+    <span class='comment'>## Rememberable
+</span>    <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_datetime'>datetime</span> <span class='symbol'>:remember_created_at</span>
+
+    <span class='comment'>## Confirmable
+</span>    <span class='comment'># t.string   :confirmation_token
+</span>    <span class='comment'># t.datetime :confirmed_at
+</span>    <span class='comment'># t.datetime :confirmation_sent_at
+</span>    <span class='comment'># t.string   :unconfirmed_email # Only if using reconfirmable
+</span>
+    <span class='comment'>## Lockable
+</span>    <span class='comment'># t.integer  :failed_attempts, :default =&gt; 0 # Only if lock strategy is :failed_attempts
+</span>    <span class='comment'># t.string   :unlock_token # Only if unlock strategy is :email or :both
+</span>    <span class='comment'># t.datetime :locked_at
+</span>
+    <span class='comment'>## Token authenticatable
+</span>    <span class='comment'># t.string :authentication_token
+</span>  <span class='kw'>end</span>
+  <span class='id identifier rubyid_remove_column'>remove_column</span> <span class='symbol'>:users</span><span class='comma'>,</span> <span class='symbol'>:password_digest</span><span class='comma'>,</span> <span class='symbol'>:string</span>
+  <span class='id identifier rubyid_add_index'>add_index</span> <span class='symbol'>:users</span><span class='comma'>,</span> <span class='symbol'>:reset_password_token</span><span class='comma'>,</span> <span class='symbol'>:unique</span> <span class='op'>=&gt;</span> <span class='kw'>true</span>
+  <span class='comment'># add_index :users, :confirmation_token,   :unique =&gt; true
+</span>  <span class='comment'># add_index :users, :unlock_token,         :unique =&gt; true
+</span>  <span class='comment'># add_index :users, :authentication_token, :unique =&gt; true
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Thu Jul  5 20:00:33 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.2.1 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
