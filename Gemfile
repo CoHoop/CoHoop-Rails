@@ -8,7 +8,6 @@ gem 'bcrypt-ruby'
 
 # Model Enhancement
 gem 'faker'
-gem 'draper'
 
 # Views Enhancement
 ## Cells are View Components for Rails. They look and feel like controllers. See https://github.com/apotonick/cells

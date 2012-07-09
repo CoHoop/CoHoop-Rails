@@ -1,4 +1,4 @@
-class ApplicationDecorator < Draper::Base
+class ApplicationDecorator < BasicObject
   # Public: returns the error classes if there were any.
   # This object is reset every time UserDecorator#may_not_be_specified is called.
   def error_classes
@@ -6,7 +6,7 @@ class ApplicationDecorator < Draper::Base
   end
 
   protected
-    # Protected: Provide a default content and hydrate the error classes
+    # Protected: Provides a default content and hydrate the error classes
     # for a specified attribute.
     #
     # attribute - the attribute as a Symbol.
