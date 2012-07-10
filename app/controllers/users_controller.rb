@@ -1,8 +1,17 @@
 class UsersController < ApplicationController
+  respond_to :html, :json
 
   def show
     @user  = get_user_through_params || return
-    @title = @user.user_name
+    @title = @user.name
+  end
+
+  def update
+    p 'updating...'
+    @user = User.find(params[:id])
+    p @user
+    @user.update_without_password(params[:user])
+    respond_with @user
   end
 
   private
@@ -16,7 +25,7 @@ class UsersController < ApplicationController
       if model_object.nil?
         render_404 { flash[:alert] = 'User does not exist' }
       else
-        UserProfileDecorator.decorate(model_object)
+        UserProfileInterface.new(AuthenticationInterface.new(model_object, current_user))
       end
     end
 end

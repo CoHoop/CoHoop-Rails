@@ -2,7 +2,7 @@ CohoopRails::Application.routes.draw do
   root to: 'pages#home'
 
   devise_for :users
-  resources  :users, :only => [:show]
+  resources  :users, :only => [:show, :update]
   match '/:id/:first-:last/' => 'users#show', constraints: { id: /\d+/, first: /[a-zA-Z]+/, last: /[a-zA-Z]+/ }, as: :profile
 
   # The priority is based upon order of creation:
