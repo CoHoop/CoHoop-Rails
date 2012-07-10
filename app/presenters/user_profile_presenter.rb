@@ -22,14 +22,8 @@ class UserProfilePresenter < ApplicationPresenter
     end
   end
 
-  def wrap_in(tag, *options)
-    options = options.extract_options!
-    _.content_tag(tag, yield, options)
-  end
-
   private
     def best_in_place_if(condition, model, method, *opts)
-      p 'penis lol'
       options = opts.extract_options!
       if options[:errors]
           _.best_in_place_if(condition, model, method, :nil => options[:nil], type: options[:type], classes: options[:errors])

@@ -55,6 +55,14 @@ class ApplicationPresenter
 
   # Public : Missing doc
   #
+  # TODO: [doc]]
+  def wrap_in(tag, *options)
+    options = options.extract_options!
+    _.content_tag(tag, yield, options)
+  end
+
+  # Public : Missing doc
+  #
   # TODO: [doc]
   def handles_not_set(*objects)
     opts = objects.extract_options!
@@ -67,7 +75,6 @@ class ApplicationPresenter
         attr.content = 'Not specified'
         attr.errors << 'blank' if (object.blank? || object[/not specified/])
       else
-        p 'penis not found'
         attr.content =  object
       end
       o << attr
