@@ -22,10 +22,10 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable, :trackable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable#, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :remember_me
   attr_accessible :first_name, :last_name, :email, :avatar_id,
                   :university, :biography, :job, :birth_date,
                   :password, :password_confirmation
@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
 
-  validates :password, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  validates :password, presence: true, length: { minimum: 6 }, :if => ->{ new_record? || !password.nil? }
+  validates :password_confirmation, presence: true, :if => ->{ new_record? || !password_confirmation.nil? }
+  validates_confirmation_of :password
 end
