@@ -72,15 +72,15 @@ describe User do
 
   describe 'when password' do
     describe 'is not present' do
-      before { @user.password = @user.password_confirmation = '' }
+      before { @user.password = '' }
       it { should_not be_valid }
     end
     describe 'is nil' do
-      before { @user.password = @user.password_confirmation = nil }
+      before { @user.password =  nil }
       it { should_not be_valid }
     end
     describe 'is too short' do
-      before { @user.password = @user.password_confirmation = 'a' * 5 }
+      before { @user.password = 'a' * 5 }
       it { should_not be_valid }
     end
     describe 'does not match confirmation' do
