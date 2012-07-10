@@ -18,7 +18,7 @@ class UserProfilePresenter < ApplicationPresenter
   # Returns an HTML String.
   def biography_paragraph
     handles_not_set user.biography, check: true do |biography|
-      best_in_place_if(can_edit?, user, :biography, type: :input, :nil => biography.content, errors: biography.errors)
+      best_in_place_if(can_edit?, user, :biography, type: :textarea, :nil => biography.content, errors: biography.errors)
     end
   end
 
@@ -29,13 +29,12 @@ class UserProfilePresenter < ApplicationPresenter
 
   private
     def best_in_place_if(condition, model, method, *opts)
+      p 'penis lol'
       options = opts.extract_options!
       if options[:errors]
-        wrap_in(:span, class: options[:errors]) do
-          _.best_in_place_if(can_edit?, model, method, :nil => options[:nil], type: options[:type])
-        end
+          _.best_in_place_if(condition, model, method, :nil => options[:nil], type: options[:type], classes: options[:errors])
       else
-        _.best_in_place_if(can_edit?, model, method, :nil => options[:nil], type: options[:type])
+        _.best_in_place_if(condition, model, method, :nil => options[:nil], type: options[:type], classes: options[:errors])
       end
     end
 end

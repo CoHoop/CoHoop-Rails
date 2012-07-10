@@ -51,4 +51,4 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'best_in_place'
+gem 'best_in_place', git: 'git://github.com/gposton/best_in_place.git'
