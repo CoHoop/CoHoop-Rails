@@ -7,9 +7,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    p 'updating...'
     @user = User.find(params[:id])
-    p @user
     @user.update_without_password(params[:user])
     respond_with @user
   end

@@ -72,7 +72,7 @@ class ApplicationPresenter
       attr = OpenStruct.new
       attr.errors = []
       if opts[:check] && can_edit?
-        attr.content = 'Not specified'
+        attr.content = (!object.blank?) ? object : 'Not specified'
         attr.errors << 'blank' if (object.blank? || object[/not specified/])
       else
         attr.content =  object

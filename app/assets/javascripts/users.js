@@ -17,7 +17,6 @@ var BestInPlace = function() {
     $('.best_in_place').bind("ajax:success", function(e) {
       self  = this;
       value = self.innerHTML;
-
       if (value.isBlank() || value.isNotSpecified()) {
         self.className += ' blank';
       } else {
