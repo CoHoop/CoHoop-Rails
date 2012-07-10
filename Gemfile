@@ -5,6 +5,8 @@ gem 'sqlite3'
 
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
+gem 'simple-decorator'
+gem 'thin'
 
 # Model Enhancement
 gem 'faker'

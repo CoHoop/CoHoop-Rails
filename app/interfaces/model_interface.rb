@@ -1,4 +1,10 @@
-class ApplicationDecorator < BasicObject
+require 'simple_decorator'
+
+class ModelInterface < SimpleDecorator
+  def model
+    @component
+  end
+
   # Public: returns the error classes if there were any.
   # This object is reset every time UserDecorator#may_not_be_specified is called.
   def error_classes

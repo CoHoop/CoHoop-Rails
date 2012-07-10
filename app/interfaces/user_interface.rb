@@ -5,8 +5,8 @@
 #
 #   user = UserDecorator.decorate(User.find(1))
 #   user.user_name # => Firstname Lastname
-class UserDecorator < ApplicationDecorator
-  decorates :user
+class UserInterface < ApplicationInterface
+  #decorates :user
 
   # Public: Constructs the complete user name.
   #
