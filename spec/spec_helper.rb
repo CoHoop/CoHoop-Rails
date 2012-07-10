@@ -11,7 +11,6 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
-  require 'draper/rspec_integration'
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
@@ -40,7 +39,8 @@ Spork.prefork do
     # rspec-rails.
     config.infer_base_class_for_anonymous_controllers = false
 
-    config.include ValidUserRequestHelper, :type => :request
+    config.include ValidUserRequestHelper
+    config.include ModelInterface, :type => :interface
   end
 end
 

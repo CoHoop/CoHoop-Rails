@@ -8,16 +8,8 @@ class UserProfilePresenter < ApplicationPresenter
   # Returns an HTML String.
   def professional_information
     handles_not_set user.university, user.job, check: true do |university, job|
-      wrap_in(:div, class: university.errors) do
-      _.best_in_place_if(can_edit?, user, :university, type: :input)
-      end +
-      wrap_in(:div, class: job.errors) do
-        _.best_in_place_if(can_edit?, user, :job,      type: :input)
-      end
-      #if can_edit?
-      #  _.best_in_place_if(university.content, class: university.errors) +
-      #      _.content_tag(: "Works at #{job.content}", class: job.errors)
-      #end
+      best_in_place_if(can_edit?, user, :university, type: :input, :nil => university.content, errors: university.errors) +
+      best_in_place_if(can_edit?, user, :job, type: :input, :nil => job.content, errors: job.errors)
     end
   end
 
@@ -26,7 +18,7 @@ class UserProfilePresenter < ApplicationPresenter
   # Returns an HTML String.
   def biography_paragraph
     handles_not_set user.biography, check: true do |biography|
-      _.content_tag(:p, biography.content, class: biography.errors)
+      best_in_place_if(can_edit?, user, :biography, type: :input, :nil => biography.content, errors: biography.errors)
     end
   end
 
@@ -34,4 +26,16 @@ class UserProfilePresenter < ApplicationPresenter
     options = options.extract_options!
     _.content_tag(tag, yield, options)
   end
+
+  private
+    def best_in_place_if(condition, model, method, *opts)
+      options = opts.extract_options!
+      if options[:errors]
+        wrap_in(:span, class: options[:errors]) do
+          _.best_in_place_if(can_edit?, model, method, :nil => options[:nil], type: options[:type])
+        end
+      else
+        _.best_in_place_if(can_edit?, model, method, :nil => options[:nil], type: options[:type])
+      end
+    end
 end

@@ -15,11 +15,11 @@ class ApplicationPresenter
   # Public: Alias for the template object, allowing Presenters to call helpers.
   #
   # Returns a template Object.
-  def _
+  def helper
     @template
   end
-
-  # Public: Specific accessor for the model, allowing Presenters to get data.
+  alias :_ :helper
+  alias :h :helper
 
   # Public: Generic accessor for the model, allowing Presenters to get data.
   # More specific model accessor are generated based on the controller name.
@@ -39,27 +39,18 @@ class ApplicationPresenter
     @model
   end
 
-  # Public: Checks if the current user has edition rights
+  # Checks if the model has authentication capabilities.
+  # If it has none, it means we do not care about authentication.
   #
-  # Returns a Boolean.
+  # REFACTOR : Maybe refactored in the ModelInterface or the AuthenticationInterface.
+  #
+  # Returns TrueClass or FalseClass.
   def can_edit?
-    _.can? :update, model
-  end
-
-  # Public: Generates a tag
-  #  with error classes if the object returns error classes.
-  #
-  # tag    - the designated tag to generate, as a Symbol.
-  # object - The object to display.
-  # opts   - A Hash containing options to apply to the tag.
-  #
-  # Returns an HTML String.
-  def tag_with_error(tag, object, opts = {})
-    options = {}
-    # Retrieve the error_classes through the model. This attribute must be set.
-    # See UserDecorator#error_classes.
-    options[:class] = model.error_classes
-    _.content_tag tag, object, options.deep_merge(opts)
+    if model.respond_to?(:can?)
+      model.can_edit?
+    else
+      true
+    end
   end
 
   # Public : Missing doc
@@ -68,19 +59,17 @@ class ApplicationPresenter
   def handles_not_set(*objects)
     opts = objects.extract_options!
     opts[:check] ||= false
-
     o = []
     objects.each do |object|
-      # FIXME: Only the first object errors are returned
       attr = OpenStruct.new
+      attr.errors = []
       if opts[:check] && can_edit?
-        # Retrieve the error_classes through the model. This attribute must be set.
-        # See UserDecorator#error_classes.
-        attr.errors = model.error_classes
+        attr.content = 'Not specified'
+        attr.errors << 'blank' if (object.blank? || object[/not specified/])
       else
-        attr.errors = []
+        p 'penis not found'
+        attr.content =  object
       end
-      attr.content = object
       o << attr
     end
     yield *o
