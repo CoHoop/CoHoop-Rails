@@ -32,7 +32,7 @@ end
 group :development do
   gem 'rspec-rails'
   gem 'guard-rspec'
-  gem 'annotate' #, '~> 2.4.1.beta'
+  gem 'annotate', :git => 'git://github.com/jeremyolliver/annotate_models.git', :branch => 'rake_compatibility'
 end
 
 group :test do
