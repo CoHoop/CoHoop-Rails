@@ -18,14 +18,25 @@ class UserProfilePresenter < ApplicationPresenter
   # (if the current user has the rights).
   #
   # Returns an HTML String.
-  def biography_paragraph
+  def biography
     handles_not_set user.biography, check: true do |biography|
       best_in_place_if(can_edit?, user, :biography, type: :textarea ,:nil => 'Biography not specified', errors: biography.errors)
     end
   end
 
+  def avatar
+    avatar_img = _.image_tag user.avatar.url(:thumb)
+    if can_edit?
+      avatar_img + (_.render partial: 'users/profile/avatar_form', locals: { user: user } )
+    else
+      avatar_img
+    end
+  end
+
   private
     # Public: A little helper for the best_in_place_if method, handling errors.
+    #
+    # TODO : ON DOUBLE CLICK, We want user to be able to select text without editing
     #
     # Returns an HTML String.
     def best_in_place_if(condition, model, method, *opts)

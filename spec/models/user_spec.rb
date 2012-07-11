@@ -2,19 +2,24 @@
 #
 # Table name: users
 #
-#  id              :integer         not null, primary key
-#  first_name      :string(255)
-#  last_name       :string(255)
-#  birth_date      :datetime
-#  email           :string(255)
-#  university      :string(255)
-#  avatar_id       :integer
-#  biography       :text
-#  job             :string(255)
-#  created_at      :datetime        not null
-#  updated_at      :datetime        not null
-#  password        :string(255)
-#  password_digest :string(255)
+#  id                     :integer         not null, primary key
+#  first_name             :string(255)
+#  last_name              :string(255)
+#  birth_date             :datetime
+#  email                  :string(255)
+#  university             :string(255)
+#  biography              :text
+#  job                    :string(255)
+#  created_at             :datetime        not null
+#  updated_at             :datetime        not null
+#  encrypted_password     :string(255)     default(""), not null
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #
 
 require 'spec_helper'

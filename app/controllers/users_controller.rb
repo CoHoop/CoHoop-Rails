@@ -9,7 +9,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update_without_password(params[:user])
-    respond_with @user
+    respond_with (@user) do |f|
+      f.html { redirect_to current_user_profile_path }
+    end
   end
 
   private

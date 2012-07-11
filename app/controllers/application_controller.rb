@@ -16,6 +16,20 @@ class ApplicationController < ActionController::Base
     redirect_to path
   end
 
+  # Public: Returns the current user profile path
+  #
+  # Examples
+  #
+  #  current_user_profile_path
+  #  # => /1/user-name
+  #
+  # Returns the path as a String.
+  def current_user_profile_path
+    profile_path(id: current_user.id,
+                 first: current_user.first_name.downcase,
+                 last: current_user.last_name.downcase)
+  end
+
   private
     # Private: Renders the 404 page.
     #
