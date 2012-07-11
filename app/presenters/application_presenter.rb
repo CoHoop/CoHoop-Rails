@@ -67,7 +67,7 @@ class ApplicationPresenter
   # default - A Boolean indicating if we should care about authentication when
   #           it is not set (default: true).
   #
-  # REFACTOR : Maybe refactored in the ModelInterface or the AuthenticationInterface.
+  # REFACTOR : May be refactored in the ModelInterface or the AuthenticationInterface.
   #
   # Returns a Boolean.
   def can_edit?(default = true)
