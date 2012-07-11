@@ -2,36 +2,37 @@
 #
 # Table name: users
 #
-#  id              :integer         not null, primary key
-#  first_name      :string(255)
-#  last_name       :string(255)
-#  birth_date      :datetime
-#  email           :string(255)
-#  university      :string(255)
-#  avatar_id       :integer
-#  biography       :text
-#  job             :string(255)
-#  password        :string(255)
-#  password_digest :string(255)
-#  created_at      :datetime        not null
-#  updated_at      :datetime        not null
+#  id                     :integer         not null, primary key
+#  first_name             :string(255)
+#  last_name              :string(255)
+#  birth_date             :datetime
+#  email                  :string(255)
+#  university             :string(255)
+#  biography              :text
+#  job                    :string(255)
+#  created_at             :datetime        not null
+#  updated_at             :datetime        not null
+#  encrypted_password     :string(255)     default(""), not null
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #
 
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable, :trackable, :validatable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :remember_me
-  attr_accessible :first_name, :last_name, :email, :avatar_id,
-                  :university, :biography, :job, :birth_date,
-                  :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :first_name, :last_name, :avatar,
+                  :university, :biography, :job, :birth_date
+
+  has_attached_file :avatar, styles: { thumb: '100x100>'}
 
   before_save { |user| user.email.downcase! }
-  #before_save :create_remember_token
+# before_save :create_remember_token
 
   VALID_EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.(?:[A-Z]{2}|com|org|net|edu|gov|gouv|mil|biz|info|mobi|name|aero|asia|jobs|museum)$/i
 
