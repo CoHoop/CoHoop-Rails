@@ -224,7 +224,7 @@
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='symbol'>:all</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span>
-    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:manage</span><span class='comma'>,</span> <span class='id identifier rubyid_user'>user</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:update</span><span class='comma'>,</span> <span class='const'>User</span><span class='comma'>,</span> <span class='label'>id:</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
   <span class='kw'>end</span>
 
   <span class='comment'># Define abilities for the passed in user here. For example:
@@ -261,7 +261,7 @@
 </div>
 
     <div id="footer">
-  Generated on Thu Jul  5 22:11:18 2012 by
+  Generated on Wed Jul 11 02:00:00 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.3).
 </div>

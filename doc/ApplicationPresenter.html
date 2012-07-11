@@ -137,9 +137,59 @@ view</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#_-instance_method" title="#_ (instance method)">- (Object) <strong>_</strong> </a>
+      <a href="#can_edit%3F-instance_method" title="#can_edit? (instance method)">- (TrueClass) <strong>can_edit?</strong> </a>
     
 
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Checks if the model has authentication capabilities.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#handles_not_set-instance_method" title="#handles_not_set (instance method)">- (Object) <strong>handles_not_set</strong>(*objects) {|o| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Public : Missing doc.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#helper-instance_method" title="#helper (instance method)">- (Object) <strong>helper</strong> </a>
+    
+
+    
+      (also: #_, #h)
     
   </span>
   
@@ -202,7 +252,7 @@ view</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Generic accessor for object, allowing Presenters to call get data.</p>
+<p>Generic accessor for the model, allowing Presenters to get data.</p>
 </div></span>
   
 </li>
@@ -211,7 +261,7 @@ view</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#tag_with_error-instance_method" title="#tag_with_error (instance method)">- (Object) <strong>tag_with_error</strong>(tag, object, opts = {}) </a>
+      <a href="#wrap_in-instance_method" title="#wrap_in (instance method)">- (Object) <strong>wrap_in</strong>(tag, *options) </a>
     
 
     
@@ -226,7 +276,7 @@ view</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Generates a tag.</p>
+<p>Public : Missing doc.</p>
 </div></span>
   
 </li>
@@ -281,7 +331,7 @@ view</p>
   <span class='ivar'>@model</span>    <span class='op'>=</span> <span class='id identifier rubyid_model'>model</span>
   <span class='ivar'>@template</span> <span class='op'>=</span> <span class='id identifier rubyid_template'>template</span>
   <span class='ivar'>@model_name</span> <span class='op'>=</span> <span class='ivar'>@template</span><span class='period'>.</span><span class='id identifier rubyid_controller_name'>controller_name</span><span class='period'>.</span><span class='id identifier rubyid_singularize'>singularize</span>
-  <span class='id identifier rubyid_define_method'>define_method</span> <span class='ivar'>@model_name</span> <span class='kw'>do</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:define_method</span><span class='comma'>,</span> <span class='ivar'>@model_name</span><span class='rparen'>)</span> <span class='kw'>do</span>
     <span class='ivar'>@model</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -298,11 +348,165 @@ view</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="_-instance_method">
+  <h3 class="signature first" id="can_edit?-instance_method">
   
-    - (<tt>Object</tt>) <strong>_</strong> 
+    - (<tt>TrueClass</tt>) <strong>can_edit?</strong> 
   
 
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Checks if the model has authentication capabilities. If it has none, it
+means we do not care about authentication.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>TrueClass</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>or FalseClass.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50
+51
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/presenters/application_presenter.rb', line 48</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_can_edit?'>can_edit?</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_model'>model</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:can?</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_model'>model</span><span class='period'>.</span><span class='id identifier rubyid_can_edit?'>can_edit?</span>
+  <span class='kw'>else</span>
+    <span class='kw'>true</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="handles_not_set-instance_method">
+  
+    - (<tt>Object</tt>) <strong>handles_not_set</strong>(*objects) {|o| ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Public : Missing doc</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>o</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/presenters/application_presenter.rb', line 67</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_handles_not_set'>handles_not_set</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_objects'>objects</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='id identifier rubyid_objects'>objects</span><span class='period'>.</span><span class='id identifier rubyid_extract_options!'>extract_options!</span>
+  <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:check</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='kw'>false</span>
+  <span class='id identifier rubyid_o'>o</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_objects'>objects</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_object'>object</span><span class='op'>|</span>
+    <span class='id identifier rubyid_attr'>attr</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='id identifier rubyid_attr'>attr</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:check</span><span class='rbracket'>]</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_can_edit?'>can_edit?</span>
+      <span class='id identifier rubyid_attr'>attr</span><span class='period'>.</span><span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_object'>object</span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Not specified</span><span class='tstring_end'>'</span></span>
+      <span class='id identifier rubyid_attr'>attr</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>blank</span><span class='tstring_end'>'</span></span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>||</span> <span class='id identifier rubyid_object'>object</span><span class='lbracket'>[</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>not specified</span><span class='regexp_end'>/</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_attr'>attr</span><span class='period'>.</span><span class='id identifier rubyid_content'>content</span> <span class='op'>=</span>  <span class='id identifier rubyid_object'>object</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_o'>o</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_attr'>attr</span>
+  <span class='kw'>end</span>
+  <span class='kw'>yield</span> <span class='op'>*</span><span class='id identifier rubyid_o'>o</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="helper-instance_method">
+  
+    - (<tt>Object</tt>) <strong>helper</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='_-instance_method'>_</span>, <span id='h-instance_method'>h</span></span>
+    </span>
   
 
   
@@ -348,7 +552,7 @@ view</p>
     <td>
       <pre class="code"><span class="info file"># File 'app/presenters/application_presenter.rb', line 18</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid__'>_</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_helper'>helper</span>
   <span class='ivar'>@template</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -368,7 +572,7 @@ view</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Generic accessor for object, allowing Presenters to call get data. More
+<p>Generic accessor for the model, allowing Presenters to get data. More
 specific model accessor are generated based on the controller name.</p>
 
 
@@ -416,12 +620,12 @@ specific model accessor are generated based on the controller name.</p>
       <pre class="lines">
 
 
-36
-37
-38</pre>
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/presenters/application_presenter.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'app/presenters/application_presenter.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_model'>model</span>
   <span class='ivar'>@model</span>
@@ -432,9 +636,9 @@ specific model accessor are generated based on the controller name.</p>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="tag_with_error-instance_method">
+  <h3 class="signature " id="wrap_in-instance_method">
   
-    - (<tt>Object</tt>) <strong>tag_with_error</strong>(tag, object, opts = {}) 
+    - (<tt>Object</tt>) <strong>wrap_in</strong>(tag, *options) 
   
 
   
@@ -443,87 +647,13 @@ specific model accessor are generated based on the controller name.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Generates a tag</p>
-
-<pre class="code ruby"><code>with error classes if the object returns error classes.</code></pre>
+<p>Public : Missing doc</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
   
-    <li>
-      
-        <span class='name'>tag</span>
-      
-      
-        <span class='type'></span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>the designated tag to generate, as a Symbol.</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>object</span>
-      
-      
-        <span class='type'></span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>The object to display.</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>opts</span>
-      
-      
-        <span class='type'></span>
-      
-      
-        <em class="default">(defaults to: <tt>{}</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>A Hash containing options to apply to the tag.</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'></span>
-      
-      
-      
-        
-        <div class='inline'>
-<p>an HTML String.</p>
-</div>
-      
-    </li>
-  
-</ul>
 
 </div><table class="source_code">
   <tr>
@@ -531,23 +661,17 @@ specific model accessor are generated based on the controller name.</p>
       <pre class="lines">
 
 
-48
-49
-50
-51
-52
-53
-54</pre>
+59
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/presenters/application_presenter.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'app/presenters/application_presenter.rb', line 59</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_tag_with_error'>tag_with_error</span><span class='lparen'>(</span><span class='id identifier rubyid_tag'>tag</span><span class='comma'>,</span> <span class='id identifier rubyid_object'>object</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_can_edit?'>can_edit?</span>
-    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:class</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_object'>object</span><span class='lbracket'>[</span><span class='symbol'>:class</span><span class='rbracket'>]</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid__'>_</span><span class='period'>.</span><span class='id identifier rubyid_content_tag'>content_tag</span> <span class='id identifier rubyid_tag'>tag</span><span class='comma'>,</span> <span class='id identifier rubyid_object'>object</span><span class='lbracket'>[</span><span class='symbol'>:content</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_deep_merge'>deep_merge</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_wrap_in'>wrap_in</span><span class='lparen'>(</span><span class='id identifier rubyid_tag'>tag</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_extract_options!'>extract_options!</span>
+  <span class='id identifier rubyid__'>_</span><span class='period'>.</span><span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='id identifier rubyid_tag'>tag</span><span class='comma'>,</span> <span class='kw'>yield</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -559,7 +683,7 @@ specific model accessor are generated based on the controller name.</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Jul  5 22:11:18 2012 by
+  Generated on Wed Jul 11 02:00:00 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.3).
 </div>
