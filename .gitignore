@@ -14,5 +14,8 @@
 /log/*.log
 /tmp
 
+# Ignore uploaded files
+/public/system
+
 .idea
 .DS_Store
