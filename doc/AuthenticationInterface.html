@@ -103,18 +103,7 @@
 </dl>
 <div class="clear"></div>
 
-<h2>Overview</h2><div class="docstring">
-  <div class="discussion">
-    
-<p>require 'interfaces/interface'</p>
 
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
 
 
 
@@ -146,7 +135,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Not documented.</p>
+</div></span>
   
 </li>
 
@@ -231,13 +222,50 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>A new instance of AuthenticationInterface</p>
+<p>A new instance of AuthenticationInterface.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>component</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The model to decorate.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>current_user</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>As authentication interface will deal with user authentication, the current
+user must be passed.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 
 </div><table class="source_code">
   <tr>
@@ -245,13 +273,13 @@
       <pre class="lines">
 
 
-6
-7
-8
-9</pre>
+9
+10
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/interfaces/authentication_interface.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'app/interfaces/authentication_interface.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_component'>component</span><span class='comma'>,</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='rparen'>)</span>
   <span class='kw'>super</span> <span class='id identifier rubyid_component'>component</span>
@@ -278,18 +306,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Not documented.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-18
-19
-20</pre>
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/interfaces/authentication_interface.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'app/interfaces/authentication_interface.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ability'>ability</span>
   <span class='ivar'>@ability</span> <span class='op'>||=</span> <span class='const'>Ability</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@current_user</span><span class='rparen'>)</span>
@@ -343,12 +382,12 @@
       <pre class="lines">
 
 
-14
-15
-16</pre>
+17
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/interfaces/authentication_interface.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'app/interfaces/authentication_interface.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_can_edit?'>can_edit?</span>
   <span class='id identifier rubyid_can?'>can?</span> <span class='symbol'>:update</span><span class='comma'>,</span> <span class='ivar'>@component</span>
@@ -363,7 +402,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Jul 11 02:00:00 2012 by
+  Generated on Wed Jul 11 06:24:53 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.3).
 </div>

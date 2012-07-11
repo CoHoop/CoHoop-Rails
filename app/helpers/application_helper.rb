@@ -28,7 +28,7 @@ module ApplicationHelper
   end
   #
 
-  # Public: display an inline user authentication interaction
+  # Public: Display an inline user authentication interaction
   #
   # Returns the generated html String.
   def display_user_authentication
@@ -39,7 +39,7 @@ module ApplicationHelper
     end
   end
 
-  # Public: returns the current user profile path
+  # Public: Returns the current user profile path
   #
   # Examples
   #

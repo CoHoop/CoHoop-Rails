@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   # Public: Redirect to a default page or back to another page.
   #
-  # path - The String or the RouteName to which to go back to (default: nil).
+  # path - The String or the route name to which to go back to (default: nil).
   #
   # Returns nothing.
   def get_default_or_back_to path = nil
@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     #
     #   render_404 { Flash[:alert] = 'User not found.' }
     #
-    # Returns nothing.
+    # Returns nil.
     def render_404
       @title = 404
       yield
@@ -36,5 +36,4 @@ class ApplicationController < ActionController::Base
       end
       nil
     end
-
 end

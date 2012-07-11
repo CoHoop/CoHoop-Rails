@@ -3,7 +3,8 @@ require 'modules/user_presenter'
 class UserProfilePresenter < ApplicationPresenter
   include UserPresenter
 
-  # Public: Renders users's university and job wrapped in h2 tags.
+  # Public: Renders users's university and job wrapped in an editable span
+  # (if the current user has the rights).
   #
   # Returns an HTML String.
   def professional_information
@@ -13,7 +14,8 @@ class UserProfilePresenter < ApplicationPresenter
     end
   end
 
-  # Public: Renders user's biography wrapped in a p tag.
+  # Public: Renders user's biography wrapped in an editable span
+  # (if the current user has the rights).
   #
   # Returns an HTML String.
   def biography_paragraph
@@ -23,6 +25,9 @@ class UserProfilePresenter < ApplicationPresenter
   end
 
   private
+    # Public: A little helper for the best_in_place_if method, handling errors.
+    #
+    # Returns an HTML String.
     def best_in_place_if(condition, model, method, *opts)
       options = opts.extract_options!
       if options[:errors]

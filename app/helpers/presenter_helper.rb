@@ -1,6 +1,6 @@
-# Public: Provide convenience methods to use a Presenter in a view
+# Public: Provide convenience methods to use a Presenter in rails views.
 module PresenterHelper
-  # Public: Instanciate a Presenter. It will be passed to a block.
+  # Public: Instanciates a Presenter. It will be passed to a block.
   #
   # object - A model instance to be wrapped inside the Presenter.
   # args   - The Hash containing the path of the presenter to use.

@@ -137,7 +137,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>A little helper for the best_in_place_if method, handling errors.</p>
+</div></span>
   
 </li>
 
@@ -160,7 +162,8 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Renders user's biography wrapped in a p tag.</p>
+<p>Renders user's biography wrapped in an editable span (if the current user
+has the rights).</p>
 </div></span>
   
 </li>
@@ -184,7 +187,8 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Renders users's university and job wrapped in h2 tags.</p>
+<p>Renders users's university and job wrapped in an editable span (if the
+current user has the rights).</p>
 </div></span>
   
 </li>
@@ -237,23 +241,52 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>A little helper for the best_in_place_if method, handling errors.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>an HTML String.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-26
-27
-28
-29
-30
 31
 32
-33</pre>
+33
+34
+35
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/presenters/user_profile_presenter.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'app/presenters/user_profile_presenter.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_best_in_place_if'>best_in_place_if</span><span class='lparen'>(</span><span class='id identifier rubyid_condition'>condition</span><span class='comma'>,</span> <span class='id identifier rubyid_model'>model</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_extract_options!'>extract_options!</span>
@@ -280,7 +313,8 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Renders user's biography wrapped in a p tag.</p>
+<p>Renders user's biography wrapped in an editable span (if the current user
+has the rights).</p>
 
 
   </div>
@@ -312,14 +346,14 @@
       <pre class="lines">
 
 
-19
-20
 21
 22
-23</pre>
+23
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/presenters/user_profile_presenter.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'app/presenters/user_profile_presenter.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_biography_paragraph'>biography_paragraph</span>
   <span class='id identifier rubyid_handles_not_set'>handles_not_set</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_biography'>biography</span><span class='comma'>,</span> <span class='label'>check:</span> <span class='kw'>true</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_biography'>biography</span><span class='op'>|</span>
@@ -343,7 +377,8 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Renders users's university and job wrapped in h2 tags.</p>
+<p>Renders users's university and job wrapped in an editable span (if the
+current user has the rights).</p>
 
 
   </div>
@@ -375,15 +410,15 @@
       <pre class="lines">
 
 
-9
 10
 11
 12
 13
-14</pre>
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/presenters/user_profile_presenter.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'app/presenters/user_profile_presenter.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_professional_information'>professional_information</span>
   <span class='id identifier rubyid_handles_not_set'>handles_not_set</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_university'>university</span><span class='comma'>,</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_job'>job</span><span class='comma'>,</span> <span class='label'>check:</span> <span class='kw'>true</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_university'>university</span><span class='comma'>,</span> <span class='id identifier rubyid_job'>job</span><span class='op'>|</span>
@@ -401,7 +436,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Jul 11 02:00:00 2012 by
+  Generated on Wed Jul 11 06:24:53 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.3).
 </div>
