@@ -26,7 +26,6 @@ gem 'cancan'
 
 group :production do
   gem 'pg'
-  gem 'sass-rails', '-> 3.1.4'
   gem 'compass'
 end
 
