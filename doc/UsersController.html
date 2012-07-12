@@ -199,7 +199,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#get_default_or_back_to-instance_method" title="ApplicationController#get_default_or_back_to (method)">#get_default_or_back_to</a></span>, <span class='object_link'><a href="ApplicationController.html#render_404-instance_method" title="ApplicationController#render_404 (method)">#render_404</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#current_user_profile_path-instance_method" title="ApplicationController#current_user_profile_path (method)">#current_user_profile_path</a></span>, <span class='object_link'><a href="ApplicationController.html#get_default_or_back_to-instance_method" title="ApplicationController#get_default_or_back_to (method)">#get_default_or_back_to</a></span>, <span class='object_link'><a href="ApplicationController.html#js_redirect_to-instance_method" title="ApplicationController#js_redirect_to (method)">#js_redirect_to</a></span>, <span class='object_link'><a href="ApplicationController.html#render_404-instance_method" title="ApplicationController#render_404 (method)">#render_404</a></span></p>
 
   
 
@@ -254,17 +254,17 @@ Render a 404 not found if the user does not exist.</code></pre>
       <pre class="lines">
 
 
-21
-22
-23
-24
-25
-26
-27
-28</pre>
+38
+39
+40
+41
+42
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/users_controller.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/users_controller.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_user_through_params'>get_user_through_params</span>
   <span class='id identifier rubyid_model_object'>model_object</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id = ? AND first_name = ? AND last_name = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:first</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_capitalize'>capitalize</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:last</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_capitalize'>capitalize</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
@@ -330,15 +330,49 @@ Render a 404 not found if the user does not exist.</code></pre>
 10
 11
 12
-13</pre>
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/users_controller.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
-  <span class='ivar'>@user</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-  <span class='ivar'>@user</span><span class='period'>.</span><span class='id identifier rubyid_update_without_password'>update_without_password</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:user</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_respond_with'>respond_with</span> <span class='ivar'>@user</span>
+  <span class='ivar'>@user</span>               <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_is_uploading_avatar'>is_uploading_avatar</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:user</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span> <span class='symbol'>:avatar_upload_form</span>
+
+  <span class='kw'>if</span> <span class='ivar'>@user</span><span class='period'>.</span><span class='id identifier rubyid_update_attributes'>update_attributes</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:user</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_respond_with'>respond_with</span><span class='lparen'>(</span><span class='ivar'>@user</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span>
+      <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_html'>html</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_current_user_profile_path'>current_user_profile_path</span> <span class='rbrace'>}</span>
+
+      <span class='kw'>if</span> <span class='id identifier rubyid_is_uploading_avatar'>is_uploading_avatar</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_remotipart_submitted?'>remotipart_submitted?</span>
+        <span class='comment'># As remotipart is only used for the avatar upload here, we can be
+</span>        <span class='comment'># confident about the notice.
+</span>        <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_js'>js</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_js_redirect_to'>js_redirect_to</span><span class='lparen'>(</span><span class='id identifier rubyid_current_user_profile_path'>current_user_profile_path</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:notice</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Avatar modified successfully.</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span> <span class='rbrace'>}</span>
+      <span class='kw'>elsif</span> <span class='id identifier rubyid_is_uploading_avatar'>is_uploading_avatar</span> <span class='comment'># If the user is submitting a blank upload form
+</span>        <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_js'>js</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span> <span class='comment'># respond_with(@user)
+</span>  <span class='kw'>else</span>
+    <span class='id identifier rubyid_respond_with'>respond_with</span><span class='lparen'>(</span><span class='ivar'>@user</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span>
+      <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_js'>js</span> <span class='kw'>if</span> <span class='id identifier rubyid_remotipart_submitted?'>remotipart_submitted?</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -350,7 +384,7 @@ Render a 404 not found if the user does not exist.</code></pre>
 </div>
 
     <div id="footer">
-  Generated on Wed Jul 11 06:24:52 2012 by
+  Generated on Thu Jul 12 23:16:39 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.3).
 </div>
