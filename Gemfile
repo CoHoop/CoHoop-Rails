@@ -23,11 +23,13 @@ gem 'devise'
 gem 'cancan'
 
 
-=begin
+
 group :production do
   gem 'pg'
+  gem 'sass-rails', '-> 3.1.4'
+  gem 'compass'
 end
-=end
+
 
 group :development do
   gem 'rspec-rails'
