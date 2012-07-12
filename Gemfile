@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.6'
-gem 'sqlite3'
 
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
@@ -30,6 +29,9 @@ group :production do
   gem 'compass'
 end
 
+group :development, :test do
+  gem 'sqlite3'
+end
 
 group :development do
   gem 'rspec-rails'
