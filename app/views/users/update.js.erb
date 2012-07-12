@@ -1,0 +1,12 @@
+<%= remotipart_response do %>
+  $('#upload-popin .errors_explanation').remove();
+  <% if @user.errors.any? %>
+       var $errorDiv = $('<div class="errors_explanation">'),
+           $errorList = $('<ul>');
+       <%= @user.errors.delete :avatar %>
+       <% @user.errors.full_messages.each do |msg| %>
+          $errorList.append('<li><%= escape_javascript msg %></li>');
+       <% end %>
+       $('#upload-popin .modal-body').prepend($errorDiv.append($errorList));
+  <% end %>
+<% end %>
