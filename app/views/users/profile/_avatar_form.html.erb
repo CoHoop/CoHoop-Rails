@@ -1,4 +1,5 @@
-<%= form_for user, :html => { :multipart => true } do |form| %>
-  <%= form.file_field :avatar %>
-  <%= form.submit %>
+<%= form_for user, remote: true, html: { id: 'avatar-upload-form', multipart: true }, method: :put do |form| %>
+  <%= form.hidden_field :avatar_upload_form, value: true %>
+  <%= form.file_field :avatar, id: 'avatar-input', accept: "image/*" %>
+  <%= form.submit 'Upload' %>
 <% end %>

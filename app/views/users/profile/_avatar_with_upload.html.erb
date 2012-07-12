@@ -1,0 +1,18 @@
+<div class="dropdown" id="avatar-menu">
+  <a class="dropdown-toggle" id="avatar-dropdown" data-toggle="dropdown" href="#avatar-menu">
+    <%= presenter.avatar %>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a id="upload-avatar" href="#">Upload an image</a></li>
+  </ul>
+</div> <!-- #upload-menu -->
+
+<div class="modal hide" id="upload-popin">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Upload an avatar</h3>
+  </div>
+  <div class="modal-body">
+    <%= presenter.avatar_form %>
+  </div>
+</div> <!-- #upload-popin -->
