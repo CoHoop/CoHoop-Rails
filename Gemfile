@@ -39,6 +39,7 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'spork'
+  gem 'database_cleaner'
 
   gem 'factory_girl_rails'
 
@@ -53,3 +54,4 @@ end
 gem 'jquery-rails'
 gem 'best_in_place', git: 'git://github.com/gposton/best_in_place.git'
 gem 'paperclip'
+gem 'remotipart'
