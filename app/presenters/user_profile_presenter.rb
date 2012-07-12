@@ -25,11 +25,20 @@ class UserProfilePresenter < ApplicationPresenter
   end
 
   def avatar
-    avatar_img = _.image_tag user.avatar.url(:thumb)
+    _.image_tag user.avatar.url(:thumb), class: 'avatar'
+  end
+
+  def manage_avatar
     if can_edit?
-      avatar_img + (_.render partial: 'users/profile/avatar_form', locals: { user: user } )
+      _.render partial: 'users/profile/avatar_with_upload', locals: { presenter: self }
     else
-      avatar_img
+      avatar
+    end
+  end
+
+  def avatar_form
+    if can_edit?
+      _.render partial: 'users/profile/avatar_form', locals: { user: user }
     end
   end
 
