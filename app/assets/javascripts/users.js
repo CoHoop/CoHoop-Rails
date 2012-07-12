@@ -1,15 +1,34 @@
 
 $(function(){
   best_in_place = BestInPlace.init();
-  best_in_place.success_handler();
+  best_in_place.handle_success();
+
+  avatar_manager = AvatarManager.init();
+  avatar_manager.handle_upload();
 });
 
+var AvatarManager = (function() {
+  function _init() {
+    return {
+      handle_upload : _uploader
+    }
+  }
 
-var BestInPlace = function() {
+  function _uploader() {
+    $('#upload-avatar').click(function(e) {
+      e.preventDefault();
+      $('#upload-popin').modal();
+    });
+  }
+
+  return { init : _init }
+}());
+
+var BestInPlace = (function() {
   function _init() {
     $('.best_in_place').best_in_place();
     return {
-      success_handler:_success
+      handle_success : _success
     };
   }
 
@@ -25,5 +44,5 @@ var BestInPlace = function() {
     });
   }
 
-  return { init: _init }
-}();
+  return { init : _init }
+}());
