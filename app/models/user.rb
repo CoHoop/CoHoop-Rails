@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
                   :university, :biography, :job, :birth_date
 
   has_attached_file :avatar, styles: { thumb: '100x100>'}
+  validates_attachment :avatar,
+                       content_type: { content_type: %w(image/jpg image/jpeg image/png image/gif), message: "format is invalid." },
+                       size: { in: 0..2.megabytes, message: 'exceeded' }
+  #validates_attachment_presence :avatar, message: "The file is missing", on: :update
 
   before_save { |user| user.email.downcase! }
 # before_save :create_remember_token
