@@ -29,9 +29,9 @@ group :production do
   gem 'compass'
 end
 
-group :development, :test do
+#group :development, :test do
   #gem 'sqlite3'
-end
+#end
 
 group :development do
   gem 'rspec-rails'
