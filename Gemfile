@@ -26,7 +26,6 @@ gem 'cancan'
 
 group :production do
   gem 'pg'
-  gem 'compass'
 end
 
 #group :development, :test do
