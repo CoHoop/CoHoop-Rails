@@ -20,14 +20,26 @@ class ApplicationController < ActionController::Base
   #
   # Examples
   #
-  #  current_user_profile_path
-  #  # => /1/user-name
+  #   current_user_profile_path
+  #   # => /1/user-name
   #
   # Returns the path as a String.
   def current_user_profile_path
     profile_path(id: current_user.id,
                  first: current_user.first_name.downcase,
                  last: current_user.last_name.downcase)
+  end
+
+  # Public: Redirect to using javascript instead of a normal HTTP redirect
+  #
+  # Examples
+  #
+  #   js_redirect_to(current_user_profile_path) { flash[:notice] = 'Foo bar' }
+  #
+  # Returns a javascript String.
+  def js_redirect_to(path)
+    yield
+    render :js => "document.location = '#{path}';", layout: false
   end
 
   private
