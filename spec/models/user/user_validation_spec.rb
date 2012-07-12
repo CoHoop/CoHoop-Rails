@@ -90,4 +90,11 @@ describe User do
       it { should_not be_valid }
     end
   end # when password
+
+  describe 'avatar' do
+    it { should validate_attachment_content_type(:avatar).
+                      allowing('image/png', 'image/gif', 'image/jpeg', 'image/jpg').
+                      rejecting('text/plain', 'text/xml', 'text/javascript', 'text/html') }
+    it { should validate_attachment_size(:avatar).less_than(2.megabytes) }
+  end
 end

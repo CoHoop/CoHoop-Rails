@@ -20,6 +20,7 @@ describe 'User pages :' do
     end
 
     describe 'with a correct user' do
+      let(:user) { FactoryGirl.create :user_with_avatar }
       before do
         visit(profile_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase))
       end
@@ -30,7 +31,17 @@ describe 'User pages :' do
         it { should have_selector('h1', content: 'Firstname Lastname' ) }
       end
       describe 'should display the avatar' do
-        pending 'and should be tested'
+        it 'should display a default image if the user has not specified one' do
+          user.avatar = nil
+          user.save!
+          visit(profile_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase))
+
+          should have_xpath( '//img[contains(@alt, "Missing")]' )
+        end
+        it 'should display an avatar if the user has one' do
+          should_not have_xpath( '//img[contains(@alt, "Missing")]' )
+          should have_selector("img[src$='#{user.avatar.url(:thumb)}']")
+        end
       end
       describe 'should display a list of followers' do
         pending 'and should be tested'
