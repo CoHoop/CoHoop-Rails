@@ -1,3 +1,4 @@
+# Needed to use fixture_file_upload
 require 'action_dispatch'
 include ActionDispatch::TestProcess
 

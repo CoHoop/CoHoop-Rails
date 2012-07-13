@@ -23,11 +23,13 @@
 #
 
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable
+  has_many :microhoops
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :first_name, :last_name, :avatar,
                   :university, :biography, :job, :birth_date
+
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable
 
   has_attached_file :avatar, styles: { thumb: '100x100>'}
   validates_attachment :avatar,
