@@ -22,15 +22,13 @@ gem 'devise'
 ## CanCan is an authorization library for Ruby on Rails. See https://github.com/ryanb/cancan
 gem 'cancan'
 
-
-
 group :production do
   gem 'pg'
 end
 
-#group :development, :test do
-  #gem 'sqlite3'
-#end
+group :development, :test do
+  gem 'sqlite3'
+end
 
 group :development do
   gem 'rspec-rails'
