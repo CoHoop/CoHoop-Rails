@@ -1,6 +1,7 @@
 CohoopRails::Application.routes.draw do
   authenticated :user do
     root :to => "users#feed"
+    match '/:feed_type' => 'users#feed', constraints: { feed_type: /community|tags/ }, as: :feed
   end
   root to: 'pages#home'
 
