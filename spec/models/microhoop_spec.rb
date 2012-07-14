@@ -27,6 +27,8 @@ describe Microhoop do
 
   it { should be_valid }
 
+  pending "A microhoop should parse its content to extract the tag and add it to the database."
+
   describe 'should respond to user' do
     it { @micro.user.should == @user }
   end

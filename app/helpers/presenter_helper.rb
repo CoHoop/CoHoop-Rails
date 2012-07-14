@@ -26,7 +26,7 @@ module PresenterHelper
   def present(object, options = {})
     presenters_path = *options[:presenter] || options[:presenters]
 
-    klass = get_presenter_class(object, presenters_path)
+    klass     = get_presenter_class(object, presenters_path)
     presenter = klass.new(object, self)
 
     yield presenter if block_given?

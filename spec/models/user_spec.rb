@@ -44,6 +44,5 @@ describe User do
   it 'should have a password confirmation' do should respond_to :password_confirmation end
   it { should have_attached_file(:avatar) }
   it { should respond_to(:microposts) }
-
   it { should be_valid }
 end

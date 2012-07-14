@@ -1,4 +1,7 @@
 CohoopRails::Application.routes.draw do
+  authenticated :user do
+    root :to => "users#feed"
+  end
   root to: 'pages#home'
 
   devise_for :users

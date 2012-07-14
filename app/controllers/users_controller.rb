@@ -29,6 +29,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def feed
+    @title = 'News'
+  end
+
   private
     # Private: get the designated user through the following parameters
     #  :id for id, :first for first_name, :last for last_name.

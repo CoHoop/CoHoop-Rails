@@ -5,14 +5,20 @@ describe ApplicationHelper do
   describe 'when using presenters' do
     describe '#present' do
       before do
-        class Helper; end
-        class TestPresenter; def initialize a, b; end end
-        class HelperTestPresenter; def initialize a, b; end end
+        TestModel.stub(:new)
+        @presenter = stub
+        [TestPresenter, OtherTestPresenter].each do |presenter_class|
+          presenter_class.stub(:new).with(any_args()).and_return @presenter
+        end
       end
       it 'should return a presenter object' do
-        present(Helper.new, presenter: :test).class.should == TestPresenter
-        present(Helper.new, presenters: [:helper, :test]).class.should == HelperTestPresenter
+        expect { |b| present(TestModel.new, presenter: :test, &b) }.to yield_with_args(@presenter)
+        expect { |b| present(TestModel.new, presenters: [:other, :test], &b) }.to yield_with_args(@presenter)
       end
     end # #present
   end # when using presenters
 end
+
+class TestModel; end
+class TestPresenter; end
+class OtherTestPresenter; end
