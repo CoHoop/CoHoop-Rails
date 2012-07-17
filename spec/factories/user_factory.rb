@@ -19,7 +19,7 @@ FactoryGirl.define do
   factory :user_with_avatar, class: User do
     first_name            "Firstname"
     last_name             "Lastname"
-    sequence( :email ) { |n| "foo#{n}@ex#{n+1}ample.com" }
+    sequence( :email ) { |n| "fooa#{n}@ex#{n+1}ample.com" }
     password              'foobar'
     password_confirmation 'foobar'
     created_at            Time.now

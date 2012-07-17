@@ -23,7 +23,14 @@
 #
 
 class User < ActiveRecord::Base
+  # Microhoops
   has_many :microhoops
+
+  # Relations
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_relationships, foreign_key: "followed_id", class_name: 'Relationship', dependent: :destroy
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_relationships, source: :follower
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :first_name, :last_name, :avatar,
@@ -35,10 +42,10 @@ class User < ActiveRecord::Base
   validates_attachment :avatar,
                        content_type: { content_type: %w(image/jpg image/jpeg image/png image/gif), message: "format is invalid." },
                        size: { in: 0..2.megabytes, message: 'exceeded' }
-  #validates_attachment_presence :avatar, message: "The file is missing", on: :update
+  # TODO : Do we need a message if the file is missing or simply do nothing ?
+  # validates_attachment_presence :avatar, message: "The file is missing", on: :update
 
   before_save { |user| user.email.downcase! }
-# before_save :create_remember_token
 
   VALID_EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.(?:[A-Z]{2}|com|org|net|edu|gov|gouv|mil|biz|info|mobi|name|aero|asia|jobs|museum)$/i
 
@@ -52,4 +59,18 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }, :if => ->{ new_record? || !password.nil? }
   validates :password_confirmation, presence: true, :if => ->{ new_record? || !password_confirmation.nil? }
   validates_confirmation_of :password
+
+  # TODO: should refactor in a UserRelationshipInterface
+  # TODO: should be confident
+  def follow!(user)
+    self.relationships.create!(followed_id: user.id)
+  end
+
+  def unfollow!(user)
+    self.relationships.find_by_followed_id!(user.id).destroy
+  end
+
+  def following?(user)
+    self.followed_users.include? user
+  end
 end
