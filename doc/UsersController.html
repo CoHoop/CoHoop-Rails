@@ -118,6 +118,28 @@
 
     <ul class="summary">
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#feed-instance_method" title="#feed (instance method)">- (Object) <strong>feed</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
         <li class="private ">
   <span class="summary_signature">
     
@@ -208,7 +230,39 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="get_user_through_params-instance_method">
+  <h3 class="signature first" id="feed-instance_method">
+  
+    - (<tt>Object</tt>) <strong>feed</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/users_controller.rb', line 32</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_feed'>feed</span>
+  <span class='ivar'>@title</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>News</span><span class='tstring_end'>'</span></span>
+  <span class='ivar'>@feed</span>  <span class='op'>=</span> <span class='const'>UserFeedInterface</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_current_user'>current_user</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_build_feed'>build_feed</span><span class='lparen'>(</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_user_through_params-instance_method">
   
     - (<tt>Object</tt>) <strong>get_user_through_params</strong>  <span class="extras">(private)</span>
   
@@ -254,17 +308,17 @@ Render a 404 not found if the user does not exist.</code></pre>
       <pre class="lines">
 
 
-38
-39
-40
-41
-42
 43
 44
-45</pre>
+45
+46
+47
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/users_controller.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/users_controller.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_user_through_params'>get_user_through_params</span>
   <span class='id identifier rubyid_model_object'>model_object</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id = ? AND first_name = ? AND last_name = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:first</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_capitalize'>capitalize</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:last</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_capitalize'>capitalize</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
@@ -384,7 +438,7 @@ Render a 404 not found if the user does not exist.</code></pre>
 </div>
 
     <div id="footer">
-  Generated on Thu Jul 12 23:16:39 2012 by
+  Generated on Tue Jul 17 06:47:26 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.3).
 </div>
