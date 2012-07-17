@@ -60,16 +60,33 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, :if => ->{ new_record? || !password_confirmation.nil? }
   validates_confirmation_of :password
 
-  # TODO: should refactor in a UserRelationshipInterface
-  # TODO: should be confident
+  # ------------------------------------------------------
+  # TODO: should refactor in a UserRelationshipInterface |
+  # ------------------------------------------------------
+
+  # Public : Follows a given user
+  #
+  # user - the user to follow, should be kind_of User
+  #
+  # Returns the newly created relationship.
   def follow!(user)
     self.relationships.create!(followed_id: user.id)
   end
 
+  # Public : Unfollows a given user
+  #
+  # user - the user to unfollow, should be kind_of User
+  #
+  # Returns the destroyed relationship.
   def unfollow!(user)
     self.relationships.find_by_followed_id!(user.id).destroy
   end
 
+  # Public : Checks if a user is followed
+  #
+  # user - the user to check, should be kind_of User
+  #
+  # Returns a Boolean.
   def following?(user)
     self.followed_users.include? user
   end
