@@ -54,6 +54,15 @@ class UserProfilePresenter < ApplicationPresenter
     user.followers.map { |f| self.class.new(f, helper) }
   end
 
+  def followed_users_list
+    _.render partial: 'users/profile/followed_users', locals: { user:  self }
+  end
+
+  def followed_users
+    # OPTIMIZE: Should be lazy
+    user.followed_users.map { |f| self.class.new(f, helper) }
+  end
+
   private
     # Public: A little helper for the best_in_place_if method, handling errors.
     #

@@ -1,0 +1,7 @@
+<ul class="followed-users-list">
+  <% user.followed_users.each do |followed_user| %>
+  <li>
+    <%= followed_user.avatar %>
+  </li>
+  <% end %>
+</ul>

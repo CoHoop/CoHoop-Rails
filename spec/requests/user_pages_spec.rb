@@ -53,7 +53,12 @@ describe 'User pages :' do
         it { should have_selector("#followers ul li img", alt: @name ) }
      end
       describe 'should display a list of followed' do
-        pending 'and should be tested'
+        before do
+          user.follow! other_user
+          visit(profile_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase))
+          @name = "#{other_user.first_name.capitalize} #{other_user.last_name.capitalize}"
+        end
+        it { should have_selector("#followed-users ul li img", alt: @name ) }
       end
       describe 'should display social media links' do
         pending 'and should be tested'
