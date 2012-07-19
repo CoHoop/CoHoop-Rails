@@ -24,10 +24,12 @@ class UserProfilePresenter < ApplicationPresenter
     end
   end
 
+  # TODO : doc
   def avatar
-    _.image_tag user.avatar.url(:thumb), class: 'avatar'
+    _.image_tag user.avatar.url(:thumb), class: 'avatar', alt: name
   end
 
+  # TODO : doc
   def manage_avatar
     if can_edit?
       _.render partial: 'users/profile/avatar_with_upload', locals: { presenter: self }
@@ -36,10 +38,20 @@ class UserProfilePresenter < ApplicationPresenter
     end
   end
 
+  # TODO : doc
   def avatar_form
     if can_edit?
       _.render partial: 'users/profile/avatar_form', locals: { user: user }
     end
+  end
+
+  def followers_list
+    _.render partial: 'users/profile/followers', locals: { user:  self }
+  end
+
+  def followers
+    # OPTIMIZE: Should be lazy
+    user.followers.map { |f| self.class.new(f, helper) }
   end
 
   private

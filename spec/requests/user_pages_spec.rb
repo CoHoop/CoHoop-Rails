@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe 'User pages :' do
   let(:user) { FactoryGirl.create :user }
+  let(:other_user) { FactoryGirl.create :user }
+
   subject { page }
 
   # TODO: Should refactor this
@@ -20,10 +22,11 @@ describe 'User pages :' do
     end
 
     describe 'with a correct user' do
-      let(:user) { FactoryGirl.create :user_with_avatar }
       before do
+        other_user.follow! user
         visit(profile_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase))
       end
+
       let(:page_title) { user.first_name.capitalize + ' ' + user.last_name.capitalize }
       it_should_behave_like 'all user pages'
 
@@ -44,8 +47,11 @@ describe 'User pages :' do
         end
       end
       describe 'should display a list of followers' do
-        pending 'and should be tested'
-      end
+        before do
+          @name = "#{other_user.first_name.capitalize} #{other_user.last_name.capitalize}"
+        end
+        it { should have_selector("#followers ul li img", alt: @name ) }
+     end
       describe 'should display a list of followed' do
         pending 'and should be tested'
       end
