@@ -6,6 +6,8 @@
 class ApplicationPresenter
   include ActiveSupport::Inflector
 
+  delegate :render, :current_user, to: :helper
+
   # A new instance of ApplicationPresenter
   #
   # model    - The model to present.

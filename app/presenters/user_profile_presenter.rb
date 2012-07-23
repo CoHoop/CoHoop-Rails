@@ -32,7 +32,7 @@ class UserProfilePresenter < ApplicationPresenter
   # TODO : doc
   def manage_avatar
     if can_edit?
-      _.render partial: 'users/profile/avatar_with_upload', locals: { presenter: self }
+      render partial: 'users/profile/avatar_with_upload', locals: { presenter: self }
     else
       avatar
     end
@@ -41,12 +41,12 @@ class UserProfilePresenter < ApplicationPresenter
   # TODO : doc
   def avatar_form
     if can_edit?
-      _.render partial: 'users/profile/avatar_form', locals: { user: user }
+      render partial: 'users/profile/avatar_form', locals: { user: user }
     end
   end
 
   def followers_list
-    _.render partial: 'users/profile/followers', locals: { user:  self }
+    render partial: 'users/profile/followers', locals: { user:  self }
   end
 
   def followers
@@ -55,12 +55,22 @@ class UserProfilePresenter < ApplicationPresenter
   end
 
   def followed_users_list
-    _.render partial: 'users/profile/followed_users', locals: { user:  self }
+    render partial: 'users/profile/followed_users', locals: { user:  self }
   end
 
   def followed_users
     # OPTIMIZE: Should be lazy
     user.followed_users.map { |f| self.class.new(f, helper) }
+  end
+
+  def follow_button
+    if _.user_signed_in? && !can_edit?
+      if current_user.following? user
+        render partial: 'users/profile/unfollow', locals: { user: user }
+      else
+        render partial: 'users/profile/follow', locals: { user: user }
+      end
+    end
   end
 
   private

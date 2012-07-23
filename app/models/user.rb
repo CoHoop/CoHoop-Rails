@@ -32,6 +32,9 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :followers, through: :reverse_relationships, source: :follower
 
+  has_many :tags_relationships, class_name: 'UsersTagsRelationship', foreign_key: "user_id"
+  has_many :tags, through: :tags_relationships
+
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :first_name, :last_name, :avatar,
                   :university, :biography, :job, :birth_date
@@ -88,6 +91,6 @@ class User < ActiveRecord::Base
   #
   # Returns a Boolean.
   def following?(user)
-    self.followed_users.include? user
+    self.relationships.find_by_followed_id(user.id)
   end
 end
