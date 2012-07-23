@@ -15,6 +15,14 @@ describe UsersTagsRelationship do
   its(:user) { should == user }
   its(:tag) { should == tag }
 
+  describe 'accessible attributes' do
+    it 'should not allow access to user_id' do
+      expect do
+        UsersTagsRelationship.new(user_id: user.id)
+      end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end
+  end
+
   describe 'main tags and secondary tags' do
     it 'defaults to secondary tag' do
       relationship.main_tag.should == 0
