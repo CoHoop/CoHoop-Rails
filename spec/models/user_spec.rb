@@ -45,6 +45,7 @@ describe User do
 
   it { should have_attached_file(:avatar) }
   it { should respond_to(:microhoops) }
+
   it { should respond_to(:relationships) }
   it { should respond_to(:reverse_relationships) }
   it { should respond_to(:followed_users) }
@@ -53,12 +54,20 @@ describe User do
   it { should respond_to(:unfollow!) }
   it { should respond_to(:following?) }
 
+  it { should respond_to(:users_tags_relationships) }
+  it { should respond_to(:tags) }
+  it { should respond_to(:main_tags) }
+  it { should respond_to(:secondary_tags) }
+  it { should respond_to(:tag!) }
+  it { should respond_to(:untag!) }
+  it { should respond_to(:is_tagged?) }
+
   it { should be_valid }
 
-  describe 'relationship methods' do
+  describe 'user relationship methods' do
     let(:other_user) { FactoryGirl.create :user }
 
-    describe 'follow!' do
+    describe '#follow!' do
       it 'should raise an error if the followed user does not exists' do
         expect { user.follow! stub(id: 42) }.to raise_error(ActiveRecord::RecordInvalid)
       end
@@ -68,7 +77,7 @@ describe User do
       end
     end # follow!
 
-    describe 'following?' do
+    describe '#following?' do
       it 'should return true if the given user is followed' do
         user.follow! other_user
         user.following?(other_user).should be_true
@@ -78,7 +87,7 @@ describe User do
       end
     end # following
 
-    describe 'unfollow!' do
+    describe '#unfollow!' do
       it 'should raise an error if we try to follow a user we are not following' do
         expect { user.unfollow! other_user }.to raise_error(ActiveRecord::RecordNotFound)
       end
@@ -90,24 +99,74 @@ describe User do
       end
     end # unfollow!
 
+    describe 'following' do
+      before { user.follow! other_user }
+      it { should be_following other_user }
+      its(:followed_users) { should include other_user }
+
+      describe 'and unfollowing' do
+        before { user.unfollow! other_user }
+        it { should_not be_following other_user }
+        its(:followed_users) { should_not include other_user }
+      end # unfollowing
+    end # following
+
+    describe 'followed_user' do
+      before { user.follow! other_user }
+      subject { other_user }
+      its(:followers) { should include user }
+    end
+
   end # relationship methods
 
-  describe 'following' do
-    before { user.follow! other_user }
-    it { should be_following other_user }
-    its(:followed_users) { should include other_user }
+  describe 'tags relationships' do
+    describe '#tag!: add main tags' do
+      before { user.tag!('My Tag, Foo, Bar', main: true) }
+      it 'should have include the previously added tags in its main tags list' do
+        tags = user.main_tags.map { |t| t.name }
+        tags.should include 'My Tag'
+        tags.should include 'Foo'
+        tags.should include 'Bar'
+      end
+    end
 
-    describe 'and unfollowing' do
-      before { user.unfollow! other_user }
-      it { should_not be_following other_user }
-      its(:followed_users) { should_not include other_user }
-    end # unfollowing
-  end # following
+    describe '#tag!: add secondary tags' do
+      before { user.tag!('Tag, Foob, Ar') }
+      it 'should have include the previously added tags in its secondary tags list' do
+        tags = user.secondary_tags.map { |t| t.name }
+        tags.should include 'Tag'
+        tags.should include 'Foob'
+        tags.should include 'Ar'
+      end
+    end
 
-  describe 'followed_user' do
-    before { user.follow! other_user }
-    subject { other_user }
-    its(:followers) { should include user }
+    describe '#tags' do
+      before do
+        user.tag!('Tag, Foo')
+        user.tag!('Bar', main: true)
+      end
+      it 'should return all the tags' do
+        tags = user.tags.map { |t| t.name }
+        tags.should include 'Tag'
+        tags.should include 'Foo'
+        tags.should include 'Bar'
+      end
+    end
+
+    describe '#untag!' do
+      before { user.add_tags('Tag') }
+      it 'should remove a tag relationship from the user' do
+        user.untag('Tag')
+        tags = user.tags.map { |t| t.name }
+        tags.should_not include 'Tag'
+      end
+    end
+
+    describe '#is_tagged?' do
+      before { user.tag! 'Tag' }
+      it 'should check if a user is tagged with a pecular tag' do
+        user.is_tagged?('Tag').should be_true
+      end
+    end
   end
-
 end

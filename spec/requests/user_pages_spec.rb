@@ -33,6 +33,20 @@ describe 'User pages :' do
       describe 'should display the user name' do
         it { should have_selector('h1', content: 'Firstname Lastname' ) }
       end
+
+      describe 'the follow button' do
+        describe 'if the user is not logged in' do
+          it { should_not have_button "Follow" }
+        end
+        describe 'if the user is logged in' do
+          before do
+            sign_in_as user
+            visit(profile_path(id: other_user.id, first: other_user.first_name.downcase, last: other_user.last_name.downcase))
+          end
+          it { should have_button "Follow" }
+        end # if the user is logged in
+      end # the follow button
+
       describe 'should display the avatar' do
         it 'should display a default image if the user has not specified one' do
           user.avatar = nil
@@ -60,6 +74,7 @@ describe 'User pages :' do
         end
         it { should have_selector("#followed-users ul li img", alt: @name ) }
       end
+
       describe 'should display social media links' do
         pending 'and should be tested'
       end
@@ -75,8 +90,44 @@ describe 'User pages :' do
       describe 'should display a cursus' do
         pending 'and should be tested'
       end
-      describe 'should display the tags' do
-        pending 'and should be tested'
+      describe 'tags' do
+        describe 'add tag' do
+          describe 'main tags' do
+            before do
+              fill_in '#add-main-tag-field', with: 'My tag, Hello, World'
+            end
+            it { expect { click_on "add-main-tag" }.to change(user.tags.count).by(3) }
+          end
+          describe 'secondary tags' do
+            before do
+              fill_in '#add-secondary-tag-field', with: 'Foobar'
+            end
+              it { expect { click_on "add-secondary-tag" }.to change(user.tags.count).by(1) }
+          end
+        end
+        describe 'delete tag' do
+          before do
+            user.tag!('My Tag', main: true);
+            it { expect { click_on "delete-my-tag" }.to change(user.tags.count).by(-1) }
+          end
+        end
+        describe 'display tags' do
+          before do
+            user.tag!('My Tag, Hello', main: true);
+            user.tag!('Foo', main: false);
+            user.tag!('Bar');
+          end
+          describe 'main tags' do
+            it { should have_selector('#main-tags-list') }
+            it { should have_selector("#main-tags-list li", text: 'My Tag' ) }
+            it { should have_selector("#main-tags-list li", text: 'Hello' ) }
+          end
+          describe 'secondary tags' do
+            it { should have_selector('#secondary-tags-list') }
+            it { should have_selector("#secondary-tags-list li", text: 'Foo' ) }
+            it { should have_selector("#secondary-tags-list li", text: 'Bar' ) }
+          end
+        end
       end
       describe 'should display a biography' do
         pending 'and should be tested'

@@ -55,7 +55,8 @@ Spork.prefork do
 
     config.include Paperclip::Shoulda::Matchers
     config.include ValidUserRequestHelper
-    config.include ModelInterface, :type => :interface
+    config.include ModelInterface, type: :interface
+    config.include Devise::TestHelpers, type: :controller
   end
 end
 
