@@ -54,7 +54,7 @@ describe User do
   it { should respond_to(:unfollow!) }
   it { should respond_to(:following?) }
 
-  it { should respond_to(:users_tags_relationships) }
+  it { should respond_to(:tags_relationships) }
   it { should respond_to(:tags) }
   it { should respond_to(:main_tags) }
   it { should respond_to(:secondary_tags) }
@@ -154,9 +154,10 @@ describe User do
     end
 
     describe '#untag!' do
-      before { user.add_tags('Tag') }
+      before { user.tag!('Tag') }
       it 'should remove a tag relationship from the user' do
-        user.untag('Tag')
+        user.untag!('Tag')
+        user.reload
         tags = user.tags.map { |t| t.name }
         tags.should_not include 'Tag'
       end

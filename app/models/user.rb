@@ -93,4 +93,43 @@ class User < ActiveRecord::Base
   def following?(user)
     self.relationships.find_by_followed_id(user.id)
   end
+
+  # ------------------------------------------------------
+  # TODO: should refactor in a UserTagsRelationshipInterface |
+  # ------------------------------------------------------
+
+  # OPTIMIZE: Number of requests ~~
+  #
+  def main_tags
+    tags_ids = tags_relationships.where(main_tag: true).collect { |relation| relation.tag_id }
+    Tag.where(id: tags_ids)
+  end
+
+  def secondary_tags
+    tags_ids = tags_relationships.where(main_tag: false).collect { |relation| relation.tag_id }
+    Tag.where(id: tags_ids)
+  end
+
+  def tag!(names, opts = { main: false })
+    names.split(',').each do |name|
+      tag = Tag.where(name: name.strip).first_or_create
+      tags_relationships.create!(tag_id: tag.id, main_tag: opts[:main])
+    end
+  end
+
+  def untag! names
+    names.split(',').each do |name|
+      tag = Tag.where(name: name.strip).first
+      tags_relationships.destroy(tag.id)
+    end
+  end
+
+  def is_tagged? name
+    tag = Tag.where(name: name)
+    tags_relationships.find(tag)
+  rescue ActiveRecord::RecordNotFound
+    false
+  end
+  alias :has_tag? :is_tagged?
+  alias :tagged?  :is_tagged?
 end
