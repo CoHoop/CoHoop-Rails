@@ -90,7 +90,8 @@ describe 'User pages :' do
       describe 'should display a cursus' do
         pending 'and should be tested'
       end
-      describe 'tags' do
+
+      describe 'tags integration' do
         describe 'add tag' do
           describe 'main tags' do
             before do

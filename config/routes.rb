@@ -9,7 +9,8 @@ CohoopRails::Application.routes.draw do
   resources  :users, :only => [:show, :update]
   match '/:id/:first-:last/' => 'users#show', constraints: { id: /\d+/, first: /[a-zA-Z]+/, last: /[a-zA-Z]+/ }, as: :profile
 
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships,            only: [:create, :destroy]
+  resources :users_tags_relationships, only: [:create, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

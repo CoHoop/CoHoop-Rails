@@ -113,14 +113,17 @@ class User < ActiveRecord::Base
   def tag!(names, opts = { main: false })
     names.split(',').each do |name|
       tag = Tag.where(name: name.strip).first_or_create
-      tags_relationships.create!(tag_id: tag.id, main_tag: opts[:main])
+      tags_relationships.build(tag_id: tag.id, main_tag: opts[:main])
     end
+    self.save!
   end
 
-  def untag! names
-    names.split(',').each do |name|
-      tag = Tag.where(name: name.strip).first
-      tags_relationships.destroy(tag.id)
+  # Args : list of names or ids : [1, 2, 3 | Economy, Geography, Poneys]
+  def untag! names_or_ids
+    names_or_ids.split(',').each do |name_or_id|
+      name_or_id.strip!
+      id = name_or_id[/\A\d+\Z/] ? name_or_id.to_i : Tag.limit(1).where(name: name_or_id).first.id # If it is an id : a name
+      tags_relationships.destroy(id)
     end
   end
 

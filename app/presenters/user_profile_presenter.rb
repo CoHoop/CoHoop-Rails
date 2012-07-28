@@ -63,6 +63,18 @@ class UserProfilePresenter < ApplicationPresenter
     user.followed_users.map { |f| self.class.new(f, helper) }
   end
 
+  ## Tag Display
+
+  def main_tags
+    '<ul id="main-tags-list">
+      </ul>'
+  end
+
+  def secondary_tags
+      '<ul id="secondary-tags-list">
+      </ul>'
+  end
+
   def follow_button
     if _.user_signed_in? && !can_edit?
       if current_user.following? user
