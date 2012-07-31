@@ -1,13 +1,16 @@
 <% present @user, presenters: [:user, :profile] do |presenter| %>
   <div id="sidebar" class="profile well">
+
     <a href="">Documents</a>
     <div class="avatar">
       <%= presenter.manage_avatar %>
     </div> <!-- .avatar -->
     <div id="followers">
+      <h2> Followers </h2>
       <%= presenter.followers_list %>
     </div>
     <div id="followed-users">
+      <h2> Followed users </h2>
       <%= presenter.followed_users_list %>
     </div>
   </div>
@@ -23,8 +26,16 @@
     </hgroup>
     <p><%= presenter.biography %></p>
     <div id="tags">
-      <%= presenter.main_tags %>
-      <%= presenter.secondary_tags %>
+      <div id="main-tags">
+        <h2>Main tags</h2>
+        <%= presenter.add_main_tags %>
+        <%= presenter.main_tags %>
+      </div>
+      <div id="secondary-tags">
+        <h2>Secondary tags</h2>
+        <%= presenter.add_secondary_tags %>
+        <%= presenter.secondary_tags %>
+      </div>
     </div>
   </div>
 <% end %>

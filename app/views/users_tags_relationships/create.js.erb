@@ -1,2 +1,19 @@
-// $("#follow-button").html("<%= escape_javascript(render partial: 'users/profile/unfollow', locals: { user: @user }) %>");
-// $("#followers").html("<%= escape_javascript(render partial: 'users/profile/followers', locals: { user: UserProfilePresenter.new(@user, self) }) %>");
+<% @main = @main.to_bool %>
+var tag_field = "<%= @main ? 'add-main-tag-field' : 'add-secondary-tag-field' %>"
+var tags_list = "<%= @main ? 'main-tags-list' : 'secondary-tags-list' %>"
+var tags_form = "<%= @main ? 'add-main-tag-form' : 'add-secondary-tag-form' %>"
+<% template = @main ? 'main_tags_editable' : 'secondary_tags_editable' %>
+
+$('#error_explanation.tag_exists').remove()
+<% if @error %>
+  $('<div id="error_explanation" class="tag_exists">' +
+       '<p class="alert alert-error">You are already tagged #<%= @error %>.</p>' +
+  '</div>').prependTo('#' + tags_form)
+  $('#' + tag_field).addClass('field_with_error');
+<% else %>
+  $('#' + tag_field).removeClass('field_with_error');
+  $('#' + tag_field).val('');
+<% end %>
+
+$('#' + tags_list).replaceWith("<%= escape_javascript(render partial: 'users/profile/' + template, locals: { user: @user }) %>");
+TagDisplay.init();

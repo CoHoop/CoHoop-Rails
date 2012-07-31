@@ -3,10 +3,12 @@ require 'action_dispatch'
 include ActionDispatch::TestProcess
 
 FactoryGirl.define do
+  sequence( :email ) { |n| "foo#{n}@ex#{n+1}ample.com" }
+
   factory :user do
     first_name            "Firstname"
     last_name             "Lastname"
-    sequence( :email ) { |n| "foo#{n}@ex#{n+1}ample.com" }
+    email                 { FactoryGirl.generate(:email) }
     password              'foobar'
     password_confirmation 'foobar'
     created_at            Time.now

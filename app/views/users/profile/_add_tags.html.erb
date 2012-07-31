@@ -1,0 +1,11 @@
+<% tag_form = is_main ? 'add-main-tag-form' : 'add-secondary-tag-form' %>
+<%= form_tag('/users_tags_relationships', remote: true, id: tag_form ) do %>
+  <%= hidden_field_tag 'main', is_main %>
+  <div class="input-prepend input-append">
+    <span class="add-on"><i class="icon-tag"></i></span>
+    <%= text_field_tag 'tags', nil, placeholder: 'Geography, Politics, Sociology', id: 'add-main-tag-field' %>
+    <button type="submit" id="add-main-tag" class="add-on append">
+      <i class="icon-plus"></i>
+    </button>
+  </div>
+<% end %>

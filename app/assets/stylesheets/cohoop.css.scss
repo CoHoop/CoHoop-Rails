@@ -7,6 +7,13 @@ body {
 .field_with_errors {
   display: inline;
 }
+input.field_with_error {
+  color: #666;
+  -webkit-box-shadow: 0px 0px 6px rgba(255, 0, 0, 0.8);
+  -moz-box-shadow: 0px 0px 6px rgba(255, 0, 0, 0.8);
+   box-shadow: 0px 0px 6px rgba(255, 0, 0, 0.8);
+  border: red;
+}
 
 #content {
   width: 100%;
@@ -71,4 +78,55 @@ body {
 
 .blank {
   color: #cccccc;
+}
+
+#main-tags .add-on, #secondary-tags .add-on, #add-main-tag-field, #add-secondary-tag-field {
+  float: left;
+}
+
+#main-tags-list, #secondary-tags-list {
+  clear: both;
+  padding-top: 15px;
+}
+
+#main-tags .append, #secondary-tags .append {
+  height: auto;
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  border-radius: 0 3px 3px 0;
+}
+
+.tag-pills {
+  margin-bottom: 18px;
+  margin-left: 0;
+  list-style: none;
+  display: block;
+}
+
+.tag-pills form {
+  margin: 0;
+}
+
+.tag-pills li {
+  color: white;
+  background-color: #08C;
+  display: inline-block;
+  padding-left: 8px;
+  padding-top: 4px;
+  padding-bottom: 0;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.tag-pills li a {
+  color: white;
+}
+
+.tag-pills button[type=submit] {
+  border: none;
+  background: none;
+  margin-top: -2px;
 }

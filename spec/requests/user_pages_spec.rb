@@ -91,32 +91,38 @@ describe 'User pages :' do
         pending 'and should be tested'
       end
 
-      describe 'tags integration' do
+      describe 'tags integration', js: true do
+        before do
+            sign_in_as user
+        end
         describe 'add tag' do
           describe 'main tags' do
             before do
-              fill_in '#add-main-tag-field', with: 'My tag, Hello, World'
+              visit(profile_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase))
+              fill_in 'add-main-tag-field', with: 'My tag, Hello, World'
             end
-            it { expect { click_on "add-main-tag" }.to change(user.tags.count).by(3) }
+            it { expect { click_on "add-main-tag" }.to change(user.tags, :count).by(3) }
           end
           describe 'secondary tags' do
             before do
-              fill_in '#add-secondary-tag-field', with: 'Foobar'
+              fill_in 'add-secondary-tag-field', with: 'Foobar'
             end
-              it { expect { click_on "add-secondary-tag" }.to change(user.tags.count).by(1) }
+              it { expect { click_on "add-secondary-tag" }.to change(user.tags, :count).by(1) }
           end
         end
         describe 'delete tag' do
           before do
             user.tag!('My Tag', main: true);
-            it { expect { click_on "delete-my-tag" }.to change(user.tags.count).by(-1) }
+            visit(profile_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase))
           end
+          it { expect { click_on "delete-my-tag" }.to change(user.tags, :count).by(-1) }
         end
         describe 'display tags' do
           before do
             user.tag!('My Tag, Hello', main: true);
             user.tag!('Foo', main: false);
             user.tag!('Bar');
+            visit(profile_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase))
           end
           describe 'main tags' do
             it { should have_selector('#main-tags-list') }

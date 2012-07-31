@@ -65,18 +65,36 @@ class UserProfilePresenter < ApplicationPresenter
 
   ## Tag Display
 
+  def add_main_tags
+    if is_current_user_profile?
+      render partial: 'users/profile/add_tags', locals: { user: user, is_main: true }
+    end
+  end
+
   def main_tags
-    '<ul id="main-tags-list">
-      </ul>'
+    if is_current_user_profile?
+      render partial: 'users/profile/main_tags_editable', locals: { user: user }
+    else
+      render partial: 'users/profile/main_tags', locals: { user: user }
+    end
+  end
+
+  def add_secondary_tags
+    if is_current_user_profile?
+      render partial: 'users/profile/add_tags', locals: { user: user, is_main: false }
+    end
   end
 
   def secondary_tags
-      '<ul id="secondary-tags-list">
-      </ul>'
+    if is_current_user_profile?
+      render partial: 'users/profile/secondary_tags_editable', locals: { user: user }
+    else
+      render partial: 'users/profile/secondary_tags', locals: { user: user }
+    end
   end
 
   def follow_button
-    if _.user_signed_in? && !can_edit?
+    if is_not_current_user_profile?
       if current_user.following? user
         render partial: 'users/profile/unfollow', locals: { user: user }
       else
@@ -98,5 +116,13 @@ class UserProfilePresenter < ApplicationPresenter
       else
         _.best_in_place_if(condition, model, method, display_with: options[:display_with], :nil => options[:nil], type: options[:type], classes: options[:errors])
       end
+    end
+
+    def is_current_user_profile?
+      _.user_signed_in? && can_edit?
+    end
+
+    def is_not_current_user_profile?
+      _.user_signed_in? && !can_edit?
     end
 end

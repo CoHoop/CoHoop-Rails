@@ -111,11 +111,24 @@ class User < ActiveRecord::Base
   end
 
   def tag!(names, opts = { main: false })
-    names.split(',').each do |name|
-      tag = Tag.where(name: name.strip).first_or_create
-      tags_relationships.build(tag_id: tag.id, main_tag: opts[:main])
+    # Creates an index of all users tags relationships ids.
+    # Example: [<Tag#1 name: 'Hola'>, <Tag#8 name: 'Segoritas'>] => [1, 8]
+    user_tags = tags_relationships.map { |r| r.tag_id }
+
+    # Clean each tag name : 'Tag1  , Tag3 , Tag1' => ["Tag1", "Tag3"]
+    # TODO: Maybe refactor map(&:strip).to_set
+    names.split(',').map(&:strip).to_set.each do |name|
+      tag = Tag.where(name: name.capitalize).first_or_initialize
+      if user_tags.include? tag.id
+        # TODO: Should perhaps display all erors
+        return name
+      else
+        tag.save!
+        tags_relationships.build(tag_id: tag.id, main_tag: opts[:main])
+      end
     end
     self.save!
+    false
   end
 
   # Args : list of names or ids : [1, 2, 3 | Economy, Geography, Poneys]
