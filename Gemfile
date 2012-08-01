@@ -39,6 +39,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'capybara-webkit'
   gem 'spork'
   gem 'database_cleaner'
 
@@ -48,11 +49,12 @@ group :test do
 end
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails', '~> 3.2.3'
+  gem 'uglifier',   '>= 1.0.3'
 end
 
 gem 'jquery-rails'
 gem 'best_in_place', git: 'git://github.com/gposton/best_in_place.git'
 gem 'paperclip'
 gem 'remotipart'
+gem 'awesome_print', :require => 'ap'

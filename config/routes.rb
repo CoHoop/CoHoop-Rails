@@ -12,6 +12,8 @@ CohoopRails::Application.routes.draw do
   resources :relationships,            only: [:create, :destroy]
   resources :users_tags_relationships, only: [:create, :destroy]
 
+  resources :tags, only: [:show]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

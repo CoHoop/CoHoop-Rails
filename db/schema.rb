@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20120721184744) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "tags", ["name"], :name => "index_tags_on_name"
+  add_index "tags", ["name"], :name => "index_tags_on_name", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "first_name"

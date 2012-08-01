@@ -23,7 +23,6 @@ describe 'User pages :' do
 
     describe 'with a correct user' do
       before do
-        other_user.follow! user
         visit(profile_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase))
       end
 
@@ -35,6 +34,7 @@ describe 'User pages :' do
       end
 
       describe 'the follow button' do
+        before { other_user.follow! user }
         describe 'if the user is not logged in' do
           it { should_not have_button "Follow" }
         end
@@ -96,37 +96,47 @@ describe 'User pages :' do
             sign_in_as user
         end
         describe 'add tag' do
+          before do
+            visit(profile_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase))
+          end
           describe 'main tags' do
             before do
-              visit(profile_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase))
               fill_in 'add-main-tag-field', with: 'My tag, Hello, World'
             end
-            it { expect { click_on "add-main-tag" }.to change(user.tags, :count).by(3) }
+            it 'should add the tags to the main tags' do
+              click_on "add-main-tag"
+              should have_selector("#main-tags-list li", text: 'My tag' )
+              should have_selector("#main-tags-list li", text: 'Hello' )
+              should have_selector("#main-tags-list li", text: 'World' )
+            end
           end
           describe 'secondary tags' do
             before do
               fill_in 'add-secondary-tag-field', with: 'Foobar'
             end
-              it { expect { click_on "add-secondary-tag" }.to change(user.tags, :count).by(1) }
+            it 'should add the tags to the secondary tags' do
+              click_on "add-secondary-tag"
+              should have_selector("#secondary-tags-list li", text: 'Foobar' )
+            end
           end
         end
         describe 'delete tag' do
           before do
-            user.tag!('My Tag', main: true);
+            user.tag!('My tag', main: true);
             visit(profile_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase))
           end
           it { expect { click_on "delete-my-tag" }.to change(user.tags, :count).by(-1) }
         end
         describe 'display tags' do
           before do
-            user.tag!('My Tag, Hello', main: true);
+            user.tag!('My tag, Hello', main: true);
             user.tag!('Foo', main: false);
             user.tag!('Bar');
             visit(profile_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase))
           end
           describe 'main tags' do
             it { should have_selector('#main-tags-list') }
-            it { should have_selector("#main-tags-list li", text: 'My Tag' ) }
+            it { should have_selector("#main-tags-list li", text: 'My tag' ) }
             it { should have_selector("#main-tags-list li", text: 'Hello' ) }
           end
           describe 'secondary tags' do
