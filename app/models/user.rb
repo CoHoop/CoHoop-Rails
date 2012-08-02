@@ -98,19 +98,35 @@ class User < ActiveRecord::Base
   # TODO: should refactor in a UserTagsRelationshipInterface |
   # ------------------------------------------------------
 
+  #
   # OPTIMIZE: Number of requests ~~
   #
+
+  # Public: list all user's main tags
+  #
+  # Returns an Array of Tags.
   def main_tags
     tags_ids = tags_relationships.where(main_tag: true).collect { |relation| relation.tag_id }
     Tag.where(id: tags_ids)
   end
 
+  # Public: list all user's secondary tags
+  #
+  # Returns an Array of Tags.
   def secondary_tags
     tags_ids = tags_relationships.where(main_tag: false).collect { |relation| relation.tag_id }
     Tag.where(id: tags_ids)
   end
 
-  def tag!(names, opts = { main: false })
+  # TODO: Should strip special characters like "."
+  # Public: Add multiple tags to a user: tags a user.
+  #
+  # names - String of tags, separated by commas (example: "Foo, Bar, World")
+  # opts  - Options to pass, (default: { main: false })
+  #         main - If the tag is a main tag or a secondary tag, as a Boolean.
+  #
+  # Returns the name of the tag as a String if the tags alread exists, false otherwise.
+  def tag!(names, opts = { main: false } )
     # Creates an index of all users tags relationships ids.
     # Example: [<Tag#1 name: 'Hola'>, <Tag#8 name: 'Segoritas'>] => [1, 8]
     user_tags = tags_relationships.map { |r| r.tag_id }
@@ -131,7 +147,11 @@ class User < ActiveRecord::Base
     false
   end
 
-  # Args : list of names or ids : [1, 2, 3 | Economy, Geography, Poneys]
+  # Public: Remove one tag from the user.
+  #
+  # names_or_ids - list of names or ids (example: [1, 2, 3 | Economy, Geography, Poneys].)
+  #
+  # Returns nothing.
   def untag! names_or_ids
     names_or_ids.split(',').each do |name_or_id|
       name_or_id.strip!
@@ -140,6 +160,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Public: Checks if a user is tagged with a particular tag.
+  #
+  # name - the name of the tag to check as a String.
+  #
+  # Returns a boolean.
   def is_tagged? name
     tag = Tag.where(name: name)
     tags_relationships.find(tag)

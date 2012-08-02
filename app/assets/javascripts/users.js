@@ -1,11 +1,14 @@
 
 $(function(){
+  /* Best in place configuration */
   best_in_place = BestInPlace.init();
   best_in_place.handle_success();
 
+  /* Avatar upload*/
   avatar_manager = AvatarManager.init();
   avatar_manager.handle_upload();
 
+  /* Tag-pills hover  */
   tag_display = TagDisplay.init();
 });
 

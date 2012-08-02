@@ -31,9 +31,11 @@ class ModelInterface < SimpleDecorator
     end
   end
 
-
-  # TODO: To document
-  # Public: to document
+  # Public: Decorates an association
+  #
+  # association - The association as a Symbol.
+  #
+  # Returns nothing.
   def self.decorates_association(association, options = {})
     decorator = options[:with] || raise(ArgumentError, 'Decorates association must specify the decorator')
 
