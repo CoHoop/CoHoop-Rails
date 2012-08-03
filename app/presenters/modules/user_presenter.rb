@@ -5,4 +5,11 @@ module UserPresenter
   def name
     model.name
   end
+
+  # Public: Creates a thumbnail for the user's avatar
+  #
+  # Returns an HTML String.
+  def avatar
+    _.image_tag model.avatar.url(:thumb), class: 'avatar'
+  end
 end

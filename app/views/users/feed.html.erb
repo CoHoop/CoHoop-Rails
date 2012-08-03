@@ -1,0 +1,8 @@
+<% present @user, presenters: [:user, :feed] do |presenter| %>
+  <div id="sidebar" class="profile well">
+    <div class="avatar">
+      <%= presenter.avatar %>
+    </div> <!-- .avatar -->
+    <a href="">Filtres</a>
+  </div>
+<% end %>

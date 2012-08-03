@@ -24,10 +24,7 @@ class UserProfilePresenter < ApplicationPresenter
     end
   end
 
-  def avatar
-    _.image_tag user.avatar.url(:thumb), class: 'avatar'
-  end
-
+  # TODO : Doc
   def manage_avatar
     if can_edit?
       _.render partial: 'users/profile/avatar_with_upload', locals: { presenter: self }
@@ -36,6 +33,7 @@ class UserProfilePresenter < ApplicationPresenter
     end
   end
 
+  # TODO: Doc
   def avatar_form
     if can_edit?
       _.render partial: 'users/profile/avatar_form', locals: { user: user }

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Feeds" do
-  let(:user) { FactoryGirl.create :user }
+  let(:user) { FactoryGirl.create :user_with_avatar }
   subject { page }
 
   describe "Feed page" do
@@ -26,5 +26,21 @@ describe "Feeds" do
         end
       end
     end # can be accessed from
+    describe 'elements' do
+      before do
+        sign_in_as user
+        visit root_path
+      end
+      describe 'displays the user avatar' do
+        it { should have_selector("img[src$='#{user.avatar.url(:thumb)}']") }
+      end
+      describe 'for community feed' do
+        describe "displaying of all users's community microhoops" do
+          before do
+          end
+          it { ap user.followed_users }
+        end # community feed
+      end # elements
+    end
   end
 end
