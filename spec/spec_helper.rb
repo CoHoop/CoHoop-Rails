@@ -4,7 +4,6 @@ require 'capybara/rspec'
 require "paperclip/matchers"
 require 'support/utilities'
 # require 'spork/ext/ruby-debug'
-
 include Capybara::DSL
 
 Spork.prefork do
@@ -12,6 +11,12 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
+  # TODO: for Google Analytics, see http://www.neotericdesign.com/blog/capybara-webkit-rspec-and-javascript
+#  Capybara.javascript_driver = :webkit
+#  Capybara.server_port = '8300'
+#  Capybara.app_host = 'http://localhost:8300'
+  Capybara.javascript_driver = :selenium
+
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
@@ -55,7 +60,8 @@ Spork.prefork do
 
     config.include Paperclip::Shoulda::Matchers
     config.include ValidUserRequestHelper
-    config.include ModelInterface, :type => :interface
+    config.include ModelInterface, type: :interface
+    config.include Devise::TestHelpers, type: :controller
   end
 end
 

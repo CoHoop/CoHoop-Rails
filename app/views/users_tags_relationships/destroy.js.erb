@@ -1,0 +1,6 @@
+<% @main = @main.to_bool %>
+var tags_list = "<%= @main ? 'main-tags-list' : 'secondary-tags-list' %>"
+<% template = @main ? 'main_tags_editable' : 'secondary_tags_editable' %>
+
+$('#' + tags_list).replaceWith("<%= escape_javascript(render partial: 'users/profile/' + template, locals: { user: @user }) %>");
+TagDisplay.init();

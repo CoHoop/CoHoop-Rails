@@ -27,7 +27,7 @@ class UserProfilePresenter < ApplicationPresenter
   # TODO : Doc
   def manage_avatar
     if can_edit?
-      _.render partial: 'users/profile/avatar_with_upload', locals: { presenter: self }
+      render partial: 'users/profile/avatar_with_upload', locals: { presenter: self }
     else
       avatar
     end
@@ -36,7 +36,93 @@ class UserProfilePresenter < ApplicationPresenter
   # TODO: Doc
   def avatar_form
     if can_edit?
-      _.render partial: 'users/profile/avatar_form', locals: { user: user }
+      render partial: 'users/profile/avatar_form', locals: { user: user }
+    end
+  end
+
+  # Public: displays a list of followers for the users
+  #
+  # Returns an HTML String.
+  def followers_list
+    render partial: 'users/profile/followers', locals: { user:  self }
+  end
+
+  # Private: Wraps user.followers inside presenters
+  #
+  # Returns an Array of followers.
+  def followers
+    # OPTIMIZE: Should be lazy
+    user.followers.map { |f| self.class.new(f, helper) }
+  end
+
+  # Public: displays a list of followed users for the users
+  #
+  # Returns an HTML String.
+  def followed_users_list
+    render partial: 'users/profile/followed_users', locals: { user:  self }
+  end
+
+  # Private: Wraps user.followed_users inside presenters
+  #
+  # Returns an Array of followed users.
+  def followed_users
+    # OPTIMIZE: Should be lazy
+    user.followed_users.map { |f| self.class.new(f, helper) }
+  end
+
+  # Public: displays a follow or unfollow button
+  #         if we are not on the current user's profile
+  #
+  # Returns an HTML String.
+  def follow_button
+    if is_not_current_user_profile?
+      if current_user.following? user
+        render partial: 'users/profile/unfollow', locals: { user: user }
+      else
+        render partial: 'users/profile/follow', locals: { user: user }
+      end
+    end
+  end
+
+  ## Tag Display
+
+  # Public: displays a form for adding main tags
+  #
+  # Returns an HTML String.
+  def add_main_tags
+    if is_current_user_profile?
+      render partial: 'users/profile/add_tags', locals: { user: user, is_main: true }
+    end
+  end
+
+  # Public: displays all users main tags
+  #
+  # Returns an HTML String.
+  def main_tags
+    if is_current_user_profile?
+      render partial: 'users/profile/main_tags_editable', locals: { user: user }
+    else
+      render partial: 'users/profile/main_tags', locals: { user: user }
+    end
+  end
+
+  # Public: displays a form for adding secondary tags
+  #
+  # Returns an HTML String.
+  def add_secondary_tags
+    if is_current_user_profile?
+      render partial: 'users/profile/add_tags', locals: { user: user, is_main: false }
+    end
+  end
+
+  # Public: displays all users secondary tags
+  #
+  # Returns an HTML String.
+  def secondary_tags
+    if is_current_user_profile?
+      render partial: 'users/profile/secondary_tags_editable', locals: { user: user }
+    else
+      render partial: 'users/profile/secondary_tags', locals: { user: user }
     end
   end
 

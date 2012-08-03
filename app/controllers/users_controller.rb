@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   respond_to :html, :json
+  before_filter :authenticate_user!, only: [:update]
 
   def show
     @user  = get_user_through_params || return

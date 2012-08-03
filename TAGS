@@ -1,0 +1,290 @@
+
+./app/controllers/application_controller.rb,358
+class ApplicationController::ApplicationController1,0
+  def get_default_or_back_to::ApplicationController#get_default_or_back_to13,527
+  def current_user_profile_path::ApplicationController#current_user_profile_path27,824
+  def js_redirect_to::ApplicationController#js_redirect_to40,1227
+    def render_404::ApplicationController#render_40455,1565
+
+./app/controllers/pages_controller.rb,83
+class PagesController::PagesController1,0
+  def home::PagesController#home2,48
+
+./app/controllers/users_controller.rb,250
+class UsersController::UsersController1,0
+  def show::UsersController#show4,75
+  def update::UsersController#update9,164
+  def feed::UsersController#feed32,964
+    def get_user_through_params::UsersController#get_user_through_params43,1324
+
+./app/helpers/application_helper.rb,451
+module ApplicationHelper::ApplicationHelper1,0
+  def get_title::ApplicationHelper#get_title9,216
+  def resource_name::ApplicationHelper#resource_name16,463
+  def resource::ApplicationHelper#resource21,545
+  def devise_mapping::ApplicationHelper#devise_mapping26,639
+  def display_user_authentication::ApplicationHelper#display_user_authentication34,823
+  def current_user_profile_path::ApplicationHelper#current_user_profile_path50,1148
+
+./app/helpers/pages_helper.rb,37
+module PagesHelper::PagesHelper1,0
+
+./app/helpers/presenter_helper.rb,167
+module PresenterHelper::PresenterHelper2,73
+  def present::PresenterHelper#present26,928
+    def get_presenter_class::PresenterHelper#get_presenter_class51,1624
+
+./app/helpers/users_helper.rb,37
+module UsersHelper::UsersHelper1,0
+
+./app/interfaces/authentication_interface.rb,251
+class AuthenticationInterface::AuthenticationInterface1,0
+  def initialize::AuthenticationInterface#AuthenticationInterface.new9,330
+  def can_edit?::AuthenticationInterface#can_edit?17,517
+  def ability::AuthenticationInterface#ability22,589
+
+./app/interfaces/model_interface.rb,144
+class ModelInterface::ModelInterface3,28
+  def model::ModelInterface#model8,151
+  def may_not_be_set::ModelInterface#may_not_be_set25,602
+
+./app/interfaces/user_feed_interface.rb,143
+class UserFeedInterface::UserFeedInterface1,0
+  def build_feed::UserFeedInterface#build_feed3,44
+  def feed::UserFeedInterface#feed8,174
+
+./app/interfaces/user_interface.rb,81
+class UserInterface::UserInterface8,192
+  def name::UserInterface#name12,321
+
+./app/interfaces/user_profile_interface.rb,212
+class UserProfileInterface::UserProfileInterface7,161
+  def university::UserProfileInterface#university8,206
+  def job::UserProfileInterface#job9,255
+  def biography::UserProfileInterface#biography10,304
+
+./app/models/ability.rb,74
+class Ability::Ability2,67
+  def initialize::Ability#Ability.new5,110
+
+./app/models/community_feed.rb,77
+class CommunityFeed::CommunityFeed1,0
+  def type::CommunityFeed#type2,29
+
+./app/models/feed.rb,238
+class Feed::Feed1,0
+  def initialize::Feed#Feed.new2,13
+  def type::Feed#type7,97
+  def user::Feed#user11,198
+  def microhoops::Feed#microhoops15,226
+  def activities::Feed#activities20,383
+  def content::Feed#content25,529
+
+./app/models/microhoop.rb,35
+class Microhoop::Microhoop13,325
+
+./app/models/relationship.rb,38
+class Relationship::Relationship1,0
+
+./app/models/tag_feed.rb,59
+class TagFeed::TagFeed1,0
+  def type::TagFeed#type2,23
+
+./app/models/user.rb,62
+class User::User25,808
+  def follow!::User#follow!60,2650
+
+./app/presenters/application_presenter.rb,496
+class ApplicationPresenter::ApplicationPresenter6,258
+  def initialize::ApplicationPresenter#ApplicationPresenter.new19,676
+  def helper::ApplicationPresenter#helper38,1176
+  alias :_::ApplicationPresenter#_41,1209
+  alias :h::ApplicationPresenter#h42,1228
+  def model::ApplicationPresenter#model58,1809
+  def can_edit?::ApplicationPresenter#can_edit?73,2265
+  def wrap_in::ApplicationPresenter#wrap_in95,2828
+  def handles_not_set::ApplicationPresenter#handles_not_set142,4747
+
+./app/presenters/modules/user_presenter.rb,79
+module UserPresenter::UserPresenter1,0
+  def name::UserPresenter#name5,108
+
+./app/presenters/user_profile_presenter.rb,446
+class UserProfilePresenter::UserProfilePresenter3,34
+  def professional_information::UserProfilePresenter#professional_information10,260
+  def biography::UserProfilePresenter#biography21,766
+  def avatar::UserProfilePresenter#avatar27,990
+  def manage_avatar::UserProfilePresenter#manage_avatar31,1067
+  def avatar_form::UserProfilePresenter#avatar_form39,1229
+    def best_in_place_if::UserProfilePresenter#best_in_place_if51,1574
+
+./app/views/devise/confirmations/new.html.erb,0
+
+./app/views/devise/mailer/confirmation_instructions.html.erb,0
+
+./app/views/devise/mailer/reset_password_instructions.html.erb,0
+
+./app/views/devise/mailer/unlock_instructions.html.erb,0
+
+./app/views/devise/menu/_logged_in_links.html.erb,0
+
+./app/views/devise/menu/_login_form.html.erb,0
+
+./app/views/devise/passwords/edit.html.erb,0
+
+./app/views/devise/passwords/new.html.erb,0
+
+./app/views/devise/registrations/edit.html.erb,0
+
+./app/views/devise/registrations/new.html.erb,0
+
+./app/views/devise/sessions/new.html.erb,0
+
+./app/views/devise/shared/_links.erb,0
+
+./app/views/devise/unlocks/new.html.erb,0
+
+./app/views/layouts/_header.html.erb,0
+
+./app/views/layouts/application.html.erb,0
+
+./app/views/pages/home.html.erb,0
+
+./app/views/shared/_flash_messages.html.erb,0
+
+./app/views/users/feed.html.erb,0
+
+./app/views/users/profile/_avatar_form.html.erb,0
+
+./app/views/users/profile/_avatar_with_upload.html.erb,0
+
+./app/views/users/show.html.erb,0
+
+./app/views/users/update.js.erb,0
+
+./config/application.rb,94
+module CohoopRails::CohoopRails18,568
+  class Application::CohoopRails::Application19,589
+
+./config/boot.rb,0
+
+./config/environment.rb,0
+
+./config/environments/development.rb,0
+
+./config/environments/production.rb,0
+
+./config/environments/test.rb,0
+
+./config/initializers/backtrace_silencers.rb,0
+
+./config/initializers/devise.rb,0
+
+./config/initializers/inflections.rb,0
+
+./config/initializers/mime_types.rb,0
+
+./config/initializers/secret_token.rb,0
+
+./config/initializers/session_store.rb,0
+
+./config/initializers/wrap_parameters.rb,0
+
+./config/routes.rb,0
+
+./db/migrate/20120702113523_create_users.rb,75
+class CreateUsers::CreateUsers1,0
+  def change::CreateUsers#change2,46
+
+./db/migrate/20120702114437_add_password_to_user.rb,93
+class AddPasswordToUser::AddPasswordToUser1,0
+  def change::AddPasswordToUser#change2,52
+
+./db/migrate/20120702114913_add_index_to_users_email.rb,102
+class AddIndexToUsersEmail::AddIndexToUsersEmail1,0
+  def change::AddIndexToUsersEmail#change2,55
+
+./db/migrate/20120702133442_add_devise_to_users.rb,90
+class AddDeviseToUsers::AddDeviseToUsers1,0
+  def change::AddDeviseToUsers#change2,51
+
+./db/migrate/20120704125526_remove_password_from_users.rb,151
+class RemovePasswordFromUsers::RemovePasswordFromUsers1,0
+  def up::RemovePasswordFromUsers#up2,58
+  def down::RemovePasswordFromUsers#down6,110
+
+./db/migrate/20120711073437_replace_avatar_id_from_users.rb,155
+class ReplaceAvatarIdFromUsers::ReplaceAvatarIdFromUsers1,0
+  def up::ReplaceAvatarIdFromUsers#up2,59
+  def down::ReplaceAvatarIdFromUsers#down9,185
+
+./db/migrate/20120713021045_create_microhoops.rb,90
+class CreateMicrohoops::CreateMicrohoops1,0
+  def change::CreateMicrohoops#change2,51
+
+./db/migrate/20120714235749_create_relationships.rb,99
+class CreateRelationships::CreateRelationships1,0
+  def change::CreateRelationships#change2,54
+
+./db/schema.rb,0
+
+./db/seeds.rb,0
+
+./script/rails,0
+
+./script/yard-generate.rb,0
+
+./spec/factories/microhoops_factory.rb,0
+
+./spec/factories/user_factory.rb,0
+
+./spec/helpers/application_helper_spec.rb,131
+class TestModel::TestModel22,731
+class TestPresenter::TestPresenter23,752
+class OtherTestPresenter::OtherTestPresenter24,777
+
+./spec/interfaces/application_interface_spec.rb,0
+
+./spec/interfaces/authentication_interface_spec.rb,0
+
+./spec/interfaces/user_feed_interface_spec.rb,0
+
+./spec/interfaces/user_interface_spec.rb,0
+
+./spec/models/feed_spec.rb,0
+
+./spec/models/feeds/community_feed_spec.rb,0
+
+./spec/models/feeds/tag_feed_spec.rb,0
+
+./spec/models/microhoop_spec.rb,0
+
+./spec/models/relationship_spec.rb,0
+
+./spec/models/user/user_validation_spec.rb,0
+
+./spec/models/user_spec.rb,0
+
+./spec/presenters/application_presenter_spec.rb,128
+class FakeInterface::FakeInterface5,112
+  def university::FakeInterface#university6,151
+  def job::FakeInterface#job7,200
+
+./spec/presenters/user_profile_presenter_spec.rb,0
+
+./spec/requests/authentications_spec.rb,0
+
+./spec/requests/avatar_upload_spec.rb,0
+
+./spec/requests/feed_page_spec.rb,0
+
+./spec/requests/static_pages_spec.rb,0
+
+./spec/requests/user_pages_spec.rb,0
+
+./spec/spec_helper.rb,0
+
+./spec/support/utilities.rb,205
+module ValidUserRequestHelper::ValidUserRequestHelper2,35
+  def sign_in_as::ValidUserRequestHelper#sign_in_as9,177
+  def sign_in_as_a_valid_user::ValidUserRequestHelper#sign_in_as_a_valid_user19,395

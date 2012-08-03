@@ -1,0 +1,13 @@
+<ul id="secondary-tags-list" class="tag-pills">
+  <% user.secondary_tags.each do |tag| %>
+    <li class="<%= tag.id %>">
+      <%= form_for(current_user.tags_relationships.find_by_tag_id(tag.id), html: { method: :delete }, remote: true) do |f| %>
+        <%= hidden_field_tag 'main', false %>
+        <%= render partial: 'tags/tag', locals: { tag: tag } %>
+        <button type="submit", id="delete-<%= tag.name.slugify %>">
+          <i class="icon-remove icon-white"></i>
+        </button>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

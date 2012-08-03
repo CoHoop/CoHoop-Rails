@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120713021045) do
+ActiveRecord::Schema.define(:version => 20120721184744) do
 
   create_table "microhoops", :force => true do |t|
     t.string   "content",                       :null => false
@@ -22,6 +22,25 @@ ActiveRecord::Schema.define(:version => 20120713021045) do
   end
 
   add_index "microhoops", ["user_id", "created_at"], :name => "index_microhoops_on_user_id_and_created_at"
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
+  add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tags", ["name"], :name => "index_tags_on_name", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "first_name"
@@ -45,5 +64,17 @@ ActiveRecord::Schema.define(:version => 20120713021045) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "users_tags_relationships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "tag_id"
+    t.integer  "main_tag",   :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "users_tags_relationships", ["tag_id"], :name => "index_users_tags_relationships_on_tag_id"
+  add_index "users_tags_relationships", ["user_id", "tag_id"], :name => "index_users_tags_relationships_on_user_id_and_tag_id", :unique => true
+  add_index "users_tags_relationships", ["user_id"], :name => "index_users_tags_relationships_on_user_id"
 
 end

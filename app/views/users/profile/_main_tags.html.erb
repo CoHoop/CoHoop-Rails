@@ -1,0 +1,7 @@
+<ul id="main-tags-list" class="tag-pills">
+  <% user.main_tags.each do |tag| %>
+    <li class="tag <%= tag.id %>">
+      <%= render partial: 'tags/tag', locals: { tag: tag } %>
+    </li>
+  <% end %>
+</ul>

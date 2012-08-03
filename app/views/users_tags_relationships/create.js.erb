@@ -1,0 +1,24 @@
+// Creates an handfull of variables for each tag and field that must switch between main and secondary (out of tag type)
+<% @main = @main.to_bool %>
+var tag_field = "<%= @main ? 'add-main-tag-field' : 'add-secondary-tag-field' %>"
+var tags_list = "<%= @main ? 'main-tags-list' : 'secondary-tags-list' %>"
+var tags_form = "<%= @main ? 'add-main-tag-form' : 'add-secondary-tag-form' %>"
+<% template = @main ? 'main_tags_editable' : 'secondary_tags_editable' %>
+
+// Remove the errors each request
+$('#error_explanation.tag_exists').remove()
+
+// Displays errors if we have some
+<% if @error %>
+  $('<div id="error_explanation" class="tag_exists">' +
+       '<p class="alert alert-error">You are already tagged #<%= @error %>.</p>' +
+  '</div>').prependTo('#' + tags_form)
+  $('#' + tag_field).addClass('field_with_error');
+<% else %>
+  $('#' + tag_field).removeClass('field_with_error');
+  $('#' + tag_field).val('');
+<% end %>
+
+$('#' + tags_list).replaceWith("<%= escape_javascript(render partial: 'users/profile/' + template, locals: { user: @user }) %>");
+# Re-activate the hover on each tag as it is not live
+TagDisplay.init();

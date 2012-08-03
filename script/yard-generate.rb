@@ -1,4 +1,4 @@
-require 'yard'
+# require 'yard'
 
 if ARGV[0] == 'install'
   puts `gem install yard`

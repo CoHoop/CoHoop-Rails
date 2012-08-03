@@ -30,4 +30,20 @@ class ModelInterface < SimpleDecorator
       value
     end
   end
+
+  # Public: Decorates an association
+  #
+  # association - The association as a Symbol.
+  #
+  # Returns nothing.
+  def self.decorates_association(association, options = {})
+    decorator = options[:with] || raise(ArgumentError, 'Decorates association must specify the decorator')
+
+    define_method(association) do
+      super_assoc = @component.send(association)
+      return super_assoc if super_assoc.nil?
+
+      return *super_assoc.map { |assoc| decorator.new(assoc) }
+    end
+  end
 end

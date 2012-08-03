@@ -18,6 +18,8 @@
 /public/system
 
 .idea
+.desktop
+.rtags
 .DS_Store
 
 /public/assets/*
