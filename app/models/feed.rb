@@ -1,4 +1,6 @@
 class Feed
+  delegate :avatar, to: :user
+
   def initialize(user)
     @user = user
   end
@@ -12,7 +14,7 @@ class Feed
     @user
   end
 
-  def microhoops
+  def microhoops(opts)
     raise NotImplementedError, "#microhoops method is not implemented for #{self.class}"
     # TODO: Take the followers into account
   end
@@ -28,7 +30,7 @@ class Feed
         # TODO: Should merge both by date, activities and microhoops should have the same interface
         [microhoops, activities]
       when :urgent
-        microhoops.where('urgent = ?', true)
+        microhoops(urgent: true)
       when :microhoops
         microhoops
       when :activities

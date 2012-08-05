@@ -9,7 +9,7 @@ gem 'simple-decorator'
 gem 'thin'
 
 # Model Enhancement
-gem 'faker'
+gem 'ffaker'
 
 # Views Enhancement
 ## Cells are View Components for Rails. They look and feel like controllers. See https://github.com/apotonick/cells

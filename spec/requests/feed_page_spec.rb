@@ -35,10 +35,20 @@ describe "Feeds" do
         it { should have_selector("img[src$='#{user.avatar.url(:thumb)}']") }
       end
       describe 'for community feed' do
+        before do
+          @other_user = FactoryGirl.create :user
+          @mh0 = user.microhoops.create(content: 'Hello, world from myself.')
+          @mh1 = @other_user.microhoops.create(content: 'Hello, world this is a feed.')
+          @mh2 = @other_user.microhoops.create(content: 'Hello, world this is a urgent feed.', urgent: true)
+          user.follow! @other_user
+        end
         describe "displaying of all users's community microhoops" do
-          before do
+          it { should have_content(@mh0.content) }
+          it { should have_content(@mh1.content) }
+          it { should have_content(@mh2.content) }
+          it 'should display urgent tags in a special way' do
+            should have_selector('.urgent', text: @mh2.content)
           end
-          it { ap user.followed_users }
         end # community feed
       end # elements
     end

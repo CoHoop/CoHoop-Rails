@@ -22,7 +22,7 @@ FactoryGirl.define do
   factory :user_with_avatar, class: User do
     first_name            "Firstname"
     last_name             "Lastname"
-    email                 { FactoryGirl.next(:email) }
+    email                 { FactoryGirl.generate(:email) }
     password              'foobar'
     password_confirmation 'foobar'
     created_at            Time.now

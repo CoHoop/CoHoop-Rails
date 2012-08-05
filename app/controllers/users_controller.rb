@@ -32,8 +32,8 @@ class UsersController < ApplicationController
 
   def feed
     @title = 'News'
-    @feed  = UserFeedInterface.new(current_user).build_feed()
-    @user  = current_user
+    @user  = UserFeedInterface.new(current_user)
+    @feed  = @user.build_feed()
   end
 
   private

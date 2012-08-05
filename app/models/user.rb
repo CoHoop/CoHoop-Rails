@@ -53,8 +53,8 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.(?:[A-Z]{2}|com|org|net|edu|gov|gouv|mil|biz|info|mobi|name|aero|asia|jobs|museum)$/i
 
   # TODO: Should refactor
-  validates :first_name, { presence: true, length: { maximum: 25 }, format: { with: /\A[a-zA-Z]+\z/, message: 'Only letters allowed' } }
-  validates :last_name,  { presence: true, length: { maximum: 25 }, format: { with: /\A[a-zA-Z]+\z/, message: 'Only letters allowed' } }
+  validates :first_name, { presence: true, length: { maximum: 25 }, format: { with: /\A[a-zA-Z\']+\z/, message: 'Only letters allowed' } }
+  validates :last_name,  { presence: true, length: { maximum: 25 }, format: { with: /\A[a-zA-Z\']+\z/, message: 'Only letters allowed' } }
 
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
