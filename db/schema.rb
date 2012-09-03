@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120721184744) do
+ActiveRecord::Schema.define(:version => 20120813114357) do
 
   create_table "microhoops", :force => true do |t|
     t.string   "content",                       :null => false
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(:version => 20120721184744) do
   end
 
   add_index "microhoops", ["user_id", "created_at"], :name => "index_microhoops_on_user_id_and_created_at"
+
+  create_table "microhoops_tags_relationships", :force => true do |t|
+    t.integer  "microhoop_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "microhoops_tags_relationships", ["microhoop_id", "tag_id"], :name => "index_microhoops_tags_relationships_on_microhoop_id_and_tag_id", :unique => true
+  add_index "microhoops_tags_relationships", ["microhoop_id"], :name => "index_microhoops_tags_relationships_on_microhoop_id"
+  add_index "microhoops_tags_relationships", ["tag_id"], :name => "index_microhoops_tags_relationships_on_tag_id"
 
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"

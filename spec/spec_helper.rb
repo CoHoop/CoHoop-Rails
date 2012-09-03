@@ -4,13 +4,14 @@ require 'capybara/rspec'
 require "paperclip/matchers"
 require 'support/utilities'
 # require 'spork/ext/ruby-debug'
-include Capybara::DSL
 
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
+  include Capybara::DSL
+
   # TODO: for Google Analytics, see http://www.neotericdesign.com/blog/capybara-webkit-rspec-and-javascript
 #  Capybara.javascript_driver = :webkit
 #  Capybara.server_port = '8300'

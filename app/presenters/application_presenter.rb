@@ -5,8 +5,7 @@
 # integration.
 class ApplicationPresenter
   include ActiveSupport::Inflector
-
-  delegate :render, :current_user, to: :helper
+  delegate :render, :current_user, :link_to, to: :helper
 
   # A new instance of ApplicationPresenter
   #

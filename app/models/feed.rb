@@ -1,42 +1,38 @@
 class Feed
-  delegate :avatar, to: :user
+  delegate :avatar, :name, to: :user
+  attr_reader :filters, :filter, :user
 
-  def initialize(user)
+  def initialize(user, page)
     @user = user
+    @page = page
+
+    @filters = [:all, :urgent, :microhoops, :activities]
+    @filter  = :all
   end
 
-  # Must be overloaded by subclasses
+  def filter=(symbol)
+    # TODO: Cumulable filters
+    symbol = symbol.to_sym
+    raise ArgumentError, "#{symbol} filter does not exists" unless @filters.include? symbol
+    @filter = symbol
+  end
+
+  ## Must be overloaded by subclasses ##
   def type
     raise NotImplementedError, "#type method is not implemented for #{self.class}"
   end
 
-  def user
-    @user
+  def microhoops
+    raise NotImplementedError, "#microhoops method is not implemented for #{self.class}"
   end
 
-  def microhoops(opts)
-    raise NotImplementedError, "#microhoops method is not implemented for #{self.class}"
-    # TODO: Take the followers into account
+  def microhoops_with_priority(opts = { urgent: false })
+    urgent = opts[:urgent]
+    self.microhoops.where('urgent = ?', urgent)
   end
 
   def activities
     raise NotImplementedError, "#activities method is not implemented for #{self.class}"
     # TODO: Implement Activities
-  end
-
-  def content(filter = :none)
-    case filter
-      when :none
-        # TODO: Should merge both by date, activities and microhoops should have the same interface
-        [microhoops, activities]
-      when :urgent
-        microhoops(urgent: true)
-      when :microhoops
-        microhoops
-      when :activities
-        activities
-      else
-        raise ArgumentError, "#{filter} filter does not exists"
-    end
   end
 end

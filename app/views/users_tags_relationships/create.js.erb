@@ -20,5 +20,5 @@ $('#error_explanation.tag_exists').remove()
 <% end %>
 
 $('#' + tags_list).replaceWith("<%= escape_javascript(render partial: 'users/profile/' + template, locals: { user: @user }) %>");
-# Re-activate the hover on each tag as it is not live
+// Re-activate the hover on each tag as it is not live
 TagDisplay.init();

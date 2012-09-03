@@ -22,6 +22,10 @@ gem 'devise'
 ## CanCan is an authorization library for Ruby on Rails. See https://github.com/ryanb/cancan
 gem 'cancan'
 
+## Pagination
+#gem 'kaminari'
+gem 'will_paginate', '~> 3.0'
+
 group :production do
   gem 'pg'
 end

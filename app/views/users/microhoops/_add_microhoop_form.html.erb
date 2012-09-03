@@ -1,0 +1,6 @@
+<%= form_for(user.microhoops.build, url: user_microhoops_path(user_id: user.id), remote: true) do |f| %>
+<%= f.text_area :content, placeholder: 'Enter a microhoop' %>
+<%= f.label :urgent %>
+<%= f.check_box :urgent %>
+<%= f.submit 'Post microhoop', id: 'add-microhoop' %>
+<% end %>

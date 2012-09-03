@@ -1,12 +1,17 @@
 CohoopRails::Application.routes.draw do
   authenticated :user do
-    root :to => "users#feed"
-    match '/:feed_type' => 'users#feed', constraints: { feed_type: /community|tags/ }, as: :feed
+    root :to => "feeds#filter", via: :post, as: :feed_filtered
+    root :to => "feeds#show"
+    match '/:feed_type' => 'feeds#filter', via: :post, constraints: { feed_type: /community|tags/ }, as: :feed_filtered_by_type
+    match '/:feed_type' => 'feeds#show', constraints: { feed_type: /community|tags/ }, as: :feed
   end
   root to: 'pages#home'
 
   devise_for :users
-  resources  :users, :only => [:show, :update]
+  resources  :users, :only => [:show, :update] do
+    resources :microhoops, only: [:create]
+  end
+
   match '/:id/:first-:last/' => 'users#show', constraints: { id: /\d+/, first: /[a-zA-Z]+/, last: /[a-zA-Z]+/ }, as: :profile
 
   resources :relationships,            only: [:create, :destroy]

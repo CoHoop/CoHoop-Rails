@@ -27,8 +27,6 @@ describe Microhoop do
 
   it { should be_valid }
 
-  pending "A microhoop should parse its content to extract the tag and add it to the database."
-
   describe 'should respond to user' do
     it { @micro.user.should == @user }
   end
@@ -46,6 +44,15 @@ describe Microhoop do
   describe 'attributes accessors' do
     it 'should not allow access to the user_id attribute' do
       expect { Microhoop.new(user_id: 1, content: 'foo') }.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end
+  end
+  describe 'microhoop tagging' do
+    before do
+      @micro.content = 'MH with #tag1, #tag2, #tag3'
+      @micro.save
+    end
+    it 'is created with tags' do
+      @micro.tags.collect { |t| t.name }.should include('tag1', 'tag2', 'tag3')
     end
   end
 end

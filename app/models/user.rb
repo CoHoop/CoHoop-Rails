@@ -134,7 +134,7 @@ class User < ActiveRecord::Base
     # Clean each tag name : 'Tag1  , Tag3 , Tag1' => ["Tag1", "Tag3"]
     # TODO: Maybe refactor map(&:strip).to_set
     names.split(',').map(&:strip).to_set.each do |name|
-      tag = Tag.where(name: name.capitalize).first_or_initialize
+      tag = Tag.where('LOWER(name) = ?', name.downcase).first_or_initialize(name: name)
       if user_tags.include? tag.id
         # TODO: Should perhaps display all erors
         return name

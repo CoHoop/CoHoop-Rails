@@ -1,0 +1,6 @@
+<li>
+  <%= form_tag(feed_filtered_by_type_path(feed_type: feed_type), id: 'filter-form', remote: true) do %>
+    <%= hidden_field :feed, :filter, value: filter %>
+    <%= submit_tag filter.to_s.humanize %>
+  <% end %>
+</li>

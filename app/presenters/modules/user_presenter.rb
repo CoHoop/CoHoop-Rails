@@ -10,6 +10,6 @@ module UserPresenter
   #
   # Returns an HTML String.
   def avatar
-    _.image_tag model.avatar.url(:thumb), class: 'avatar'
+    _.image_tag model.avatar.url(:thumb), class: 'avatar', alt: self.name
   end
 end

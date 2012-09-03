@@ -140,4 +140,12 @@ class UserProfilePresenter < ApplicationPresenter
         _.best_in_place_if(condition, model, method, display_with: options[:display_with], :nil => options[:nil], type: options[:type], classes: options[:errors])
       end
     end
+
+    def is_current_user_profile?
+      _.user_signed_in? && can_edit?
+    end
+
+    def is_not_current_user_profile?
+      _.user_signed_in? && !can_edit?
+    end
 end

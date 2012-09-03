@@ -30,12 +30,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def feed
-    @title = 'News'
-    @user  = UserFeedInterface.new(current_user)
-    @feed  = @user.build_feed()
-  end
-
   private
     # Private: get the designated user through the following parameters
     #  :id for id, :first for first_name, :last for last_name.

@@ -11,9 +11,11 @@ describe "Feeds" do
         should have_selector('title', content: 'Home')
       end
     end
+
     describe 'can be accessed if the user is signed in' do
       before { sign_in_as user }
-      after  { page.should have_selector('title', content: 'News') }
+      it { should have_selector('title', content: 'News') }
+
       specify 'from root_path' do
         visit root_path
       end
@@ -25,15 +27,18 @@ describe "Feeds" do
           visit feed_path(feed_type: 'community')
         end
       end
-    end # can be accessed from
-    describe 'elements' do
+    end # can be accessed if
+
+    describe 'feed elements' do
       before do
         sign_in_as user
         visit root_path
       end
+
       describe 'displays the user avatar' do
         it { should have_selector("img[src$='#{user.avatar.url(:thumb)}']") }
       end
+
       describe 'for community feed' do
         before do
           @other_user = FactoryGirl.create :user
@@ -41,6 +46,7 @@ describe "Feeds" do
           @mh1 = @other_user.microhoops.create(content: 'Hello, world this is a feed.')
           @mh2 = @other_user.microhoops.create(content: 'Hello, world this is a urgent feed.', urgent: true)
           user.follow! @other_user
+          visit root_path
         end
         describe "displaying of all users's community microhoops" do
           it { should have_content(@mh0.content) }
@@ -51,6 +57,54 @@ describe "Feeds" do
           end
         end # community feed
       end # elements
+
+      describe 'add microhoops' do
+        it { should have_css('#new_microhoop') }
+        describe 'remotely', js: true do
+          let(:content) { 'This is a newly added microhoop' }
+          before { fill_in 'microhoop_content', with: content }
+
+          describe 'type: normal' do
+            before { click_on "add-microhoop" }
+            it { should have_content(content) }
+          end
+
+          describe 'type: urgent' do
+            before do
+              check 'microhoop_urgent'
+              click_on "add-microhoop"
+            end
+            it { should have_css('.urgent', text: content) }
+          end # type urgent
+
+          describe 'with tag' do
+            let(:content) { 'With #Tag1, #tag2, #3Tag' }
+            before { click_on "add-microhoop" }
+            it { should have_content(content) }
+          end
+        end # remotely
+      end # add mh
+
+      describe 'filters' do
+        # TODO: Copy pasted, should be refactored !!
+        before do
+          @other_user = FactoryGirl.create :user
+          @mh0 = user.microhoops.create(content: 'Hello, world from myself.')
+          @mh1 = @other_user.microhoops.create(content: 'Hello, world this is a feed.')
+          @mh2 = @other_user.microhoops.create(content: 'Hello, world this is a urgent feed.', urgent: true)
+          user.follow! @other_user
+          visit root_path
+        end
+        describe 'urgent microhoops' do
+          let(:urgent_button) { 'Urgent' }
+          it { should have_button urgent_button }
+          describe 'remove all non urgent tags', js: true do
+            before { click_on urgent_button }
+            it { should_not have_content(@mh1.content) }
+            it { should have_content(@mh2.content) }
+          end
+        end
+      end # filters
     end
   end
 end

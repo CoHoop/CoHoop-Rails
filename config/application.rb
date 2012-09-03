@@ -25,7 +25,7 @@ module CohoopRails
     # config.autoload_paths += %W(#{config.root}/extras)
 
     config.before_initialize do
-      Dir[File.join(Rails.root, "lib", "core_ext", "*.rb")].each { |l| require l }
+      Dir[File.join(Rails.root, "lib", "**", "*.rb")].each { |l| require l }
       require 'awesome_print'
       require 'set'
     end
