@@ -26,6 +26,9 @@ gem 'cancan'
 #gem 'kaminari'
 gem 'will_paginate', '~> 3.0'
 
+## String extension
+gem 'stringex'
+
 group :production do
   gem 'pg'
 end

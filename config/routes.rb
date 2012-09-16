@@ -1,22 +1,37 @@
 CohoopRails::Application.routes.draw do
   authenticated :user do
+    # Feeds
     root :to => "feeds#filter", via: :post, as: :feed_filtered
     root :to => "feeds#show"
     match '/:feed_type' => 'feeds#filter', via: :post, constraints: { feed_type: /community|tags/ }, as: :feed_filtered_by_type
     match '/:feed_type' => 'feeds#show', constraints: { feed_type: /community|tags/ }, as: :feed
   end
+
   root to: 'pages#home'
 
+  # Users
   devise_for :users
   resources  :users, :only => [:show, :update] do
     resources :microhoops, only: [:create]
   end
 
-  match '/:id/:first-:last/' => 'users#show', constraints: { id: /\d+/, first: /[a-zA-Z]+/, last: /[a-zA-Z]+/ }, as: :profile
+  # Profile
+  profile_constraints = { id: /\d+/, first: /[a-zA-Z]+/, last: /[a-zA-Z]+/ }
+  match '/:id/:first-:last/' => 'users#show', constraints: profile_constraints , as: :profile
 
+  # User documents
+  match '/:id/:first-:last/documents' => 'users_documents#show', constraints: profile_constraints , as: :user_documents
+  match '/:id/:first-:last/documents/new' => 'users_documents#new', constraints: profile_constraints , as: :new_user_documents
+  match '/:id/:first-:last/documents/create' => 'users_documents#create', constraints: profile_constraints , as: :create_user_documents
+
+  # Documents
+  match '/hoop/:id' => 'documents#show', as: :documents
+
+  # Relationships
   resources :relationships,            only: [:create, :destroy]
   resources :users_tags_relationships, only: [:create, :destroy]
 
+  # Tags
   resources :tags, only: [:show]
 
   # The priority is based upon order of creation:

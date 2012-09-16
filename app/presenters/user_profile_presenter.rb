@@ -126,6 +126,10 @@ class UserProfilePresenter < ApplicationPresenter
     end
   end
 
+  def user_documents_path
+    _.user_documents_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase)
+  end
+
   private
     # Public: A little helper for the best_in_place_if method, handling errors.
     #

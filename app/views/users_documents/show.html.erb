@@ -1,0 +1,18 @@
+<% if @user.can_edit? %>
+<p><%= link_to 'Add a document', new_user_documents_path(id: @user.id, first: @user.first_name, last: @user.last_name), id: 'add-document' %></p>
+<div class="modal hide" id="new-document-popin">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Create a document</h3>
+  </div>
+  <div class="modal-body">
+    <%= render partial: 'create_document_form', locals: { document: @document } %>
+  </div>
+</div> <!-- #upload-popin -->
+<% end %>
+
+<ul>
+  <% @user.documents.each do |document| %>
+  <li><%= link_to document.name, documents_path(id: document.slug) %></li>
+  <% end %>
+</ul>

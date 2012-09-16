@@ -1,7 +1,7 @@
 <% present @user, presenters: [:user, :profile] do |presenter| %>
   <div id="sidebar" class="profile well">
 
-    <a href="">Documents</a>
+    <%= link_to 'Documents', presenter.user_documents_path %>
     <div class="avatar">
       <%= presenter.manage_avatar %>
     </div> <!-- .avatar -->

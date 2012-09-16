@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'User pages :' do
-  let(:user) { FactoryGirl.create :user }
+  let(:user) { FactoryGirl.create :user_with_avatar }
   let(:other_user) { FactoryGirl.create :user }
 
   subject { page }
@@ -53,15 +53,17 @@ describe 'User pages :' do
           user.save!
           visit(profile_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase))
 
-          should have_xpath( '//img[contains(@alt, "Missing")]' )
+          should have_xpath( '//img[contains(@src, "missing")]' )
         end
         it 'should display an avatar if the user has one' do
-          should_not have_xpath( '//img[contains(@alt, "Missing")]' )
+          should_not have_xpath( '//img[contains(@src, "missing")]' )
           should have_selector("img[src$='#{user.avatar.url(:thumb)}']")
         end
       end
       describe 'should display a list of followers' do
         before do
+          other_user.follow! user
+          visit(profile_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase))
           @name = "#{other_user.first_name.capitalize} #{other_user.last_name.capitalize}"
         end
         it { should have_selector("#followers ul li img", alt: @name ) }
@@ -157,7 +159,7 @@ describe 'User pages :' do
         pending 'and should be tested'
       end
       describe 'should have a link to switch in document view mode' do
-        it { should have_link('Documents')}
+        it { should have_link('Documents', href: user_documents_path(id: user.id, first: user.first_name.downcase, last: user.last_name.downcase))}
       end
     end
   end

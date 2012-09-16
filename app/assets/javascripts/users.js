@@ -8,6 +8,10 @@ $(function(){
   avatar_manager = AvatarManager.init();
   avatar_manager.handle_upload();
 
+  /* Document creation */
+  document_manager = DocumentManager.init();
+  document_manager.handle_creation();
+
   /* Tag-pills hover  */
   tag_display = TagDisplay.init();
 });
@@ -23,6 +27,23 @@ var AvatarManager = (function() {
     $('#upload-avatar').click(function(e) {
       e.preventDefault();
       $('#upload-popin').modal();
+    });
+  }
+
+  return { init : _init }
+}());
+
+var DocumentManager = (function() {
+  function _init() {
+    return {
+      handle_creation : _creator
+    }
+  }
+
+  function _creator() {
+    $('#add-document').click(function(e) {
+      e.preventDefault();
+      $('#new-document-popin').modal();
     });
   }
 
