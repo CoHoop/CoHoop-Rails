@@ -19,7 +19,9 @@ test:
   timeout: 10000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: postgresql
+  enconding: utf-8
+  database: cohoop
   pool: 5
   timeout: 5000
+  username: ubuntu
