@@ -10,7 +10,7 @@ CohoopRails::Application.routes.draw do
   root to: 'pages#home'
 
   # Users
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
   resources  :users, :only => [:show, :update] do
     resources :microhoops, only: [:create]
   end
