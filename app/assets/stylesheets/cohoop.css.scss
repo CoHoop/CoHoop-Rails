@@ -39,7 +39,12 @@ input.field_with_error {
 // =Header menu
 #header {
   color: white;
+  .btn-group {
+    font-size: 1em;
+  }
 }
+
+
 
 // ==Login
 #login-mini-form {

@@ -62,6 +62,7 @@ end
 
 gem 'jquery-rails'
 gem 'best_in_place', git: 'git://github.com/gposton/best_in_place.git'
+gem 'rmagick'
 gem 'paperclip'
 gem 'remotipart'
 gem 'awesome_print', :require => 'ap'
