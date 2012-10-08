@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-#     rescue_from ActionController::RoutingError,      with: :render_404
-#     rescue_from ActionController::UnknownController, with: :render_404
-#     rescue_from AbstractController::ActionNotFound,  with: :render_404
-#     rescue_from ActiveRecord::RecordNotFound,        with: :render_404
+     rescue_from ActionController::RoutingError,      with: :render_404
+     rescue_from ActionController::UnknownController, with: :render_404
+     rescue_from AbstractController::ActionNotFound,  with: :render_404
+     rescue_from ActiveRecord::RecordNotFound,        with: :render_404
 
   # Public: Redirect to a default page or back to another page.
   #

@@ -38,6 +38,9 @@ class User < ActiveRecord::Base
   has_many :documents_relationships, class_name: 'UsersDocumentsRelationship', foreign_key: "user_id"
   has_many :documents, through: :documents_relationships
 
+  has_many :pad_groups_relationships, class_name: 'UsersGroupsRelationship', foreign_key: "user_id"
+  has_many :pad_groups, through: :pad_groups_relationships
+
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :first_name, :last_name, :avatar,
                   :university, :biography, :job, :birth_date

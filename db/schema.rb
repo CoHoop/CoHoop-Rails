@@ -11,13 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120916180939) do
+ActiveRecord::Schema.define(:version => 20121007182050) do
 
   create_table "documents", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "name"
     t.string   "slug"
+    t.string   "token"
+  end
+
+  create_table "documents_pad_groups_relationships", :force => true do |t|
+    t.integer  "document_id"
+    t.integer  "pad_group_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "microhoops", :force => true do |t|
@@ -40,6 +48,14 @@ ActiveRecord::Schema.define(:version => 20120916180939) do
   add_index "microhoops_tags_relationships", ["microhoop_id", "tag_id"], :name => "index_microhoops_tags_relationships_on_microhoop_id_and_tag_id", :unique => true
   add_index "microhoops_tags_relationships", ["microhoop_id"], :name => "index_microhoops_tags_relationships_on_microhoop_id"
   add_index "microhoops_tags_relationships", ["tag_id"], :name => "index_microhoops_tags_relationships_on_tag_id"
+
+  create_table "pad_groups", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.string   "token"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
@@ -93,6 +109,13 @@ ActiveRecord::Schema.define(:version => 20120916180939) do
   add_index "users_documents_relationships", ["document_id"], :name => "index_users_documents_relationships_on_document_id"
   add_index "users_documents_relationships", ["user_id", "document_id"], :name => "index_users_documents_relationships_on_user_id_and_document_id", :unique => true
   add_index "users_documents_relationships", ["user_id"], :name => "index_users_documents_relationships_on_user_id"
+
+  create_table "users_pad_groups_relationships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "pad_group_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "users_tags_relationships", :force => true do |t|
     t.integer  "user_id"

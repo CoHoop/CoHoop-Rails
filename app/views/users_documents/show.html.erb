@@ -13,6 +13,6 @@
 
 <ul>
   <% @user.documents.each do |document| %>
-  <li><%= link_to document.name, documents_path(id: document.slug) %></li>
+  <li><%= link_to document.name, documents_path(ep_groupe_id: '', pad_id: document.slug) %></li>
   <% end %>
 </ul>

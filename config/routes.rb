@@ -25,7 +25,7 @@ CohoopRails::Application.routes.draw do
   match '/:id/:first-:last/documents/create' => 'users_documents#create', constraints: profile_constraints , as: :create_user_documents
 
   # Documents
-  match '/hoop/:id' => 'documents#show', as: :documents
+  match '/hoop/:ep_group_id/:pad_id' => 'documents#show', as: :documents
 
   # Relationships
   resources :relationships,            only: [:create, :destroy]
