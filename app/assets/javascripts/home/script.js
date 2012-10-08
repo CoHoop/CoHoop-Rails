@@ -4,23 +4,11 @@
 
 jQuery(document).ready(function ($) {
 
-    /* Sequence.js */
-    var options = {
-        animateStartingFrameIn: true,
-        transitionThreshold: 250,
-        autoPlayDelay: 8000
-    };
-
-    $("#sequence").sequence(options);
-    
-    // This is something ugly but I can't figuired out why hash tags are stille present
-    location.hash = '';
-
     /* Stretch background */
-    $.backstretch('http://tduforest.fr/cohoop/frontpage/img/bg.jpg');
+    $.backstretch('http://alpha.cohoop.com/assets/home/bg.jpg');
 
     // Placeholder for IE
-    $('input[name=mail], input[name=university]').placeholder();
+    $('input.mail_input, input.university_input').placeholder();
 
     $('input').focus(function() {
         $(this).siblings('label').css({
@@ -34,11 +22,13 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    // Hide message sent confirm
-    $('#mailMsg').on('click', function(){
-        console.log(this);
-        $('#mailMsg').fadeOut(200);
-        
-    });
+    /* Sequence.js */
+    var options = {
+        animateStartingFrameIn: true,
+        transitionThreshold: 250,
+        autoPlayDelay: 8000
+    };
+
+    $("#sequence").sequence(options);
 
 });

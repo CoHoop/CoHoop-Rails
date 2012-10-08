@@ -62,6 +62,7 @@ Navigation bar
 ==============================================================================*/
 #header {
     position: fixed;
+    top: 0;
     z-index: 42;
     width: 100%;
     padding:  0 ($padding + 8);
@@ -142,16 +143,17 @@ Bones
     #logo {
         width: 1020px;
         height: 292px;
-        background-image: url("/assets/home/logo.png");
+        background-image: url('/assets/home/logo.png');
         text-indent: -9999px;
-        margin: 52px 0 10px 0;
+        margin: 40px 0 10px 0;
     }
 }
 
 #content {
+    opacity: 0.9;
     float: left;
     z-index: 10;
-    margin: -81px 0 48px 0;
+    margin-top: -81px;
     border-radius: $radius - 1;
     @include background-gradient(#ffffff, #f2f2f2, 0.95);
     @include outset(rgba(255, 255, 255, 0.6));
@@ -165,16 +167,19 @@ Bones
     #topContent {
         @include background-gradient(#ffffff, #f2f2f2, 0.95);
         padding: $padding;
+        border-bottom: 1px solid black;
+        overflow: hidden;
     }
 
     #mainContent {
         @include background-gradient(#2a2f31, #434a4e, 0.95);
-        padding: $padding $padding $padding 0;
+        padding: $padding;
+        border-top: 1px solid #888;
     }
 
     #video {
         float: left;
-        padding-right: $padding;
+        width: 50%;
 
         iframe {
             @include shiny-box;
@@ -183,55 +188,68 @@ Bones
 
     #newsletter {
         float: left;
-        width: $colRightWidth - ($padding * 2);
+        width: 50%;
 
         h2 {
             font-size: 2em;
-            padding-bottom: 6px;
+            text-align: center;
             margin-top: 0;
             margin-bottom: 6px;
             border-bottom: 1px dotted darken($orange, 30%);
         }
 
         fieldset {
-            padding: 0 1.2em 1.2em;
+            padding: 0 0 0 $padding;
         }
 
         .advancedInput {
             @include advanced-input();
             width: 100%;
-        }
 
-        .input label {
-            color: white;
+            .input {
+                position: relative;
+                border: none;
+                border-radius: $radius;
+                background: black url('/assets/home/bg-input-newsletter.png') repeat-x;
+                -moz-box-shadow: 0 1px 0 #454c50,0 4px 8px #000000 inset;
+                -webkit-box-shadow: 0 1px 0 #454C50,0 4px 8px black inset;
+                box-shadow: 0 1px 0 #454C50,0 4px 8px black inset;
+                width: 486px;
+                height: 48px;
+            }
+
+            label {
+                color: rgba(255, 255, 255, 0.8);
+                position: absolute;
+                top: 16px;
+                left: 12px;
+                font-size: 1.4em;
+            }
         }
 
         input.mail_input, input.university_input {
+            position: absolute;
+            top: 0;
+            left: 0;
             color: white;
+            width: 334px;
+            padding-left: 136px;
+            background: none;
             border: none;
-            border-radius: $radius;
-            background: black url('/assets/home/bg-input-newsletter.png') repeat-x;
-            -moz-box-shadow: 0 1px 0 #454c50,0 4px 8px #000000 inset;
-            -webkit-box-shadow: 0 1px 0 #454C50,0 4px 8px black inset;
-            box-shadow: 0 1px 0 #454C50,0 4px 8px black inset;
         }
 
         input.mail_input {
             font-weight: bold;
-            width: $colRightWidth - ($padding * 6);
-
         }
 
         input.university_input {
-            width: $colRightWidth - ($padding * 6) + 4;
-            font-size: 1.2em;
         }
 
         input[type=submit] {
             @include button();
             width: 60%;
             clear: left;
-            margin: 28px 0 0 82px;
+            margin: 14px 0 0 82px;
             font-size: 2em;
 
             &:hover {
@@ -245,7 +263,7 @@ Bones
         $padding: 12px;
 
         width: 60%;
-        margin: 33px auto 0;
+        margin: 16px auto 0;
 
         .addthis_toolbox a {
             margin: 0 3px;
@@ -431,15 +449,16 @@ Footer
 ==============================================================================*/
 #footer {
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    padding-bottom: 15px;
+    clear: both;
+    //background-color: rgba(255, 255, 255, 0.95);
+
     .disclaimer {
         width: $wrapper;
+        margin: 0;
         @include margin-auto;
-        color: black;
-        font-weight: bold;
+        color: lighten($white, 20%);
+
         p {
-            margin-bottom: -15px;
             font: {
                 size: 1.2em;
             }
@@ -507,10 +526,10 @@ a:hover .icon-meta, a:focus .icon-meta, a.active .icon-meta {
     background-color: paleGoldenrod;
     border-top: 1px solid #CCC;
     cursor: pointer;
-    padding-left: 15px;
 
     p {
-        font-size: 1.2em;
-        font-weight: bold;
+        color: green;
+        text-align: center;
+        font-size: 1.6em;
     }
 }
