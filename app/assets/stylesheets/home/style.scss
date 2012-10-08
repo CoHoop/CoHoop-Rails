@@ -1,0 +1,516 @@
+/*
+* CoHoop front-end page stylesheet
+*/
+
+/*==============================================================================
+================================================================================
+Imports
+================================================================================
+==============================================================================*/
+@import "variables.scss";
+@import "mixins.scss";
+
+/*==============================================================================
+================================================================================
+Overrides
+================================================================================
+==============================================================================*/
+html {
+    overflow-x: hidden
+}
+
+body {
+    color: $grey;
+    font-size: 62.5%;
+    background-image: url('/assets/home/bg.jpg');
+}
+
+h2, h3, button {
+    font-family: muli, serif;
+}
+
+h2 {
+    color: $orange;
+    font: {
+        size: 3em;
+        weight: bold;
+    }
+}
+
+h3 {
+    font: {
+        size: 1.8em;
+        weight: bold;
+    }
+}
+
+a {
+    color: $orange;
+
+    &:hover {
+        color: lighten($orange, 20%);
+    }
+    &:focus {
+        color: lighten($orange, 20%);
+    }
+}
+
+/*==============================================================================
+================================================================================
+Navigation bar
+================================================================================
+==============================================================================*/
+#header {
+    position: fixed;
+    z-index: 42;
+    width: 100%;
+    padding:  0 ($padding + 8);
+    border: {
+        bottom: 1px solid darken($white, 25%);
+    }
+
+    @include background-gradient(white, #F2F2F2, 0.95);
+    @include shiny-box;
+
+}
+
+#navbar {
+    @include margin-auto;
+    width: $wrapper;
+
+
+    font: {
+        size: 1.2em;
+    }
+
+    .logo {
+        float: left;
+        text-indent: -9999px;
+        width: 70px;
+        height: 20px;
+        margin: 10px 0;
+        background: {
+            image: url('/assets/home/navbar_logo.png');
+            repeat: no-repeat;
+        }
+
+        a {
+            display: block;
+        }
+    }
+
+    .menu {
+
+        ul {
+            float: left;
+        }
+
+        li {
+            display: inline-block;
+        }
+
+        a {
+            position: relative;
+            padding: $padding $padding $padding 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        a:hover, a:focus, a.active {
+            color: darken($orange, 10%);
+            text-decoration: none;
+            background-color: #E6E6E6;
+            -webkit-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
+            -moz-box-shadow: inset 0 3px 8px rgba(0,0,0,0.125);
+            box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
+        }
+
+    }
+
+
+}
+
+/*==============================================================================
+================================================================================
+Bones
+================================================================================
+==============================================================================*/
+#wrap {
+    width: $wrapper;
+    @include margin-auto;
+
+    #logo {
+        width: 1020px;
+        height: 292px;
+        background-image: url("/assets/home/logo.png");
+        text-indent: -9999px;
+        margin: 52px 0 10px 0;
+    }
+}
+
+#content {
+    float: left;
+    z-index: 10;
+    margin: -81px 0 48px 0;
+    border-radius: $radius - 1;
+    @include background-gradient(#ffffff, #f2f2f2, 0.95);
+    @include outset(rgba(255, 255, 255, 0.6));
+
+    .punchline {
+        margin: 0;
+        padding-top: 8px;
+        text-align: center;
+    }
+
+    #topContent {
+        @include background-gradient(#ffffff, #f2f2f2, 0.95);
+        padding: $padding;
+    }
+
+    #mainContent {
+        @include background-gradient(#2a2f31, #434a4e, 0.95);
+        padding: $padding $padding $padding 0;
+    }
+
+    #video {
+        float: left;
+        padding-right: $padding;
+
+        iframe {
+            @include shiny-box;
+        }
+    }
+
+    #newsletter {
+        float: left;
+        width: $colRightWidth - ($padding * 2);
+
+        h2 {
+            font-size: 2em;
+            padding-bottom: 6px;
+            margin-top: 0;
+            margin-bottom: 6px;
+            border-bottom: 1px dotted darken($orange, 30%);
+        }
+
+        fieldset {
+            padding: 0 1.2em 1.2em;
+        }
+
+        .advancedInput {
+            @include advanced-input();
+            width: 100%;
+        }
+
+        .input label {
+            color: white;
+        }
+
+        input.mail_input, input.university_input {
+            color: white;
+            border: none;
+            border-radius: $radius;
+            background: black url('/assets/home/bg-input-newsletter.png') repeat-x;
+            -moz-box-shadow: 0 1px 0 #454c50,0 4px 8px #000000 inset;
+            -webkit-box-shadow: 0 1px 0 #454C50,0 4px 8px black inset;
+            box-shadow: 0 1px 0 #454C50,0 4px 8px black inset;
+        }
+
+        input.mail_input {
+            font-weight: bold;
+            width: $colRightWidth - ($padding * 6);
+
+        }
+
+        input.university_input {
+            width: $colRightWidth - ($padding * 6) + 4;
+            font-size: 1.2em;
+        }
+
+        input[type=submit] {
+            @include button();
+            width: 60%;
+            clear: left;
+            margin: 28px 0 0 82px;
+            font-size: 2em;
+
+            &:hover {
+                @include button-hover();
+            }
+        }
+
+    }
+
+    .social-buttons {
+        $padding: 12px;
+
+        width: 60%;
+        margin: 33px auto 0;
+
+        .addthis_toolbox a {
+            margin: 0 3px;
+        }
+
+        .addthis_button_facebook_like, .addthis_button_tweet {
+            width: 90px;
+        }
+        .addthis_button_pinterest_pinit {
+            width: 50px;
+        }
+    }
+
+    /* Know more about CoHoop */
+    .knowMore {
+        float: left;
+        padding: $padding 0;
+        background-color: rgba(255, 255, 255, 0.5);
+        @include shiny-box;
+
+        h2 {
+            width: auto;
+            margin-bottom: 0.2em;
+            margin-top: 0;
+        }
+
+        .txt {
+            float: left;
+            padding: $padding;
+            font-size: 1.2em;
+            max-width: ($wrapper - $colRightWidth) - $padding;
+        }
+
+        .txt:after {
+            clear: right;
+        }
+
+        img {
+            float: left;
+            margin: $padding;
+            @include shiny-box;
+        }
+    }
+}
+
+/*==============================================================================
+================================================================================
+Sequence
+================================================================================
+==============================================================================*/
+#sequence {
+    width: 100%;
+    height: 60px;
+    position: relative;
+
+    ul {
+        list-style-type: none;
+    }
+
+    li: {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: -50%;
+    }
+
+    .title {
+        position: absolute;
+        top: -10px;
+        width: 100%;
+        opacity: 0;
+        z-index: 50;
+    }
+
+    .title.animate-in, .subtitle.animate-in {
+        opacity: 1;
+    }
+    .subtitle.animate-out, .subtitle.animate-out {
+        opacity: 0;
+    }
+
+    .sentence1 {
+        left: 66%;
+    }
+
+    .sentence1.animate-in {
+        left: 26%;
+
+        @include transition-duration(1s);
+    }
+
+    .sentence1.animate-out {
+        left: -16%;
+
+        @include transition-duration(1s);
+    }
+
+    .sentence2 {
+        right: 59%;
+    }
+
+    .sentence2.animate-in {
+        right: -19%;
+
+        @include transition-duration(1s);
+    }
+
+    .sentence2.animate-out {
+        right: -59%;
+
+        @include transition-duration(1s);
+    }
+
+    .sentence3 {
+        left: 64%;
+    }
+    .sentence3.animate-in {
+        left: 24%;
+
+        @include transition-duration(1s);
+    }
+
+    .sentence3.animate-out {
+        left: -13%;
+
+        @include transition-duration(1s);
+    }
+
+
+    .sentence4 {
+        right: 72%;
+    }
+
+    .sentence4.animate-in {
+        right: -32%;
+
+        @include transition-duration(1s);
+    }
+
+    .sentence4.animate-out {
+        right: -72%;
+
+        @include transition-duration(1s);
+    }
+
+    .sentence5 {
+        left: 77%;
+    }
+
+    .sentence5.animate-in {
+        left: 37%;
+
+        @include transition-duration(1s);
+    }
+
+    .sentence5.animate-out {
+        left: -7%;
+
+        @include transition-duration(1s);
+    }
+
+    .sentence6 {
+        right: 13%;
+    }
+
+    .sentence6.animate-in {
+        right: -33%;
+
+        @include transition-duration(1s);
+    }
+
+    .sentence6.animate-out {
+        right: -73%;
+
+        @include transition-duration(1s);
+    }
+}
+
+/*==============================================================================
+================================================================================
+Footer
+================================================================================
+==============================================================================*/
+#footer {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding-bottom: 15px;
+    .disclaimer {
+        width: $wrapper;
+        @include margin-auto;
+        color: black;
+        font-weight: bold;
+        p {
+            margin-bottom: -15px;
+            font: {
+                size: 1.2em;
+            }
+            padding: $padding 0;
+            text-align: center;
+        }
+    }
+}
+
+/*==============================================================================
+================================================================================
+Icons
+================================================================================
+==============================================================================*/
+.icon-alpha, .icon-blog, .icon-meta {
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 4px;
+    width: 14px;
+    height: 14px;
+    background: {
+        image: url('/assets/home/icons.png');
+        repeat: no-repeat;
+    }
+}
+.icon-infinite {
+    background-position: 0 top;
+}
+a:hover .icon-infinite, a:focus .icon-infinite, a.active .icon-infinite {
+    background-position: 0 bottom;
+}
+.icon-blog {
+    background-position: -14px top;
+}
+a:hover .icon-blog, a:focus .icon-blog, a.active .icon-blog  {
+    background-position: -14px bottom;
+}
+.icon-meta {
+    background-position: -28px top;
+}
+a:hover .icon-meta, a:focus .icon-meta, a.active .icon-meta {
+    background-position: -28px bottom;
+}
+
+.icon-blog {
+    background-position: -14px top;
+    &:hover, &:focus {
+        background-position: -14px bottom;
+    }
+}
+.icon-meta {
+    background-position: -28px top;
+    &:hover, &:focus {
+        background-position: -28px bottom;
+    }
+}
+
+/* Mail message confirm */
+#mailMsg {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 6px 0;
+    background-color: paleGoldenrod;
+    border-top: 1px solid #CCC;
+    cursor: pointer;
+    padding-left: 15px;
+
+    p {
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+}

@@ -12,9 +12,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.remotipart
-//= require jquery.purr
-//= require best_in_place
-//= require bootstrap-dropdown
-//= require bootstrap-modal
-//= require_tree ./app
+//= require_tree ./home

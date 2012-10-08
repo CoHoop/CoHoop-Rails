@@ -7,7 +7,7 @@
   <%= render 'layouts/meta' %>
   <title><%= get_title @title %></title>
   <%= favicon_link_tag %>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "home", :media => "all" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -16,19 +16,28 @@
       </p>
       <![endif]-->
 
-<%=	render 'layouts/header' %>
-  <div class="container-fluid">
-    <%= render 'shared/flash_messages' %>
+  <%=	render 'layouts/home_header' %>
+  <section id="wrap" class="clearfix">
+    <div id="logo">CoHoop</div>
     <div id="content">
       <%= yield %>
     </div>
     <% if Rails.env.development? then %>
-      <div id="debug">
-        <%= debug(params) %>
-        <%= debug(cookies) %>
-      </div>
+    <div id="debug">
+      <%= debug(params) %>
+      <%= debug(cookies) %>
+    </div>
     <% end %>
-  </div>
-<%= javascript_include_tag "application" %>
+  </section>
+  <footer id="footer">
+    <div class="disclaimer">
+      <p>CoHoop, tous droits r&eacute;serv&eacute;s.</p>
+    </div>
+  </footer>
+
+  <script src="http://use.edgefonts.net/muli.js"></script>
+  <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+  <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5068c0c12f99a33b"></script>
+  <%= javascript_include_tag "home" %>
 </body>
 </html>

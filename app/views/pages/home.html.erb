@@ -1,26 +1,61 @@
-<div id="home-video">
-  <iframe width="640" height="360" src="http://www.youtube.com/embed/WyzJ2Qq9Abs" frameborder="0" allowfullscreen></iframe>
+<div id="topContent">
+  <h2 class="punchline">The first student-driven, collaborative learning network</h2>
+  <div id="sequence">
+    <ul>
+      <li id="one" data-sequence-hash="first">
+        <h3 class="title sentence1 animate-in">CoHoop helps you learn with a community</h3>
+      </li>
+      <li id="two" data-sequence-hash="second">
+        <h3 class="title sentence2">Connect with peers over shared interests and passions</h3>
+      </li>
+      <li id="three" data-sequence-hash="third">
+        <h3 class="title sentence3">Collaborate on community-driven documents</h3>
+      </li>
+      <li id="four" data-sequence-hash="fourth">
+        <h3 class="title sentence4">Get real-time help from peers</h3>
+      </li>
+      <li id="five" data-sequence-hash="fifth">
+        <h3 class="title sentence5">Expand your skills</h3>
+      </li>
+      <li id="six" class="frame6" data-sequence-hash="sixth">
+        <h3 class="title sentence6">Infinite learning possibilities</h3>
+      </li>
+    </ul>
+  </div>
 </div>
-<div class="beta-registration">
-  <form id="">
-    <h2><label for="email">Interested in CoHoop Bêta ?</label></h2>
-    <input id="email" type="email" placeholder="Enter your email here !">
-    <input type="submit">
-  </form>
-</div>
-<%= link_to 'Don\'t have an account ? Register now !', new_user_registration_path, id: 'home-register-link' %>
-<div class="cohoop-share">
-  Share on :
-  <ul>
-    <li>Facebook</li>
-    <li>Twitter</li>
-    <li>Google plus</li>
-  </ul>
-</div>
-<div class="showcase well">
-  <ul class="cohoopers-list">
-    <li class="first">1</li>
-    <li>2</li>
-    <li>3</li>
-  </ul>
+<div id="mainContent" class="clearfix">
+  <div id="video">
+    <iframe width="486" height="273" src="http://www.youtube.com/embed/D0Q8UQh6CVA" frameborder="0" allowfullscreen></iframe>
+    <!--<img src="img/video-what-is-cohoop.jpg" alt="Watch video" />-->
+  </div>
+  <div id="newsletter">
+    <%= form_for(@mail, url: mailslist_create_path, remote: true) do |f| %>
+      <fieldset>
+        <h2>Launching soon. Get the CoHoop news</h2>
+        <div class="advancedInput">
+          <div class="input">
+            <%= f.label :mail, class: 'mail_label' %>
+            <%= f.email_field :mail, placeholder: '(required)', class: 'mail_input newsletterTextfield', required: true %>
+          </div>
+        </div>
+        <div class="advancedInput">
+          <div class="input">
+            <%= f.label :university, 'Your university', class: 'university_label' %>
+            <%= f.text_field :university, placeholder: '(optional)', class: 'university_input newsletterTextfield' %>
+          </div>
+        </div>
+        <%= f.submit "Let's go", id: 'add-mail' %>
+      </fieldset>
+    <% end %>
+
+    <div class="social-buttons">
+      <!-- AddThis Button BEGIN -->
+      <div class="addthis_toolbox addthis_default_style ">
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        <a class="addthis_button_tweet"></a>
+        <a class="addthis_button_pinterest_pinit"></a>
+      </div>
+      <!-- AddThis Button END -->
+    </div>
+  </div>
 </div>

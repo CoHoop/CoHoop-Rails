@@ -1,0 +1,3 @@
+var message = $('<div id="mailMsg"><p><%= @message %></p></div>');
+$('#footer').after(message);
+message.click(function() { $(this).fadeOut('slow'); });
