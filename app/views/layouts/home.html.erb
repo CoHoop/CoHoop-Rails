@@ -22,19 +22,21 @@
     <div id="content">
       <%= yield %>
     </div>
-    <% if Rails.env.development? then %>
-    <div id="debug">
-      <%= debug(params) %>
-      <%= debug(cookies) %>
-    </div>
-    <% end %>
   </section>
   <footer id="footer">
     <div class="disclaimer">
       <p>CoHoop, tous droits r&eacute;serv&eacute;s.</p>
     </div>
   </footer>
-
+  <% if Rails.env.development? then %>
+  <div id="debug" style="background-color: white;">
+    <pre style="width: 1020px; margin: 0 auto; font-size: 1.4em;">
+        <%= debug(params) %>
+        <%= debug(cookies) %>
+    </pre>
+  </div>
+  <% end %>
+    
   <script src="http://use.edgefonts.net/muli.js"></script>
   <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
   <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5068c0c12f99a33b"></script>

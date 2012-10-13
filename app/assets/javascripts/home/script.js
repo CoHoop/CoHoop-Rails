@@ -5,7 +5,7 @@
 jQuery(document).ready(function ($) {
 
     /* Stretch background */
-    $.backstretch('http://www.cohoop.com/assets/home/bg.jpg');
+    $.backstretch('assets/home/bg.jpg');
 
     // Placeholder for IE
     $('input.mail_input, input.university_input').placeholder();
