@@ -16,12 +16,13 @@ class RegistrationsController < Devise::RegistrationsController
 
   private
     def has_token?
+      redirect_to :root unless (session[:token][:uid] || params[:token] == current_token)
+
       if !session[:token]
         session[:token] = {
           uid: current_token
         }
       end
-      redirect_to :root unless params[:token] === session[:token][:uid]
     end
 
     def delete_token
