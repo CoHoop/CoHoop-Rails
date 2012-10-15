@@ -52,36 +52,51 @@
         }
     }
     
-    .menu {
+    ul {
         
-        ul {
-            float: left;
-            margin: 12px 0;
-            padding-left: 24px;
+        padding-left: 24px;
+    }
+    
+    li {
+        display: inline-block;
+    }
+    
+    a {
+        color: #EB5C2E;
+        font-size: 1.1em;
+        position: relative;
+        padding: 12px 12px 12px 24px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    a:hover, a:focus, a.active {
+        color: darken($orange, 10%);
+        text-decoration: none;
+        background-color: #E6E6E6;
+        -webkit-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
+        -moz-box-shadow: inset 0 3px 8px rgba(0,0,0,0.125);
+        box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
+    }
+    
+    
+    
+    
+    
+    .cohoopLinks {
+        margin: 12px 0;
+    }
+    
+    .userAuth {
+        margin: 6px 0 0;
+        
+        label {
+            color: $grey;
         }
         
-        li {
-            display: inline-block;
+        input[type=checkbox] {
+            margin-top: 0;
         }
-        
-        a {
-            color: #EB5C2E;
-            font-size: 1.1em;
-            position: relative;
-            padding: 12px 12px 12px 24px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        
-        a:hover, a:focus, a.active {
-            color: darken($orange, 10%);
-            text-decoration: none;
-            background-color: #E6E6E6;
-            -webkit-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
-            -moz-box-shadow: inset 0 3px 8px rgba(0,0,0,0.125);
-            box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
-        }
-        
     }
     
     
@@ -96,6 +111,7 @@
     height: 14px;
     background-image: url("/assets/home/icons.png");
     background-repeat: no-repeat;
+    margin-top: 0;
 }
 
 .icon-blog {
