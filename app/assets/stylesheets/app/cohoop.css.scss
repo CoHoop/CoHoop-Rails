@@ -3,15 +3,16 @@
 Imports
 ================================================================================
 ==============================================================================*/
+@import 'bootstrap';
+
 @import "../lib/normalize";
 @import "../lib/html5boilerplate";
-
-@import 'bootstrap';
 
 @import "../lib/variables";
 @import "../lib/mixins";
 @import "../lib/topbar";
 
+@import "layout";
 
 .field_with_errors {
   display: inline;
