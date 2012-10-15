@@ -1,0 +1,44 @@
+/*==============================================================================
+================================================================================
+Alpha Forms (override bootstrap)
+================================================================================
+==============================================================================*/
+.signinForm {
+  @include background-gradient(#2A2F31, #434A4E, 0.95);
+  @include shiny-box;
+  color: $white;
+  
+  a {
+    font-size: 1.4em;
+    color: $white;
+    display: block;
+    padding: 6px 12px;
+    text-align: center;
+    
+    &:hover, &:focus {
+      color: darken($white, 10%);
+    }
+  }
+  
+  input[type=submit], button {
+    width: 222px;
+  }
+}
+
+.controls input[type=checkbox] {
+  float: left;
+  margin-right: 12px;
+}
+
+input[type=submit], button {
+  @include button-submit();
+  
+  &:hover, &:focus {
+    color: $white;
+    @include button-submit-hover();
+  }
+  
+  &:active {
+    display: none;
+  }
+}

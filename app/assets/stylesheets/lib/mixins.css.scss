@@ -16,7 +16,6 @@
 }
 
 @mixin button {
-    font-size: 1.2em;
     letter-spacing: 2px;
     border-radius: $radius;
     padding: 0.6em 0;
@@ -84,4 +83,27 @@
     -o-transition-duration: $duration;
     -ms-transition-duration: $duration;
     transition-duration: $duration;
+}
+
+
+
+@mixin button-submit {
+    letter-spacing: 2px;
+    border-radius: $radius;
+    color: white;
+    border: 0;
+    text-shadow: 0 1px 0 rgba(46, 46, 46, 1);
+    -webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.8), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.6);
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.8), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.6);
+    background: {
+        color: #44363f;
+        image: url('/assets/home/bg-submit-btn.png');
+        position: 0 0;
+    }
+}
+
+@mixin button-submit-hover {
+    background: {
+        position: 0 -30px;
+    }
 }
