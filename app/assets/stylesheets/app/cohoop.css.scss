@@ -1,18 +1,8 @@
-/*==============================================================================
-================================================================================
-Imports
-================================================================================
-==============================================================================*/
-@import "../lib/normalize";
-@import "../lib/html5boilerplate";
-
-@import "../lib/variables";
-@import "../lib/mixins";
-@import "../lib/topbar";
-
 @import 'bootstrap';
-@import 'layout';
 
+body {
+  padding-top: 60px;
+}
 
 .field_with_errors {
   display: inline;
@@ -39,6 +29,11 @@ input.field_with_error {
   height: 100%;
   margin-right: 30px;
   @include makeColumn(3);
+}
+
+#debug {
+  margin-top: 100px;
+  clear: both;
 }
 
 // =Header menu

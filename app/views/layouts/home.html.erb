@@ -9,8 +9,6 @@
   <%= favicon_link_tag %>
   <%= stylesheet_link_tag    "home", :media => "all" %>
   <%= csrf_meta_tags %>
-  <!-- Slow page rendering for a nicer font rendering -->
-  <script src="http://use.edgefonts.net/muli.js"></script>
 </head>
 <body>
   <!--[if lt IE 7]>
@@ -38,7 +36,8 @@
     </pre>
   </div>
   <% end %>
-
+    
+  <script src="http://use.edgefonts.net/muli.js"></script>
   <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
   <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5068c0c12f99a33b"></script>
   <%= javascript_include_tag "home" %>
