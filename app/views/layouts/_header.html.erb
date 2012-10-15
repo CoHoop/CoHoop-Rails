@@ -1,15 +1,22 @@
-<div id="header" class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container-fluid">
-      <a class="brand" href="<%= root_path %>">CoHoop</a>
-      <div class="btn-group pull-right">
-        <%= display_user_authentication %>
-      </div>
-      <div class="nav-collapse">
-        <ul class="nav">
-          <li class="active"><a href="">Link</a></li>
-        </ul>
-      </div>
-    </div>
+<div id="topbar" class="clearfix">
+  <div id="navbar">
+    <h1 class="logo"><a href="<%= root_path %>" title="Return to Cohoop.com">CoHoop - social collaborative network</a></h1>
+    <nav class="menu">
+      <ul>
+        <li>
+          <a href="http://blog.cohoop.com/" title="Read our blog posts or discover more about CoHoop"><i class="icon-blog"></i> CoHoop Blog</a>
+        </li>
+        <!--<li>
+            <a href="http://meta.cohoop.com/" title="Get involved by tracking down bugs or suggest ideas"><i class="icon-meta"></i> CoHoop Meta</a>
+        </li>-->
+      </ul>
+    </nav>
+    <!--<nav class="menu pull-right">
+      <ul>
+        <li>
+          <%= display_user_authentication %>
+        </li>
+      </ul>
+    </nav>-->
   </div>
 </div>
