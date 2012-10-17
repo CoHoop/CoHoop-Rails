@@ -91,7 +91,10 @@
   }
   
   .userAuth {
-    margin: 6px 0 0;
+    
+    form {
+      margin: -6px 0 -14px;
+    }
     
     label {
       color: $grey;

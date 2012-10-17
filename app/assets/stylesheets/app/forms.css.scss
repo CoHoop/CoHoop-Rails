@@ -5,15 +5,19 @@ Alpha Forms (override bootstrap)
 ==============================================================================*/
 .signinForm {
   @include background-gradient(#2A2F31, #434A4E, 0.95);
-  @include shiny-box;
+  @include shining-box(0.3);
   color: $white;
+  
+  h2 {
+    border-bottom: 1px dotted darken($orange, 10%);
+    margin-top: 0;
+  }
   
   a {
     font-size: 1.4em;
     color: $white;
     display: block;
     padding: 6px 12px;
-    text-align: center;
     
     &:hover, &:focus {
       color: darken($white, 10%);
@@ -22,6 +26,11 @@ Alpha Forms (override bootstrap)
   
   input[type=submit], button {
     width: 222px;
+    font-size: $size5;
+  }
+  
+  &>p {
+    margin-left: 148px;
   }
 }
 
@@ -30,12 +39,12 @@ Alpha Forms (override bootstrap)
   margin-right: 12px;
 }
 
-input[type=submit], button {
-  @include button-submit();
+.btn-cohoop {
+  @include button-cohoop();
   
   &:hover, &:focus {
     color: $white;
-    @include button-submit-hover();
+    @include button-cohoop-hover();
   }
   
   &:active {
