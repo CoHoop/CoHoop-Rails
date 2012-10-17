@@ -30,7 +30,7 @@ Alpha Forms (override bootstrap)
   margin-right: 12px;
 }
 
-input[type=submit], button {
+.btn-cohoop {
   @include button-submit();
   
   &:hover, &:focus {
