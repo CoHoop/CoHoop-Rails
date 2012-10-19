@@ -1,0 +1,129 @@
+/******************************************************************************/
+/* Tabs
+/******************************************************************************/
+
+.tabs {
+  margin-bottom: $margin / 2;
+  border-bottom: 1px solid $orange;
+  
+  a {
+    display: inline-block;
+    padding: ($padding / 2) $padding;
+    margin: 0 ($margin / 2);
+    
+    border: 1px solid $orange;
+    border-bottom: none;
+    border-radius: $radius $radius 0 0;
+    
+    background-color: lighten($orange, 40%);
+    
+    color: $orange;
+    font: {
+      size: $size5;
+      weight: bold;
+    }
+    text-transform: uppercase;
+    
+    &:hover, &:focus {
+      background-color: $orange;
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}
+
+/******************************************************************************/
+/* Sidebar
+/******************************************************************************/
+#leftSidebar {
+  
+  h2 {
+    margin-top: 0;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin-left: $margin;
+    padding: 0;
+  }
+}
+
+/******************************************************************************/
+/* Feed
+/******************************************************************************/
+#feedContent {
+  
+  h3 {
+    margin-top: 0;
+  }
+  
+}
+
+#listMicrohoop {
+  float: left;
+  width: 100%;
+}
+
+.microhoops {
+  list-style-type: none;
+  padding: 0;
+  
+  
+}
+
+.microhoop {
+  margin-bottom: ($margin * 4);
+  padding: $padding $padding ($padding / 2) $padding;
+  
+  background-color: white;
+  border-radius: $radius;
+  
+  .feedInfos {
+    float: left;
+    clear: both;
+    
+    width: 100%;
+    
+    border-bottom: 1px solid $orange;
+  }
+  
+  .feedAvatar {
+    float: left;
+    
+    margin: (-$padding) $margin 0 (-$padding);
+    
+    $size: 48px;
+    width: $size;
+    height: $size;
+  }
+  
+  .feedUsername {
+    float: left;
+    
+    font-size: $size4;
+  }
+  
+  .feedIconUrgent {
+    float: right;
+    
+    $size: 48px;
+    width: $size;
+    height: $size;
+    
+    text-indent: -9999px;
+    
+    @include urgent-hoop-icon;
+  }
+  
+  .feedContent {
+    clear: both;
+    padding: $padding 0;
+    
+    font-size: $size5;
+  }
+  
+  .feedDate {
+    color: $grey;
+    text-align: right;
+  }
+}

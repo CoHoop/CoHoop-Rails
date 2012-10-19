@@ -30,13 +30,7 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, $smallIntensity),inset 0 -1px 0 rgba(0, 0, 0, $intensity),0 1px 10px rgba(0, 0, 0, $intensity) ;
 }
 
-@mixin triangle($color) {
-  width: 0px;
-  height: 0px;
-  border-style: solid;
-  border-width: 0 10px 10px 10px;
-  border-color: transparent transparent $color transparent;
-}
+
 
 @mixin background-gradient($start, $end, $opacity) {
   opacity: $opacity;
@@ -58,7 +52,13 @@
   transition-duration: $duration;
 }
 
-
+@mixin urgent-hoop-icon {
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent $orange transparent;
+}
 
 @mixin button-cohoop {
   font-weight: bold;
@@ -120,4 +120,12 @@
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065),inset 0 -1px 0 rgba(0, 0, 0, 0.1),0 1px 10px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.065), inset 0 -1px 0 rgba(0, 0, 0, 0.1),0 1px 10px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065),inset 0 -1px 0 rgba(0, 0, 0, 0.1),0 1px 10px rgba(0, 0, 0, 0.1) ;
+}
+
+@mixin triangle($color) {
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent $color transparent;
 }

@@ -9,7 +9,6 @@ Alpha Forms (override bootstrap)
   color: $white;
   
   h2 {
-    border-bottom: 1px dotted darken($orange, 10%);
     margin-top: 0;
   }
   
@@ -50,4 +49,51 @@ Alpha Forms (override bootstrap)
   &:active {
     display: none;
   }
+}
+
+.postMicrohoop {
+  float: left;
+}
+
+.new_microhoop {
+  
+  textarea {
+    $minHeight: 24px;
+    
+    min-height: $minHeight;
+    max-height: $minHeight * 2;
+    
+    width: (($wrapper / 12) * 9) - ($padding * 3) - 2px;
+    
+    margin-bottom: $margin;
+  }
+  
+  .formActions {
+    float: right;
+    clear: right;
+    width: 244px;
+    
+    &>* {
+      float: left;
+    }
+    
+    &>label {
+      margin: ($margin / 2) ($margin * 2) 0 ($margin / 2);
+    }
+    
+    &>input[type=checkbox] {
+      display: block;
+      margin-top: $margin - 4px;
+      
+      $size: 16px;
+      width: $size;
+      height: $size;
+    }
+  }
+  
+  input[type=submit] {
+    font-size: $size5;
+    padding: ($padding / 2) $padding;
+  }
+  
 }

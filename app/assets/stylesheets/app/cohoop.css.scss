@@ -1,4 +1,3 @@
-body {background: red;}
 /*==============================================================================
 ================================================================================
 Imports
@@ -16,12 +15,15 @@ Imports
 
 @import "layout";
 @import "forms";
+@import "elements";
 
-/*==============================================================================
-================================================================================
-Fonts styles
-================================================================================
-==============================================================================*/
+body {
+  background-color: lighten($grey, 56%);
+}
+
+/******************************************************************************/
+/* Font styles
+/******************************************************************************/
 h1, h2, h3, button, input[type=submit] {
   font-family: 'muli, serif';
 }
@@ -33,218 +35,15 @@ h4 {font-size: $size4}
 h5 {font-size: $size5}
 h6 {font-size: $size6}
 
-/*==============================================================================
-================================================================================
-Other styles
-================================================================================
-=================/=============================================================*/
-.flash_messages {
-  font-size: 1.3em;
-  width: 50%;
-  margin: 12px auto;
-}
-
-
-.field_with_errors {
-  display: inline;
-}
-input.field_with_error {
-  color: #666;
-  -webkit-box-shadow: 0px 0px 6px rgba(255, 0, 0, 0.8);
-  -moz-box-shadow: 0px 0px 6px rgba(255, 0, 0, 0.8);
-  box-shadow: 0px 0px 6px rgba(255, 0, 0, 0.8);
-  border: red;
-}
-
 #content {
-  width: 100%;
+  a {font-size: $size6;}
+  p, textarea {font-size: $size5};
+  h2, h3 {border-bottom: 1px dotted darken($orange, 10%);}
 }
 
-#main-content {
-  float: left;
-  @include makeColumn(9);
-}
-
-#sidebar {
-  float: left;
-  height: 100%;
-  margin-right: 30px;
-  @include makeColumn(3);
-}
-
-// =Header menu
-#header {
-  color: white;
-  .btn-group {
-    font-size: 1em;
-  }
-}
-
-
-
-// ==Login
-#login-mini-form {
-  float: left;
-  margin-bottom: 0;
-  
-  label {
-    color: white;
-    display: inline;
-    width: 150px;
-  }
-  
-  input {
-    margin-bottom: 0;
-    max-width: 100px;
-  }
-  #user_email {
-    max-width: 150px;
-  }
-  
-}
-
-// =Home
-#home-video {
-  text-align: center;
-}
-
-// =Registration
-#registration-form {
-  .first-name, .last-name {
-    float: left;
-    margin-right: 10px;
-    
-    input {
-      width: 125px;
-    }
-  }
-  .email, .password {
-    clear: both;
-    
-    input {
-      width: 270px;
-    }
-  }
-}
-
-// =Profile
-
-.blank {
-  color: #cccccc;
-}
-
-h2 .best_in_place {
-  margin-right: 30px;
-}
-
-#main-tags .add-on, #secondary-tags .add-on, #add-main-tag-field, #add-secondary-tag-field {
-  float: left;
-}
-
-#main-tags-list, #secondary-tags-list {
-  clear: both;
-  padding-top: 15px;
-}
-
-#main-tags .append, #secondary-tags .append {
-  height: auto;
-  -webkit-border-radius: 3px 0 0 3px;
-  -moz-border-radius: 3px 0 0 3px;
-  border-radius: 0 3px 3px 0;
-}
-
-.tag-pills {
-  margin-bottom: 18px;
-  margin-left: 0;
-  list-style: none;
-  display: block;
-}
-
-.tag-pills form {
-  margin: 0;
-}
-
-.tag-pills li {
-  color: white;
-  background-color: #08C;
-  display: inline-block;
-  padding-left: 8px;
-  padding-top: 1px;
-  padding-bottom: 0;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-
-.tag-pills li a {
-  color: white;
-}
-
-.tag-pills button[type=submit] {
-  border: none;
-  background: none;
-  margin-top: 0px;
-}
-
-/* =Feed */
-
-#feed-content {
-  float: left;
-  margin-left: 20px;
-  @include makeColumn(9);
-}
-
-/* ==Display */
-#microhoops-list .microhoops {
-  margin: 0;
-}
-
-.microhoops .microhoop {
-  list-style: none;
-  border-radius: 5px;
-  border: 1px solid gray;
-  margin: 10px 0;
-  padding: 15px;
-  float: left;
-  width: 95.5%;
-  
-  .avatar-container, h3 {
-    float: left;
-  }
-  
-  .avatar-container {
-    width: 100px;
-    margin-right: 15px;
-    min-height: 100px;
-  }
-  
-  h3 {
-    width: 82%;
-  }
-}
-
-.microhoops .urgent {
-  border-color: orange;
-}
-
-/* ==Add */
-#add-microhoop-form form  {
-  margin-bottom: 0;
-}
-
-#add-microhoop-form textarea {
-  width: 100%;
-  height: 40px;
-  clear: both;
-}
-
-#add-microhoop-form label {
-  float: left;
-  padding-right: 15px;
-}
-
-#add-microhoop {
-  float: right;
+/******************************************************************************/
+/* Temp stuff
+/******************************************************************************/
+.alert {
+  display: none !important;
 }

@@ -3,9 +3,13 @@
 Alpha Layout (override bootstrap)
 ================================================================================
 ==============================================================================*/
-.container-fluid {
+.container {
   margin: 52px auto 0;
   width: $wrapper;
+}
+
+#content {
+  margin-top: $margin * 2;
 }
 
 
@@ -15,7 +19,7 @@ Alpha Layout (override bootstrap)
 
 .signinForm {
   width: 50%;
-  margin: 24px auto 0;
+  margin: ($margin * 2) auto 0;
 }
 
 #navbar .userAuth li > a {
@@ -25,3 +29,14 @@ Alpha Layout (override bootstrap)
 /******************************************************************************/
 /* Profile page
 /******************************************************************************/
+#leftSidebar {
+  float: left;
+  width: ((($wrapper / 12) * 3) - ($padding * 2)) - 2px; // 2px coz of well block border
+  padding: $padding;
+  margin-right: $margin * 2;
+}
+
+#feedContent {
+  float: left;
+  width: (($wrapper / 12) * 9) - ($margin * 2);
+}
