@@ -1,19 +1,18 @@
 <li class="microhoop<%= microhoop.urgent ? ' urgent' : '' %>" id="microhoop-<%= microhoop.id %>">
-
-  <div class="feedInfos">
-
-    <div class="feedAvatar">
+  <div class="microhoop-infos">
+    <div class="microhoop-avatar">
       <%= user.avatar %>
     </div>
-    <span class="feedUsername"><%= user.name %></span>
-    <div class="feedIconUrgent">Urgent microhoop</div>
-
+    <span class="micrhoop-username"><%= user.name %></span>
+    <div class="microhoop-icon-urgent">Urgent microhoop</div>
   </div>
 
-  <div class="feedContent"><%= microhoop.content %></div>
+  <div class="microhoop-content">
+    <%= microhoop.content %>
+  </div>
 
-  <div class="feedDate">
-    <i>1 hour ago</i>
+  <div class="microhoop-date">
+    <em>1 hour ago</em>
   </div>
 
 </li>

@@ -1,5 +1,5 @@
 <% tag_form = is_main ? 'add-main-tag-form' : 'add-secondary-tag-form' %>
-<% add_tag = is_main ? 'add-main-tag' : 'add-secondary-tag' %>
+<% add_tag  = is_main ? 'add-main-tag'      : 'add-secondary-tag' %>
 
 <%= form_tag('/users_tags_relationships', remote: true, id: tag_form ) do %>
   <%= hidden_field_tag 'main', is_main %>

@@ -17,26 +17,30 @@ Alpha Layout (override bootstrap)
 /* Forms
 /******************************************************************************/
 
-.signinForm {
+.sign-in-form {
   width: 50%;
   margin: ($margin * 2) auto 0;
 }
 
-#navbar .userAuth li > a {
+#navbar .user-auth li > a {
   float: left;
 }
 
 /******************************************************************************/
 /* Profile page
 /******************************************************************************/
-#leftSidebar {
+#sidebar-left {
   float: left;
   width: ((($wrapper / 12) * 3) - ($padding * 2)) - 2px; // 2px coz of well block border
   padding: $padding;
   margin-right: $margin * 2;
 }
 
-#feedContent {
+#sidebar-right {
+  float: right;
+}
+
+#feed-content {
   float: left;
   width: (($wrapper / 12) * 9) - ($margin * 2);
 }

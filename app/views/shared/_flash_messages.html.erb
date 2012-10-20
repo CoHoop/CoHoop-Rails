@@ -1,4 +1,4 @@
-<div class="flash_messages">
+<div class="flash-messages">
   <% flash.each do |k, v| %>
     <%= content_tag :div, v, class: "alert alert-#{k}" %>
   <% end %>

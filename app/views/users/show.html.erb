@@ -1,5 +1,5 @@
 <% present @user, presenters: [:user, :profile] do |presenter| %>
-  <div id="sidebar" class="profile well">
+  <div id="sidebar-left" class="profile well sidebar">
 
     <%= link_to 'Documents', presenter.user_documents_path %>
     <div class="avatar">

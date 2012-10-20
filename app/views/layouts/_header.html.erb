@@ -2,7 +2,7 @@
   <div id="navbar" class="clearfix">
     <h1 class="logo"><a href="<%= root_path %>" title="Return to Cohoop.com">CoHoop - social collaborative network</a></h1>
     <nav class="menu pull-left">
-      <ul class="cohoopLinks">
+      <ul class="cohoop-links">
         <li>
           <a href="http://blog.cohoop.com/" title="Read our blog posts or discover more about CoHoop"><i class="icon-blog"></i> CoHoop Blog</a>
         </li>
@@ -12,7 +12,8 @@
       </ul>
     </nav>
     <nav class="menu pull-right">
-        <ul class="cohoopLinks">
+        <ul class="cohoop-links">
+            <li><%= link_to 'Users list', users_path %></li>
             <li><%= display_user_authentication %></li>
         </ul>
     </nav>

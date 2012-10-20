@@ -1,8 +1,8 @@
 <%= form_for(user.microhoops.build, url: user_microhoops_path(user_id: user.id), remote: true) do |f| %>
-<%= f.text_area :content, cols: '0', row: '0', placeholder: '...' %>
-<div class="formActions">
-  <%= f.check_box :urgent %>
-  <%= f.label :urgent %>
-  <%= f.submit 'Post microhoop', class: 'btn-cohoop' %>
-</div>
+  <%= f.text_area :content, cols: '0', row: '0', placeholder: '...' %>
+  <div class="form-actions">
+    <%= f.check_box :urgent %>
+    <%= f.label :urgent %>
+    <%= f.submit 'Post microhoop', class: 'btn-cohoop' %>
+  </div>
 <% end %>

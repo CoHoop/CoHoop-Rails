@@ -3,7 +3,7 @@
 Alpha Forms (override bootstrap)
 ================================================================================
 ==============================================================================*/
-.signinForm {
+.sign-in-form {
   @include background-gradient(#2A2F31, #434A4E, 0.95);
   @include shining-box(0.3);
   color: $white;
@@ -51,7 +51,7 @@ Alpha Forms (override bootstrap)
   }
 }
 
-.postMicrohoop {
+.post-microhoop {
   float: left;
 }
 
@@ -68,7 +68,7 @@ Alpha Forms (override bootstrap)
     margin-bottom: $margin;
   }
   
-  .formActions {
+  .form-actions {
     float: right;
     clear: right;
     width: 244px;
