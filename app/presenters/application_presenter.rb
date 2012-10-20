@@ -17,10 +17,10 @@ class ApplicationPresenter
   #
   #   # A typical example in a controller would be :
   #   ApplicationPresenter.new(User.find(params[:id]), view)
-  def initialize(model, template)
+  def initialize(model, template, model_name = nil)
     @model    = model
     @template = template
-    @model_name = @template.controller_name.singularize
+    @model_name = (model_name || @template.controller_name.singularize).downcase
     self.class.send(:define_method, @model_name) do
       @model
     end

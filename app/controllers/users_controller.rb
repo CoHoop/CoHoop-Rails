@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   respond_to :html, :json
   before_filter :authenticate_user!, only: [:update]
 
+  def index
+    @users = UserInterface.new(User.all)
+  end
+
   def show
     @user  = get_user_through_params || return
     @title = @user.name

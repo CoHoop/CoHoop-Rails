@@ -14,7 +14,7 @@ CohoopRails::Application.routes.draw do
 
   # Users
   devise_for :users, controllers: { registrations: 'registrations' }
-  resources  :users, :only => [:show, :update] do
+  resources  :users, :only => [:index, :show, :update] do
     resources :microhoops, only: [:create]
   end
 

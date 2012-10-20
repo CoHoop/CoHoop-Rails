@@ -51,6 +51,15 @@ class UserFeedPresenter < ApplicationPresenter
     render_microhoops(false)
   end
 
+  # Public: display all users'
+  def list_all_users
+    # TODO: Should make UserPresenter a class not a module, so we don't need to user UsersProfilePresenter
+    # TODO: Should extract User.all in the model
+    users = UserInterface.new(User.all)
+    all_users = users.map { |u| UserProfilePresenter.new(UserInterface.new(u), helper, 'User') }
+    render partial: 'users/shared/list', locals: { users: all_users }
+  end
+
   private
   def feed
     model
