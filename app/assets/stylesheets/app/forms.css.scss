@@ -5,15 +5,18 @@ Alpha Forms (override bootstrap)
 ==============================================================================*/
 .signinForm {
   @include background-gradient(#2A2F31, #434A4E, 0.95);
-  @include shiny-box;
+  @include shining-box(0.3);
   color: $white;
+  
+  h2 {
+    margin-top: 0;
+  }
   
   a {
     font-size: 1.4em;
     color: $white;
     display: block;
     padding: 6px 12px;
-    text-align: center;
     
     &:hover, &:focus {
       color: darken($white, 10%);
@@ -22,6 +25,11 @@ Alpha Forms (override bootstrap)
   
   input[type=submit], button {
     width: 222px;
+    font-size: $size5;
+  }
+  
+  &>p {
+    margin-left: 148px;
   }
 }
 
@@ -30,15 +38,62 @@ Alpha Forms (override bootstrap)
   margin-right: 12px;
 }
 
-input[type=submit], button {
-  @include button-submit();
+.btn-cohoop {
+  @include button-cohoop();
   
   &:hover, &:focus {
     color: $white;
-    @include button-submit-hover();
+    @include button-cohoop-hover();
   }
   
   &:active {
     display: none;
   }
+}
+
+.postMicrohoop {
+  float: left;
+}
+
+.new_microhoop {
+  
+  textarea {
+    $minHeight: 24px;
+    
+    min-height: $minHeight;
+    max-height: $minHeight * 2;
+    
+    width: (($wrapper / 12) * 9) - ($padding * 3) - 2px;
+    
+    margin-bottom: $margin;
+  }
+  
+  .formActions {
+    float: right;
+    clear: right;
+    width: 244px;
+    
+    &>* {
+      float: left;
+    }
+    
+    &>label {
+      margin: ($margin / 2) ($margin * 2) 0 ($margin / 2);
+    }
+    
+    &>input[type=checkbox] {
+      display: block;
+      margin-top: $margin - 4px;
+      
+      $size: 16px;
+      width: $size;
+      height: $size;
+    }
+  }
+  
+  input[type=submit] {
+    font-size: $size5;
+    padding: ($padding / 2) $padding;
+  }
+  
 }
