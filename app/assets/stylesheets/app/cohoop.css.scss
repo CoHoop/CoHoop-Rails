@@ -40,10 +40,3 @@ h6 {font-size: $size6}
   p, textarea {font-size: $size5};
   h2, h3 {border-bottom: 1px dotted darken($orange, 10%);}
 }
-
-/******************************************************************************/
-/* Temp stuff
-/******************************************************************************/
-.alert {
-  display: none !important;
-}
