@@ -4,17 +4,18 @@ Alpha Layout (override bootstrap)
 ================================================================================
 ==============================================================================*/
 .container {
-  margin: 52px auto 0;
+  margin: 45px auto 0;
   width: $wrapper;
 }
 
 #content {
-  margin-top: $margin * 2;
+  padding: $padding;
+  background-color: purple;
+  margin-left: 0;
 }
 
-
 #sidebar-left {
-  
+  margin-right: $margin + 8;
 }
 
 /******************************************************************************/
@@ -33,6 +34,23 @@ Alpha Layout (override bootstrap)
 /******************************************************************************/
 /* Pages
 /******************************************************************************/
+#feed-content,
+#main-content,
+#sidebar-left {
+  background: white;
+  margin-left: 0;
+  padding: $padding;
+}
+
+#main-content.span12 {
+  padding-right: 44px;
+}
+
+#main-content.span8,
+#feed-content.span8 {
+  padding-right: 20px;
+}
+
 #feed-content {
   
 }

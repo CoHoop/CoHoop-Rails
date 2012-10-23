@@ -19,7 +19,7 @@
 <%=	render 'layouts/header' %>
   <div class="container">
     <%= render 'shared/flash_messages' %>
-    <div id="content" class="clearfix">
+    <div id="content" class="row clearfix">
       <%= yield %>
     </div>
     <% if Rails.env.development? then %>

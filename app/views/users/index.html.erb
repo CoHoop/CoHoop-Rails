@@ -1,6 +1,8 @@
 <% present @users, presenters: [:users] do |presenter| %>
+<div id="main-content" class="span12">
   <h1>Users list</h1>
   <div class="full-users-list">
     <%= presenter.list_all_users %>
   </div>
+</div>
 <% end %>

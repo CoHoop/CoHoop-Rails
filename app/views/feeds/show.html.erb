@@ -1,5 +1,4 @@
 <% present @feed, presenters: [:user, :feed] do |presenter| %>
-<div class="row">
   <div id="sidebar-left" class="span4 sidebar">
     <div class="avatar">
       <%= presenter.avatar %>
@@ -25,5 +24,4 @@
       <%= presenter.feed_content %>
     </div>
   </div>
-</div>
  <% end %>

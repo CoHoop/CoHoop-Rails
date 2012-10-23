@@ -1,5 +1,4 @@
 <% present @user, presenters: [:user, :profile] do |presenter| %>
-<div class="row">
   <div id="sidebar-left" class="span4 profile sidebar">
 
     <%= link_to 'Documents', presenter.user_documents_path %>
@@ -40,5 +39,4 @@
       </div>
     </div>
   </div>
-</div>
 <% end %>
