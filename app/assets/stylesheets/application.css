@@ -10,5 +10,5 @@
  *
  *= require_self
  *= require ./app/cohoop
+ *= require_tree ./lib/jquery-ui/
   */
-  

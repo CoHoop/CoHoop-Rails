@@ -35,7 +35,10 @@ CohoopRails::Application.routes.draw do
   resources :users_tags_relationships, only: [:create, :destroy]
 
   # Tags
-  resources :tags, only: [:show]
+  resources :tags, only: [:show] do
+    get :autocomplete_tag_name, on: :collection, as: :autocomplete
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
