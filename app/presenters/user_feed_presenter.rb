@@ -24,6 +24,10 @@ class UserFeedPresenter < ApplicationPresenter
     render partial: 'users/microhoops/add_microhoop_form', locals: { user: current_user }
   end
 
+  def feed_title
+    feed.type.capitalize.to_s + ' feed'
+  end
+
   def feed_content
     case feed.filter
       # TODO: Need to change all target method

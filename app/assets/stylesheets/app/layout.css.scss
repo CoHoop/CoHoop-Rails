@@ -9,9 +9,23 @@ Alpha Layout (override bootstrap)
 }
 
 #content {
+//  @include makeColumn(12);
   margin-top: $margin * 2;
 }
 
+
+#sidebar-left {
+  @include makeColumn(2);
+  float: left;
+//  width: ((($wrapper / 12) * 3) - ($padding * 2)) - 2px; // 2px coz of well block border
+//  padding: $padding;
+//  margin-right: $margin * 2;
+}
+
+#sidebar-right {
+  float: right;
+  @include makeColumn(3);
+}
 
 /******************************************************************************/
 /* Forms
@@ -27,20 +41,23 @@ Alpha Layout (override bootstrap)
 }
 
 /******************************************************************************/
-/* Profile page
+/* Pages
 /******************************************************************************/
-#sidebar-left {
-  float: left;
-  width: ((($wrapper / 12) * 3) - ($padding * 2)) - 2px; // 2px coz of well block border
-  padding: $padding;
-  margin-right: $margin * 2;
-}
-
-#sidebar-right {
-  float: right;
-}
-
 #feed-content {
   float: left;
-  width: (($wrapper / 12) * 9) - ($margin * 2);
+  @include makeColumn(6);
+//  width: (($wrapper / 12) * 9) - ($margin * 2);
+}
+
+#main-content {
+  float: left;
+  @include makeColumn(8);
+//  width: (($wrapper / 12) * 9) - ($margin * 2);
+}
+
+/******************************************************************************/
+/* Profile
+/******************************************************************************/
+#main-content .best_in_place {
+  margin-right: 35px;
 }

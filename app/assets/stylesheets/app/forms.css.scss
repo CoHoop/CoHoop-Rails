@@ -7,27 +7,27 @@ Alpha Forms (override bootstrap)
   @include background-gradient(#2A2F31, #434A4E, 0.95);
   @include shining-box(0.3);
   color: $white;
-  
+
   h2 {
     margin-top: 0;
   }
-  
+
   a {
     font-size: 1.4em;
     color: $white;
     display: block;
     padding: 6px 12px;
-    
+
     &:hover, &:focus {
       color: darken($white, 10%);
     }
   }
-  
+
   input[type=submit], button {
     width: 222px;
     font-size: $size5;
   }
-  
+
   &>p {
     margin-left: 148px;
   }
@@ -40,12 +40,12 @@ Alpha Forms (override bootstrap)
 
 .btn-cohoop {
   @include button-cohoop();
-  
+
   &:hover, &:focus {
     color: $white;
     @include button-cohoop-hover();
   }
-  
+
   &:active {
     display: none;
   }
@@ -53,47 +53,58 @@ Alpha Forms (override bootstrap)
 
 .post-microhoop {
   float: left;
+  width: 100%;
 }
 
 .new_microhoop {
-  
+
   textarea {
     $minHeight: 24px;
-    
+
     min-height: $minHeight;
     max-height: $minHeight * 2;
-    
-    width: (($wrapper / 12) * 9) - ($padding * 3) - 2px;
-    
+    width: 98%;
+//    width: (($wrapper / 12) * 9) - ($padding * 3) - 2px;
+
     margin-bottom: $margin;
   }
-  
+
   .form-actions {
     float: right;
     clear: right;
-    width: 244px;
-    
+    width: 91%;
+
     &>* {
       float: left;
     }
-    
+
     &>label {
       margin: ($margin / 2) ($margin * 2) 0 ($margin / 2);
     }
-    
+
     &>input[type=checkbox] {
       display: block;
       margin-top: $margin - 4px;
-      
+
       $size: 16px;
       width: $size;
       height: $size;
     }
   }
-  
+
   input[type=submit] {
     font-size: $size5;
     padding: ($padding / 2) $padding;
   }
-  
+
+}
+
+.input-append .add-on {
+  height: auto;
+}
+
+
+// Best in place
+#main-content .best_in_place textarea {
+  font-size: 1em;
 }
