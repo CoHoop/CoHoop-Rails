@@ -1,5 +1,6 @@
 <% present @user, presenters: [:user, :profile] do |presenter| %>
-  <div id="sidebar-left" class="profile well sidebar">
+<div class="row">
+  <div id="sidebar-left" class="span4 profile sidebar">
 
     <%= link_to 'Documents', presenter.user_documents_path %>
     <div class="avatar">
@@ -15,7 +16,7 @@
     </div>
   </div>
 
-  <div id="main-content">
+  <div id="main-content" class="span8">
     <hgroup class="header">
       <h1>
         <%= presenter.name %>
@@ -39,4 +40,5 @@
       </div>
     </div>
   </div>
+</div>
 <% end %>
