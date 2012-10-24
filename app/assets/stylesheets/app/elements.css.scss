@@ -9,6 +9,20 @@
   
 }
 
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-body {
+  #document_name {
+    width: 280px;
+  }
+  
+  input[type=submit] {
+    margin: -($margin / 2) 0 0 $margin;
+  }
+}
+
 /******************************************************************************/
 /* Tabs
 /******************************************************************************/
@@ -290,5 +304,18 @@
   
   #main-tags-list {
     font-size: $size6;
+  }
+}
+
+/******************************************************************************/
+/* Document
+/******************************************************************************/
+#sidebar-left #add-document {
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 12px;
+  font: {
+    size: $size5;
+    weight: bold;
   }
 }
