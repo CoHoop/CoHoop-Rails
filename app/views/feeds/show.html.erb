@@ -1,5 +1,6 @@
 <% present @feed, presenters: [:user, :feed] do |presenter| %>
   <div id="sidebar-left" class="span4 sidebar">
+    <%= presenter.name %>
     <div class="avatar image-placeholder">
       <%= presenter.avatar %>
     </div> <!-- .avatar -->

@@ -13,8 +13,10 @@
     </nav>
     <nav class="menu pull-right">
         <ul class="cohoop-links">
-            <li><%= link_to 'Users list', users_path %></li>
-            <li><%= display_user_authentication %></li>
+          <li>
+            <%= link_to '<i class="icon-list-ul"></i>Users list'.html_safe, users_path  %>
+          </li>
+          <li><%= display_user_authentication %></li>
         </ul>
     </nav>
   </div>
