@@ -64,15 +64,19 @@ Alpha Forms (override bootstrap)
     min-height: $minHeight;
     max-height: $minHeight * 2;
     width: 98%;
-//    width: (($wrapper / 12) * 9) - ($padding * 3) - 2px;
 
     margin-bottom: $margin;
   }
 
   .form-actions {
     float: right;
-    clear: right;
-    width: 91%;
+    
+    /* Small hack to reset bootstrap */
+    padding: 0;
+    margin: 0;
+    background: none; 
+    border-top: none;
+    /* End of hack */
 
     &>* {
       float: left;

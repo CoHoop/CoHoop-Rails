@@ -1,13 +1,14 @@
 <% present @feed, presenters: [:user, :feed] do |presenter| %>
   <div id="sidebar-left" class="span4 sidebar">
-    <div class="avatar">
+    <div class="avatar image-placeholder">
       <%= presenter.avatar %>
     </div> <!-- .avatar -->
     <div id="filters">
-      <h2>Filters</h2>
+      <h3>Filters</h3>
       <%= presenter.filters %>
     </div>
   <div id="list-users">
+    <h3>User list</h3>
     <%= presenter.list_all_users %>
   </div>
   </div>
@@ -20,7 +21,7 @@
       <%= presenter.add_microhoop_form %>
     </div>
     <div id="microhoops-list">
-      <h2><%= presenter.feed_title %></h2>
+      <h3><%= presenter.feed_title %></h3>
       <%= presenter.feed_content %>
     </div>
   </div>

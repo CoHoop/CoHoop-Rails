@@ -1,29 +1,40 @@
 /******************************************************************************/
+/* Misc
+/******************************************************************************/
+.image-placeholder {
+  overflow: hidden;
+}
+
+#follow-button {
+  
+}
+
+/******************************************************************************/
 /* Tabs
 /******************************************************************************/
 
 .tabs {
   margin-bottom: $margin / 2;
   border-bottom: 1px solid $orange;
-
+  
   a {
     display: inline-block;
     padding: ($padding / 2) $padding;
     margin: 0 ($margin / 2);
-
+    
     border: 1px solid $orange;
     border-bottom: none;
     border-radius: $radius $radius 0 0;
-
+    
     background-color: lighten($orange, 40%);
-
+    
     color: $orange;
     font: {
       size: $size5;
       weight: bold;
     }
     text-transform: uppercase;
-
+    
     &:hover, &:focus {
       background-color: $orange;
       color: $white;
@@ -36,15 +47,76 @@
 /* Sidebar
 /******************************************************************************/
 #sidebar-left {
-
+  
   h2 {
     margin-top: 0;
   }
-
+  
   ul {
     list-style-type: none;
-    margin-left: $margin;
     padding: 0;
+    margin: 0;
+  }
+  
+  & > .image-placeholder {
+    $size: 64px;
+    width: $size;
+    height: $size;
+  }
+  
+  #filters-list {
+    float: left;
+    width: 100%;
+    
+    li {
+      float: left;
+      width: 46%;
+      margin:  0 ($margin / 2) ($margin / 2);
+    }
+    
+    input[type=submit] {
+      width: 100%;
+    }
+  }
+  
+  #list-users {
+    float: left;
+  }
+  
+  #users-list {
+    
+    & > li {
+      float: left;
+      border-bottom: 1px solid $grey;
+      margin-bottom: $margin;
+      padding-bottom: $padding;
+    }
+    
+    .image-placeholder {
+      $size: 48px;
+      float: left;
+      width: $size;
+      height: $size;
+      margin-right: $margin;
+    }
+    
+    .user-infos {
+      float: left;
+      width: 240px;
+    }
+    
+    .username {
+      font: {
+        size: $size5;
+        weight: bold;
+      }
+      border: none;
+      margin-bottom: $margin / 2;
+    }
+    
+    #follow-button {
+      font-size: $size6;
+    }
   }
 }
 
@@ -52,11 +124,11 @@
 /* Feed
 /******************************************************************************/
 #feed-content {
-
+  
   h3 {
     margin-top: 0;
   }
-
+  
 }
 
 #microhoops-list {
@@ -67,71 +139,54 @@
 .microhoops {
   list-style-type: none;
   padding: 0;
-
-
+  
+  
 }
 
 .microhoop {
-  margin-bottom: ($margin * 4);
-  padding: $padding $padding ($padding / 2) $padding;
-
-  background-color: white;
-  border-radius: $radius;
-
-  .feedInfos {
+  padding: $padding 0;
+  border-bottom: 1px solid $grey;
+  
+  .microhoop-infos {
     float: left;
-    clear: both;
-
     width: 100%;
-
-    border-bottom: 1px solid $orange;
   }
-
+  
   .microhoop-avatar {
     float: left;
-
-    margin: (-$padding) $margin 0 (-$padding);
-
+    margin-right: $margin;
+    margin-left: -$margin;
+    
     $size: 48px;
     width: $size;
     height: $size;
   }
-
+  
   .microhoop-username {
     float: left;
-
+    
     font-size: $size4;
   }
-
-  .microhoop-icon-urgent {
+  
+  .microhoop-urgent {
     float: right;
-
-    $size: 48px;
-    width: $size;
-    height: $size;
-
-    text-indent: -9999px;
-
-    @include urgent-hoop-icon;
-
     display: none;
   }
-
+  
   .microhoop-content {
-    margin-left: 3.5em;
+    margin-left: 50px;
     clear: both;
     padding: $padding 0;
-
     font-size: $size5;
   }
-
+  
   .microhoop-date {
     color: $grey;
     text-align: right;
   }
 }
 
-.urgent .microhoop-icon-urgent {
+.urgent .microhoop-urgent {
   display: block;
 }
 
@@ -147,30 +202,37 @@
 }
 
 .tag-pills {
-  margin-top: 1.5em;
+  float: left;
+  margin: $margin 0;
   clear: both;
-  padding-left: 0;
-}
-
-.tag-pills li {
-  list-style: none;
-  float: left;
-  background-color: $orange;
-  color: white;
-  margin-right: 10px;
-  padding: 0 5px 2px 10px;
-  border-radius: 10px;
-}
-
-.tag-pills a {
-  color: inherit;
-  text-decoration: none;
-  margin-top: 2px;
-  float: left;
-}
-
-.tag-pills button {
-  background: none;
-  border: none;
-  display: inline-block;
+  
+  li {
+    float: left;
+    margin: 0.2em;
+    padding: 3px;
+    border-radius: $radius;
+    background: $orange;
+    transition: all 0.3s ease-out;
+    
+    &:hover, &:focus {
+      background: lighten($orange, 10%);
+    }
+    
+    &:active {
+      background: lighten($orange, 15%);
+    }
+  }
+  
+  a {
+    float: left;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    display: inl
+  }
 }
