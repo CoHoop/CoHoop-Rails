@@ -11,11 +11,12 @@ Alpha Layout (override bootstrap)
 #content {
   padding: $padding;
   background-color: purple;
+  background-image: url('/assets/app/bg_content.png');
   margin-left: 0;
 }
 
 #sidebar-left {
-  margin-right: $margin + 8;
+  margin-right: $margin * 2;
 }
 
 /******************************************************************************/
@@ -44,12 +45,12 @@ Alpha Layout (override bootstrap)
 }
 
 #main-content.span12 {
-  padding-right: 44px;
+  padding-right: ($padding * 3) + 8;
 }
 
 #main-content.span8,
 #feed-content.span8 {
-  padding-right: 20px;
+  padding-right: $padding + 4;
 }
 
 #feed-content {
