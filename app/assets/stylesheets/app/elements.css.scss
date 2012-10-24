@@ -193,18 +193,23 @@
 /******************************************************************************/
 /* Tags
 /******************************************************************************/
+#tags {
+  float: left;
+  width: 100%;
+}
 
 #main-tags, #secondary-tags {
   float: left;
   width: 100%;
   clear: both;
-  margin-bottom: 25px;
 }
 
 .tag-pills {
   float: left;
   margin: $margin 0;
+  padding: 0;
   clear: both;
+  list-style-type: none;
   
   li {
     float: left;
@@ -234,5 +239,56 @@
     background: none;
     border: none;
     display: inl
+  }
+}
+
+
+/******************************************************************************/
+/* User list
+/******************************************************************************/
+#users-list {
+  float: left;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  
+  & > li {
+    width: 100%;
+    float: left;
+    margin: $margin 0;
+    padding: $padding 0 0 0;
+    border-bottom: 1px solid $grey;
+  }
+  
+  .image-placeholder {
+    float: left;
+    $size: 64px;
+    width: $size;
+    height: $size;
+    margin-right: $margin / 2;
+  }
+  
+  img {
+    
+  }
+  
+  .user-infos {
+    float: left;
+  }
+  
+  .username {
+    font: {
+      size: $size4;
+      weight: bold;
+    };
+  }
+  
+  #follow-button {
+    font-size: $size6;
+  }
+  
+  #main-tags-list {
+    font-size: $size6;
   }
 }
