@@ -14,10 +14,26 @@
     </div> <!-- #upload-popin -->
     <% end %>
 
-    <ul>
-      <% @user.documents.each do |document| %>
-      <li><%= link_to document.name, documents_path(id: document.slug) %></li>
-      <% end %>
-    </ul>
+    <table id="list-documents" class="table table-hover">
+      <thead>
+        <tr>
+          <th><input type="checkbox" name="document_action" /></th>
+          <th>Title</th>
+          <th>Owner</th>
+          <th>Last modified</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.documents.each do |document| %>
+        <tr>
+          <td><input type="checkbox" name="document_action" /></td>
+          <td><%= link_to document.name, documents_path(id: document.slug) %></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
   </div>
 </div>

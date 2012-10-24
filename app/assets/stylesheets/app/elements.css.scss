@@ -319,3 +319,20 @@
     weight: bold;
   }
 }
+
+#list-documents {
+  
+  th {
+    font: {
+      size: $size5;
+      weight: bold;
+    }
+  }
+  
+  td {
+    font: {
+      size: $size6;
+      weight: bold;
+    }
+  }
+}
