@@ -2,10 +2,10 @@
 <% users.each do |user| %>
   <li>
   	<div class="image-placeholder">
-    	<%= user.avatar(avatar_size) %>
+    	<%= link_to user.avatar(avatar_size), profile_path(id: user.id, first: user.first_name.downcase, last:user.last_name.downcase) %>
 	</div>
 	<div class="user-infos">
-	    <div class="username"><%= user.name %></div>
+	    <div class="username"><%= link_to user.name, profile_path(id: user.id, first: user.first_name.downcase, last:user.last_name.downcase) %></div>
 	    <div id="follow-button"><%= user.follow_button %></div>
 	</div>
 	<div class="user-tags">
