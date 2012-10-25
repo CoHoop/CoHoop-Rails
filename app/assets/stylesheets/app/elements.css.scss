@@ -72,8 +72,12 @@
     width: 100%;
   }
   
-  h2 {
-    margin-top: 0;
+  h3 {
+    margin-bottom: 0;
+  }
+  
+  h4 {
+    margin: $margin 0;
   }
   
   ul {
