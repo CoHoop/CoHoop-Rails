@@ -6,6 +6,30 @@
   background-image:none;
 }
 
+.flash-messages {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  
+  .alert {
+    font: {
+      size: 1.4em;
+      weight: bold;
+    }
+    padding: 12px;
+    text-align: center;
+    margin-bottom: 0;
+    cursor: pointer;
+  }
+  
+  i {
+    float: right;
+    margin-right: $margin * 2;
+  }
+}
+
 .image-placeholder {
   overflow: hidden;
 }
