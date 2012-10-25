@@ -62,7 +62,7 @@ class UserFeedPresenter < ApplicationPresenter
     users = UserInterface.new(User.all)
     # TODO: Should use a factory for Presenter and interfaces
     all_users = users.map { |u| UserProfilePresenter.new(UserInterface.new(AuthenticationInterface.new(u, current_user)), helper, 'User') }
-    render partial: 'users/shared/list', locals: { users: all_users }
+    render partial: 'users/shared/list', locals: { users: all_users, avatar_size: :small }
   end
 
   private

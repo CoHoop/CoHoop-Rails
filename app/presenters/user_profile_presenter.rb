@@ -30,7 +30,7 @@ class UserProfilePresenter < ApplicationPresenter
     if can_edit?
       render partial: 'users/profile/avatar_with_upload', locals: { presenter: self }
     else
-      avatar
+      avatar(:huge)
     end
   end
 
@@ -60,7 +60,7 @@ class UserProfilePresenter < ApplicationPresenter
   #
   # Returns an HTML String.
   def followed_users_list
-    render partial: 'users/profile/followed_users', locals: { user:  self }
+    render partial: 'users/profile/followed_users', locals: { user: self }
   end
 
   # Private: Wraps user.followed_users inside presenters
