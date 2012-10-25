@@ -1,6 +1,11 @@
 /******************************************************************************/
 /* Misc
 /******************************************************************************/
+/* Override Bootstrap background icons */
+[class^="icon-"] {
+  background-image:none;
+}
+
 .image-placeholder {
   overflow: hidden;
 }
