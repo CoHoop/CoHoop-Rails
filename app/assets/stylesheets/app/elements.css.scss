@@ -72,10 +72,6 @@
     width: 100%;
   }
   
-  h3 {
-    margin-bottom: 0;
-  }
-  
   h4 {
     margin: $margin 0;
   }
@@ -173,6 +169,14 @@
     
     #follow-button {
       font-size: $size6;
+    }
+  }
+  
+  .followers-list,
+  .followed-users-list {
+    li {
+      float: left;
+      margin: 1px;
     }
   }
 }
