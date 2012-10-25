@@ -3,17 +3,6 @@ require 'modules/user_presenter'
 class UserProfilePresenter < ApplicationPresenter
   include UserPresenter
 
-  # Public: Renders users's university and job wrapped in an editable span
-  # (if the current user has the rights).
-  #
-  # Returns an HTML String.
-  def professional_information
-    handles_not_set user.university, user.job, check: true do |university, job|
-      best_in_place_if(can_edit?, user, :university, type: :input, :nil => 'University not specified', errors: university.errors) +
-      best_in_place_if(can_edit?, user, :job, type: :input, :nil => 'Job not specified', errors: job.errors)
-    end
-  end
-
   def university
     handles_not_set user.university, check: true do |university|
       best_in_place_if(can_edit?, user, :university, type: :input, :nil => 'University not specified', errors: university.errors)

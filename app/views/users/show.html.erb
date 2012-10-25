@@ -1,62 +1,61 @@
 <% present @user, presenters: [:user, :profile] do |presenter| %>
-  <div id="sidebar-left" class="span4 profile sidebar">
+<div id="sidebar-left" class="span4 profile sidebar">
 
-    <%= link_to 'My documents', presenter.user_documents_path, id: 'my-documents', class: "btn btn-cohoop" %>
-    <div class="avatar">
-      <%= presenter.manage_avatar %>
-    </div> <!-- .avatar -->
-    <div id="followers">
-      <h2> Followers </h2>
-      <%= presenter.followers_list %>
-    </div>
-    <div id="followed-users">
-      <h2> Followed users </h2>
-      <%= presenter.followed_users_list %>
-    </div>
+  <%= link_to 'My documents', presenter.user_documents_path, id: 'my-documents', class: "btn btn-cohoop" %>
+  <div class="avatar">
+    <%= presenter.manage_avatar %>
+  </div> <!-- .avatar -->
+  <div id="followers">
+    <h2> Followers </h2>
+    <%= presenter.followers_list %>
   </div>
-
-  <div id="main-content" class="span8">
-      <h2><%= presenter.name %></h2>
-      <div id="follow-button"><%= presenter.follow_button %></div>
-
-      
-
-      
-<div id="form-personnal-informations" class="form-horizontal">
-  <legend>Your profile informations</legend>
-  <div class="control-group">
-    <label class="control-label" for="university">University</label>
-    <div class="controls">
-      <%= presenter.professional_information %>
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="job">Job</label>
-    <div class="controls">
-      
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="job">Biography</label>
-    <div class="controls">
-      <%= presenter.biography %>
-    </div>
+  <div id="followed-users">
+    <h2> Followed users </h2>
+    <%= presenter.followed_users_list %>
   </div>
 </div>
 
-
-
-    <div id="tags">
-      <div id="main-tags">
-        <h2>Main tags</h2>
-        <%= presenter.add_main_tags %>
-        <%= presenter.main_tags %>
+<div id="main-content" class="span8">
+  <h2><%= presenter.name %></h2>
+  <div id="follow-button">
+    <%= presenter.follow_button %>
+  </div>
+  <div id="form-personnal-informations" class="form-horizontal">
+    <legend>Your profile informations</legend>
+    <div class="control-group">
+      <label class="control-label" for="university">University</label>
+      <div class="controls">
+        <%= presenter.university %>
+        <%= presenter.job %>
       </div>
-      <div id="secondary-tags">
-        <h2>Secondary tags</h2>
-        <%= presenter.add_secondary_tags %>
-        <%= presenter.secondary_tags %>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="job">Job</label>
+      <div class="controls">
+
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="job">Biography</label>
+      <div class="controls">
+        <%= presenter.biography %>
       </div>
     </div>
   </div>
+
+
+
+  <div id="tags">
+    <div id="main-tags">
+      <h2>Main tags</h2>
+      <%= presenter.add_main_tags %>
+      <%= presenter.main_tags %>
+    </div>
+    <div id="secondary-tags">
+      <h2>Secondary tags</h2>
+      <%= presenter.add_secondary_tags %>
+      <%= presenter.secondary_tags %>
+    </div>
+  </div>
+</div>
 <% end %>
