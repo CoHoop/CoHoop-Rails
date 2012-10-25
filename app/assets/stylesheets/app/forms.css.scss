@@ -86,8 +86,8 @@ input[type="color"]:focus,
     min-height: $minHeight;
     max-height: $minHeight * 2;
     width: 98%;
-    
     margin-bottom: $margin;
+    font-size: 1.4em;
   }
   
   .form-actions {
