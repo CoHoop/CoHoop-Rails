@@ -146,9 +146,13 @@ input[type="color"]:focus,
     }
   }
   
+  .controls {
+    font-size: $size5;
+    margin-top: $margin / 2;
+  }
+  
   .best_in_place {
     display: block;
-    font-size: $size5;
     padding: ($padding / 2) $padding;
     border: 1px dotted $grey;
     border-radius: $radius;
