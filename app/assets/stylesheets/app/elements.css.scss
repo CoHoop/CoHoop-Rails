@@ -315,7 +315,10 @@
   
   a {
     float: left;
-    font-weight: bold;
+    font: {
+      size: 1em;
+      weight: bold;
+    }
     color: white;
     text-decoration: none;
   }
