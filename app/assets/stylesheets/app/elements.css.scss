@@ -1,6 +1,11 @@
 /******************************************************************************/
 /* Misc
 /******************************************************************************/
+/* Override Bootstrap background icons */
+[class^="icon-"] {
+  background-image:none;
+}
+
 .image-placeholder {
   overflow: hidden;
 }
@@ -269,6 +274,7 @@
   
   & > li {
     width: 100%;
+    min-height: 76px;
     float: left;
     margin: $margin 0;
     padding: $padding 0 0 0;
@@ -281,10 +287,6 @@
     width: $size;
     height: $size;
     margin-right: $margin / 2;
-  }
-  
-  img {
-    
   }
   
   .user-infos {
@@ -300,6 +302,7 @@
   
   #follow-button {
     font-size: $size6;
+    margin-top: 16px;
   }
   
   #main-tags-list {

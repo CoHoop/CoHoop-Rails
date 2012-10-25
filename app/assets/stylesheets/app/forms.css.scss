@@ -3,31 +3,59 @@
 Alpha Forms (override bootstrap)
 ================================================================================
 ==============================================================================*/
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: rgba(236, 138, 12, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(236, 138, 12, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(236, 138, 12, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(236, 138, 12, 0.6);
+}
+
+/******************************************************************************/
+/* Sign in/out forms
+/******************************************************************************/
 .sign-in-form {
   @include background-gradient(#2A2F31, #434A4E, 0.95);
   @include shining-box(0.3);
   color: $white;
-
+  
   h2 {
     margin-top: 0;
   }
-
+  
   a {
     font-size: 1.4em;
     color: $white;
     display: block;
     padding: 6px 12px;
-
+    
     &:hover, &:focus {
       color: darken($white, 10%);
     }
   }
-
+  
   input[type=submit], button {
     width: 222px;
     font-size: $size5;
   }
-
+  
   &>p {
     margin-left: 148px;
   }
@@ -40,12 +68,12 @@ Alpha Forms (override bootstrap)
 
 .btn-cohoop {
   @include button-cohoop();
-
+  
   &:hover, &:focus {
     color: $white;
     @include button-cohoop-hover();
   }
-
+  
   &:active {
     display: none;
   }
@@ -57,17 +85,17 @@ Alpha Forms (override bootstrap)
 }
 
 .new_microhoop {
-
+  
   textarea {
     $minHeight: 24px;
-
+    
     min-height: $minHeight;
     max-height: $minHeight * 2;
     width: 98%;
-
+    
     margin-bottom: $margin;
   }
-
+  
   .form-actions {
     float: right;
     
@@ -77,38 +105,61 @@ Alpha Forms (override bootstrap)
     background: none; 
     border-top: none;
     /* End of hack */
-
+    
     &>* {
       float: left;
     }
-
+    
     &>label {
       margin: ($margin / 2) ($margin * 2) 0 ($margin / 2);
     }
-
+    
     &>input[type=checkbox] {
       display: block;
       margin-top: $margin - 4px;
-
+      
       $size: 16px;
       width: $size;
       height: $size;
     }
   }
-
+  
   input[type=submit] {
     font-size: $size5;
     padding: ($padding / 2) $padding;
   }
-
+  
 }
 
 .input-append .add-on {
   height: auto;
 }
 
-
-// Best in place
-#main-content .best_in_place textarea {
-  font-size: 1em;
+/******************************************************************************/
+/* Personnal informations form
+/******************************************************************************/
+#form-personnal-informations {
+  label {
+    font: {
+      size: $size4;
+      weight: bold;
+    }
+  }
+  
+  .best_in_place {
+    display: block;
+    font-size: $size5;
+    padding: ($padding / 2) $padding;
+    border: 1px dotted $grey;
+    border-radius: $radius;
+    
+    input {
+      min-width: 97%;
+    }
+  }
+  
+  textarea {
+    font-size: $size7;
+    min-width: 97% !important;
+  }
 }
