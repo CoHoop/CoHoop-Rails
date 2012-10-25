@@ -11,9 +11,23 @@ $(function(){
   
   setTimeout(function(){
     flashMessage.hide(250);
-    console.log('bye !');
   }, 4000);
     
+  /* Add input-highlighted class on profile information edition */
+  $('.best_in_place').on('click', function(){
+    $(this).addClass('input-highlighted');
+  });
   
+  /* Add delete mask on tags on close button hover */
+  var deleteTag = '<div class="delete-tag"><i class="icon-remove"></i> Delete</div>';
+
+  $(".tag-pills button").on({
+    mouseenter: function () {
+      $(deleteTag).hide().appendTo($(this)).fadeIn(250);
+    },
+    mouseleave: function () {
+      $(this).children('.delete-tag').remove();
+    }
+  });
   
 }());
