@@ -12,8 +12,14 @@ module UserPresenter
 
   # Public: Creates a thumbnail for the user's avatar
   #
+  # size - the size as a Symbol (default: :big)
+  #
   # Returns an HTML String.
-  def avatar
-    _.image_tag model.avatar.url(:thumb), class: 'avatar', alt: self.name
+  def avatar(size = :big)
+    _.image_tag model.avatar.url(size), class: 'avatar', alt: self.name
   end
+
+  def id; model.id; end
+  def first_name; model.first_name; end
+  def last_name; model.last_name; end
 end

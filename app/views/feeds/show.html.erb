@@ -2,7 +2,7 @@
   <div id="sidebar-left" class="span4 sidebar">
     <a href="<%= presenter.current_user_profile_link  %>" title="Go to your profile page" id="user-pinfos">
       <div class="avatar image-placeholder">
-        <%= presenter.avatar %>
+        <%= presenter.avatar(:huge) %>
       </div> <!-- .avatar -->
       <div class="username">
         <%= presenter.name %>
