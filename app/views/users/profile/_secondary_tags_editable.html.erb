@@ -5,7 +5,7 @@
         <%= hidden_field_tag 'main', false %>
         <%= render partial: 'tags/tag', locals: { tag: tag } %>
         <button type="submit", id="delete-<%= tag.name.slugify %>">
-          <i class="icon-remove icon-white"></i>
+          <i class="icon-remove"></i>
         </button>
       <% end %>
     </li>

@@ -11,7 +11,7 @@ class UserProfilePresenter < ApplicationPresenter
 
   def job
     handles_not_set user.job, check: true do |job|
-      best_in_place_if(can_edit?, user, :job, type: :input, :nil => 'Job not specified', errors: job.errors)
+      best_in_place_if(can_edit?, user, :job, type: :input, :nil => 'Job experience', errors: job.errors)
     end
   end
 
@@ -21,7 +21,7 @@ class UserProfilePresenter < ApplicationPresenter
   # Returns an HTML String.
   def biography
     handles_not_set user.biography, check: true do |biography|
-      best_in_place_if(can_edit?, user, :biography, type: :textarea ,:nil => 'Biography not specified', errors: biography.errors)
+      best_in_place_if(can_edit?, user, :biography, type: :textarea ,:nil => 'Tell CoHoopers something about you as a learner', errors: biography.errors)
     end
   end
 

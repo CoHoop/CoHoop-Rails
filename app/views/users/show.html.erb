@@ -1,16 +1,20 @@
 <% present @user, presenters: [:user, :profile] do |presenter| %>
 <div id="sidebar-left" class="span4 profile sidebar">
-
-  <%= link_to 'My documents', presenter.user_documents_path, id: 'my-documents', class: "btn btn-cohoop" %>
-  <div class="avatar">
+  <div id="add-document">
+    <%= link_to 'My documents', presenter.user_documents_path, id: 'my-documents', class: "btn btn-cohoop" %>
+  </div>
+  <div id="avatar-profile" class="avatar">
     <%= presenter.manage_avatar %>
   </div> <!-- .avatar -->
+  <div>
+    <h3>My learning community</h3>
+  </div>
   <div id="followers">
-    <h2> Followers </h2>
+    <h4>Followers</h4>
     <%= presenter.followers_list %>
   </div>
   <div id="followed-users">
-    <h2> Followed users </h2>
+    <h4>Following</h4>
     <%= presenter.followed_users_list %>
   </div>
 </div>
@@ -42,16 +46,14 @@
     </div>
   </div>
 
-
-
   <div id="tags">
     <div id="main-tags">
-      <h2>Main tags</h2>
+      <h2>I'm studying&#133;</h2>
       <%= presenter.add_main_tags %>
       <%= presenter.main_tags %>
     </div>
     <div id="secondary-tags">
-      <h2>Secondary tags</h2>
+      <h2>Other interests</h2>
       <%= presenter.add_secondary_tags %>
       <%= presenter.secondary_tags %>
     </div>
