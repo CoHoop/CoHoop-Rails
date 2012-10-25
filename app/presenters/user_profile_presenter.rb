@@ -14,6 +14,18 @@ class UserProfilePresenter < ApplicationPresenter
     end
   end
 
+  def university
+    handles_not_set user.university, check: true do |university|
+      best_in_place_if(can_edit?, user, :university, type: :input, :nil => 'University not specified', errors: university.errors)
+    end
+  end
+
+  def job
+    handles_not_set user.job, check: true do |job|
+      best_in_place_if(can_edit?, user, :job, type: :input, :nil => 'Job not specified', errors: job.errors)
+    end
+  end
+
   # Public: Renders user's biography wrapped in an editable span
   # (if the current user has the rights).
   #
