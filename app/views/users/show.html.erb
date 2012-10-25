@@ -1,8 +1,6 @@
 <% present @user, presenters: [:user, :profile] do |presenter| %>
 <div id="sidebar-left" class="span4 profile sidebar">
-  <div id="add-document">
-    <%= link_to 'My documents', presenter.user_documents_path, id: 'my-documents', class: "btn btn-cohoop" %>
-  </div>
+  <%= link_to 'My documents', presenter.user_documents_path, id: 'my-documents', class: "btn btn-cohoop" %>
   <div id="avatar-profile" class="avatar">
     <%= presenter.manage_avatar %>
   </div> <!-- .avatar -->
