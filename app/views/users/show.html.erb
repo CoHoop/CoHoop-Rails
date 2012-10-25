@@ -16,16 +16,36 @@
   </div>
 
   <div id="main-content" class="span8">
-    <hgroup class="header">
-      <h1>
-        <%= presenter.name %>
-        <span id="follow-button">
-          <%= presenter.follow_button %>
-        </span>
-      </h1>
-      <h2><%= presenter.professional_information %></h2>
-    </hgroup>
-    <p><%= presenter.biography %></p>
+      <h2><%= presenter.name %></h2>
+      <div id="follow-button"><%= presenter.follow_button %></div>
+
+      
+
+      
+<div id="form-personnal-informations" class="form-horizontal">
+  <legend>Your profile informations</legend>
+  <div class="control-group">
+    <label class="control-label" for="university">University</label>
+    <div class="controls">
+      <%= presenter.professional_information %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="job">Job</label>
+    <div class="controls">
+      
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="job">Biography</label>
+    <div class="controls">
+      <%= presenter.biography %>
+    </div>
+  </div>
+</div>
+
+
+
     <div id="tags">
       <div id="main-tags">
         <h2>Main tags</h2>
