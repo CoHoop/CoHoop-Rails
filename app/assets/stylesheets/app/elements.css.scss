@@ -67,6 +67,11 @@
 /******************************************************************************/
 #sidebar-left {
   
+  & > div {
+    float: left;
+    width: 100%;
+  }
+  
   h2 {
     margin-top: 0;
   }
@@ -77,10 +82,39 @@
     margin: 0;
   }
   
-  & > .image-placeholder {
-    $size: 64px;
-    width: $size;
-    height: $size;
+  #user-pinfos {
+    display: block;
+    float: left;
+    width: 100%;
+    margin-bottom: $margin;
+    
+    & > div {
+      float: left;
+    }
+    
+    .image-placeholder {
+      $size: 64px;
+      width: $size;
+      height: $size;
+    }
+    
+    .username {
+      font: {
+        size: $size6;
+        weight: bold;
+      }
+      margin: ($margin * 2) 0 0 $margin;
+    }
+  }
+  
+  #avatar-profile {
+    div {
+      margin: ($margin / 2) 0;
+    }
+  }
+  
+  #filters {
+    clear: left;
   }
   
   #filters-list {

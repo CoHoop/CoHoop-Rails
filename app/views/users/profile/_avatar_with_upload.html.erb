@@ -1,11 +1,9 @@
-<div class="dropdown" id="avatar-menu">
-  <a class="dropdown-toggle" id="avatar-dropdown" data-toggle="dropdown" href="#avatar-menu">
-    <%= presenter.avatar %>
-  </a>
-  <ul class="dropdown-menu">
-    <li><a id="upload-avatar" href="#">Upload an image</a></li>
-  </ul>
-</div> <!-- #upload-menu -->
+<div>
+  <%= presenter.avatar %>
+</div>
+<div>
+  <a id="upload-avatar" href="#" class="btn btn-small btn-cohoop">Upload an image</a>
+</div>
 
 <div class="modal hide" id="upload-popin">
   <div class="modal-header">
