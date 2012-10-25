@@ -22,10 +22,10 @@ class ModelInterface < SimpleDecorator
   #   # => 'University not specified'
   #
   # Returns the attribute value or a String indicating that it has not been specified.
-  def may_not_be_set(attribute)
+  def may_not_be_set(attribute, placeholder = nil)
     value = model.send(attribute)
     if value.blank?
-      "#{attribute.capitalize} not specified"
+      placeholder || "#{attribute.capitalize} not specified"
     else
       value
     end
