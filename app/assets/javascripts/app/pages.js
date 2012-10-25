@@ -14,9 +14,14 @@ $(function(){
   }, 4000);
     
   /* Add input-highlighted class on profile information edition */
-  $('.best_in_place').on('click', function(){
+  /*
+   * @todo fix it !
+   */
+  /*var bestInPlace = $('.best_in_place');
+  
+  bestInPlace.on('click', function(){
     $(this).addClass('input-highlighted');
-  });
+  });*/
   
   /* Add delete mask on tags on close button hover */
   var deleteTag = '<div class="delete-tag"><i class="icon-remove"></i> Delete</div>';
@@ -28,6 +33,16 @@ $(function(){
     mouseleave: function () {
       $(this).children('.delete-tag').remove();
     }
+  });
+  
+  /* Tooltips */
+  $('#avatar-profile img').attr('title', 'Change your avatar').attr('rel', 'tooltip').tooltip();
+  
+  $('.followers-list a, .followed-users-list a').each(function(){
+    var alt = $(this).attr('alt');
+    $(this).attr('title', alt).attr('rel', 'tooltip').tooltip({
+      placement: 'bottom'
+    });
   });
   
 }());
