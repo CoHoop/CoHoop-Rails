@@ -1,2 +1,2 @@
-$("#follow-button").html("<%= escape_javascript(render partial: 'users/profile/follow', locals: { user: @user })  %>")
+$("#follow-button-<%= @user.id  %>").html("<%= escape_javascript(render partial: 'users/profile/follow', locals: { user: @user })  %>")
 $("#followers").html("<%= escape_javascript(render partial: 'users/profile/followers', locals: { user: UserProfilePresenter.new(@user, self) }) %>");
