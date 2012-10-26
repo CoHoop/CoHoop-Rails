@@ -67,6 +67,19 @@ class UserFeedPresenter < ApplicationPresenter
     render partial: 'users/shared/list', locals: { users: all_users, avatar_size: :small }
   end
 
+  def render_each_microhoop_for(query)
+    query.collect do |microhoop|
+      microhoop.content.convert_tags_to_html_links('#') { |name|
+        tag = Tag.find_by_name(name.downcase)
+        id  = tag.nil? ? '' : tag.id
+        "/tags/#{id}"
+      }
+      microhoop.content = microhoop.content.html_safe
+      user = UserFeedPresenter.new(UserInterface.new(microhoop.user), helper)
+      render(partial: 'feeds/microhoop', locals: { user: user, microhoop: microhoop })
+    end.join
+  end
+
   private
   def feed
     model
@@ -82,18 +95,5 @@ class UserFeedPresenter < ApplicationPresenter
       render_each_microhoop_for(microhoops).html_safe
     end +
     _.will_paginate(microhoops)
-  end
-
-  def render_each_microhoop_for(query)
-    query.collect do |microhoop|
-      microhoop.content.convert_tags_to_html_links('#') { |name|
-        tag = Tag.find_by_name(name.downcase)
-        id  = tag.nil? ? '' : tag.id
-        "/tags/#{id}"
-      }
-      microhoop.content = microhoop.content.html_safe
-      user = UserFeedPresenter.new(UserInterface.new(microhoop.user), helper)
-      render(partial: 'feeds/microhoop', locals: { user: user, microhoop: microhoop })
-    end.join
   end
 end
