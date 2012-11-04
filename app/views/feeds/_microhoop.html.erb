@@ -3,7 +3,7 @@
     <div class="microhoop-avatar">
       <%= user.avatar %>
     </div>
-    <span class="microhoop-username"><%= user.name %></span>
+    <span class="microhoop-username"><%= link_to user.name, profile_path(id: user.id, first:user.first_name.downcase, last: user.last_name.downcase) %></span>
     <div class="microhoop-urgent">
       This microhoop is urgent !
     </div>
