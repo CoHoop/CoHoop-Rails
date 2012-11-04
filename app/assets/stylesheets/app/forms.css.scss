@@ -29,27 +29,27 @@ input[type="color"]:focus,
   @include background-gradient(#2A2F31, #434A4E, 0.95);
   @include shining-box(0.3);
   color: $white;
-  
+
   h2 {
     margin-top: 0;
   }
-  
+
   a {
     font-size: 1.4em;
     color: $white;
     display: block;
     padding: 6px 12px;
-    
+
     &:hover, &:focus {
       color: darken($white, 10%);
     }
   }
-  
+
   input[type=submit], button {
     width: 222px;
     font-size: $size5;
   }
-  
+
   &>p {
     margin-left: 148px;
   }
@@ -62,14 +62,14 @@ input[type="color"]:focus,
 
 .btn-cohoop {
   @include button-cohoop();
-  
+
   &:hover, &:focus {
     color: $white;
     @include button-cohoop-hover();
   }
-  
+
   &:active {
-    display: none;
+ //    display: none;
   }
 }
 
@@ -79,50 +79,50 @@ input[type="color"]:focus,
 }
 
 .new_microhoop {
-  
+
   textarea {
     $minHeight: 24px;
-    
+
     min-height: $minHeight;
     max-height: $minHeight * 2;
     width: 98%;
     margin-bottom: $margin;
     font-size: 1.4em;
   }
-  
+
   .form-actions {
     float: right;
-    
+
     /* Small hack to reset bootstrap */
     padding: 0;
     margin: 0;
-    background: none; 
+    background: none;
     border-top: none;
     /* End of hack */
-    
+
     &>* {
       float: left;
     }
-    
+
     &>label {
       margin: ($margin / 2) ($margin * 2) 0 ($margin / 2);
     }
-    
+
     &>input[type=checkbox] {
       display: block;
       margin-top: $margin - 4px;
-      
+
       $size: 16px;
       width: $size;
       height: $size;
     }
   }
-  
+
   input[type=submit] {
     font-size: $size5;
     padding: ($padding / 2) $padding;
   }
-  
+
 }
 
 .input-append .add-on {
@@ -139,41 +139,41 @@ input[type="color"]:focus,
       weight: bold;
     }
   }
-  
+
   .controls {
     font-size: $size5;
     margin-top: $margin / 2;
   }
-  
+
   .controls > span {
     margin-top: -($margin / 2);
   }
-  
+
   .best_in_place {
     display: block;
     overflow: hidden;
     padding: ($padding / 2) $padding;
     border: 1px solid $grey;
     border-radius: $radius;
-    
+
     input, textarea {
       width: 98%;
       border: 0;
       box-shadow: none;
       padding: 0;
     }
-    
+
     textarea {
       font-size: $size7;
     }
   }
-  
+
   .best_in_place.input-highlighted {
     @include inputBoxActive;
   }
-  
+
   #best_in_place_user_1_biography {
     min-height: 40px;
   }
-  
+
 }
