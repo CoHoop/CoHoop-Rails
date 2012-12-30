@@ -200,6 +200,7 @@ Bones
 
         fieldset {
             padding: 0 $padding;
+            text-align: center;
         }
 
         .advancedInput {
@@ -248,10 +249,9 @@ Bones
 
         input[type=submit] {
             @include button();
-            display: block;
             width: 60%;
             clear: left;
-            margin: 0 auto;
+            margin: 10px auto;
             font-size: 2em;
 
             &:hover {

@@ -105,17 +105,25 @@
   text-shadow: 0 1px 0 rgba(46, 46, 46, 1);
   -webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.8), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.6);
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.8), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.6);
-  background: {
-    color: #44363f;
-    image: url('/assets/home/bg-submit-btn.png');
-    position: 0 0;
-  }
+  background: #ea8060; /* Old browsers */
+  background: -moz-linear-gradient(top, #ea8060 0%, #ea4817 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ea8060), color-stop(100%,#ea4817)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ea8060 0%,#ea4817 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #ea8060 0%,#ea4817 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #ea8060 0%,#ea4817 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #ea8060 0%,#ea4817 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea8060', endColorstr='#ea4817',GradientType=0 ); /* IE6-9 */
 }
 
 @mixin button-hover {
-  background: {
-    position: 0 50px;
-  }
+  background: #ea8060; /* Old browsers */
+  background: -moz-linear-gradient(top, #ea8060 0%, #e23c16 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ea8060), color-stop(100%,#e23c16)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ea8060 0%,#e23c16 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #ea8060 0%,#e23c16 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #ea8060 0%,#e23c16 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #ea8060 0%,#e23c16 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea8060', endColorstr='#e23c16',GradientType=0 ); /* IE6-9 */
 }
 
 @mixin buttonLarge {
