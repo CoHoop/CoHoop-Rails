@@ -66,4 +66,4 @@ gem 'rmagick'
 gem 'paperclip'
 gem 'remotipart'
 gem 'awesome_print', :require => 'ap'
-gem 'rails3-jquery-autocomplete'
+gem 'rails3-jquery-autocomplete', git: "git://github.com/gabriel-dehan/rails3-jquery-autocomplete.git"
