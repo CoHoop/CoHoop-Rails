@@ -1,0 +1,435 @@
+/******************************************************************************/
+/* Misc
+/******************************************************************************/
+/* Override Bootstrap background icons */
+[class^="icon-"] {
+  background-image:none;
+}
+
+.flash-messages {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  
+  .alert {
+    font: {
+      size: 1.4em;
+      weight: bold;
+    }
+    padding: 12px;
+    text-align: center;
+    margin-bottom: 0;
+    cursor: pointer;
+  }
+  
+  i {
+    float: right;
+    margin-right: $margin * 2;
+  }
+}
+
+.image-placeholder {
+  overflow: hidden;
+}
+
+#follow-button {
+  
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-body {
+  #document_name {
+    width: 280px;
+  }
+  
+  input[type=submit] {
+    margin: -($margin / 2) 0 0 $margin;
+  }
+}
+
+/******************************************************************************/
+/* Tabs
+/******************************************************************************/
+
+.tabs {
+  margin-bottom: $margin / 2;
+  border-bottom: 1px solid $orange;
+  
+  a {
+    display: inline-block;
+    padding: ($padding / 2) $padding;
+    margin: 0 ($margin / 2);
+    
+    border: 1px solid $orange;
+    border-bottom: none;
+    border-radius: $radius $radius 0 0;
+    
+    background-color: lighten($orange, 40%);
+    
+    color: $orange;
+    font: {
+      size: $size5;
+      weight: bold;
+    }
+    text-transform: uppercase;
+    
+    &:hover, &:focus {
+      background-color: $orange;
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}
+
+/******************************************************************************/
+/* Sidebar
+/******************************************************************************/
+#sidebar-left {
+  
+  & > div {
+    float: left;
+    width: 100%;
+  }
+  
+  h4 {
+    margin: $margin 0;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #user-pinfos {
+    display: block;
+    float: left;
+    width: 100%;
+    margin-bottom: $margin;
+    
+    & > div {
+      float: left;
+    }
+    
+    .image-placeholder {
+      $size: 64px;
+      width: $size;
+      height: $size;
+    }
+    
+    .username {
+      font: {
+        size: $size6;
+        weight: bold;
+      }
+      margin: ($margin * 2) 0 0 $margin;
+    }
+  }
+  
+  #avatar-profile {
+    div {
+      margin: ($margin / 2) 0;
+    }
+  }
+  
+  #filters {
+    clear: left;
+  }
+  
+  #filters-list {
+    float: left;
+    width: 100%;
+    
+    li {
+      float: left;
+      width: 46%;
+      margin:  0 ($margin / 2) ($margin / 2);
+    }
+    
+    input[type=submit] {
+      width: 100%;
+    }
+  }
+  
+  #list-users {
+    float: left;
+  }
+  
+  #users-list {
+    
+    & > li {
+      float: left;
+      border-bottom: 1px solid $grey;
+      margin-bottom: $margin;
+      padding-bottom: $padding;
+    }
+    
+    .image-placeholder {
+      $size: 48px;
+      float: left;
+      width: $size;
+      height: $size;
+      margin-right: $margin;
+    }
+    
+    .user-infos {
+      float: left;
+      width: 240px;
+    }
+    
+    .username {
+      font: {
+        size: $size5;
+        weight: bold;
+      }
+      border: none;
+      margin-bottom: $margin / 2;
+    }
+    
+    #follow-button {
+      font-size: $size6;
+    }
+  }
+  
+  .followers-list,
+  .followed-users-list {
+    li {
+      float: left;
+      margin: 1px;
+    }
+  }
+}
+
+/******************************************************************************/
+/* Feed
+/******************************************************************************/
+#feed-content {
+  
+  h3 {
+    margin-top: 0;
+  }
+  
+}
+
+#microhoops-list {
+  float: left;
+  width: 100%;
+}
+
+.microhoops {
+  list-style-type: none;
+  padding: 0;
+  
+  
+}
+
+.microhoop {
+  padding: $padding 0;
+  border-bottom: 1px solid $grey;
+  
+  .microhoop-infos {
+    float: left;
+    width: 100%;
+  }
+  
+  .microhoop-avatar {
+    float: left;
+    margin-right: $margin;
+    margin-left: -$margin;
+    
+    $size: 48px;
+    width: $size;
+    height: $size;
+  }
+  
+  .microhoop-username {
+    float: left;
+    
+    font-size: $size4;
+  }
+  
+  .microhoop-urgent {
+    float: right;
+    display: none;
+  }
+  
+  .microhoop-content {
+    margin-left: 50px;
+    clear: both;
+    padding: $padding 0;
+    font-size: $size5;
+  }
+  
+  .microhoop-date {
+    color: $grey;
+    text-align: right;
+  }
+}
+
+.urgent .microhoop-urgent {
+  display: block;
+}
+
+/******************************************************************************/
+/* Tags
+/******************************************************************************/
+#tags {
+  float: left;
+  width: 100%;
+}
+
+#main-tags, #secondary-tags {
+  float: left;
+  width: 100%;
+  clear: both;
+}
+
+.tag-pills {
+  float: left;
+  margin: $margin 0;
+  padding: 0;
+  clear: both;
+  list-style-type: none;
+  
+  li {
+    min-width: 64px;
+    position: relative;
+    float: left;
+    margin: 0.2em;
+    padding: 3px;
+    border-radius: $radius;
+    background: $orange;
+    transition: all 0.3s ease-out;
+    
+    &:hover, &:focus {
+      background: lighten($orange, 10%);
+    }
+    
+    &:active {
+      background: lighten($orange, 15%);
+    }
+  }
+  
+  a {
+    float: left;
+    font: {
+      size: 1em;
+      weight: bold;
+    }
+    color: white;
+    text-decoration: none;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    float: right;
+  }
+  
+  i {
+    color: white;
+  }
+  
+  .delete-tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 100%;
+    padding: ($padding / 2) 0;
+    border-radius: $radius;
+  }
+}
+
+
+/******************************************************************************/
+/* User list
+/******************************************************************************/
+#users-list {
+  float: left;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  
+  & > li {
+    width: 100%;
+    min-height: 76px;
+    float: left;
+    margin: $margin 0;
+    padding: $padding 0 0 0;
+    border-bottom: 1px solid $grey;
+  }
+  
+  .image-placeholder {
+    float: left;
+    $size: 64px;
+    width: $size;
+    height: $size;
+    margin-right: $margin / 2;
+  }
+  
+  .user-infos {
+    float: left;
+  }
+  
+  .username {
+    font: {
+      size: $size4;
+      weight: bold;
+    };
+  }
+  
+  #follow-button {
+    font-size: $size6;
+    margin-top: 16px;
+  }
+  
+  #main-tags-list {
+    font-size: $size6;
+  }
+}
+
+/* Follow button in sidebar */
+#sidebar-left #follow-button {
+  margin-top: 0;
+  margin-bottom: $margin / 2;
+}
+
+/******************************************************************************/
+/* Document
+/******************************************************************************/
+#sidebar-left #my-documents {
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 12px;
+  font: {
+    size: $size5;
+    weight: bold;
+  }
+}
+
+#list-documents {
+  
+  th {
+    font: {
+      size: $size5;
+      weight: bold;
+    }
+  }
+  
+  td {
+    font: {
+      size: $size6;
+      weight: bold;
+    }
+  }
+}

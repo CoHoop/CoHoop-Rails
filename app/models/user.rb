@@ -47,7 +47,15 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable
 
-  has_attached_file :avatar, styles: { thumb: '100x100>'}
+  has_attached_file :avatar, styles: {
+                                       huge:   '128x128>',
+                                       big:    '96x96>',
+                                       medium: '64x64>',
+                                       small:  '48x48>',
+                                       tiny:   '32x32>',
+                                       nano:   '16x16>'
+                                     }
+
   validates_attachment :avatar,
                        content_type: { content_type: %w(image/jpg image/jpeg image/png image/gif), message: "format is invalid." },
                        size: { in: 0..2.megabytes, message: 'exceeded' }

@@ -3,14 +3,15 @@ require 'modules/user_presenter'
 class UserProfilePresenter < ApplicationPresenter
   include UserPresenter
 
-  # Public: Renders users's university and job wrapped in an editable span
-  # (if the current user has the rights).
-  #
-  # Returns an HTML String.
-  def professional_information
-    handles_not_set user.university, user.job, check: true do |university, job|
-      best_in_place_if(can_edit?, user, :university, type: :input, :nil => 'University not specified', errors: university.errors) +
-      best_in_place_if(can_edit?, user, :job, type: :input, :nil => 'Job not specified', errors: job.errors)
+  def university
+    handles_not_set user.university, check: true do |university|
+      best_in_place_if(can_edit?, user, :university, type: :input, :nil => 'University not specified', errors: university.errors)
+    end
+  end
+
+  def job
+    handles_not_set user.job, check: true do |job|
+      best_in_place_if(can_edit?, user, :job, type: :input, :nil => 'Job experience', errors: job.errors)
     end
   end
 
@@ -20,7 +21,7 @@ class UserProfilePresenter < ApplicationPresenter
   # Returns an HTML String.
   def biography
     handles_not_set user.biography, check: true do |biography|
-      best_in_place_if(can_edit?, user, :biography, type: :textarea ,:nil => 'Biography not specified', errors: biography.errors)
+      best_in_place_if(can_edit?, user, :biography, type: :textarea ,:nil => 'Tell CoHoopers something about you as a learner', errors: biography.errors)
     end
   end
 
@@ -29,7 +30,7 @@ class UserProfilePresenter < ApplicationPresenter
     if can_edit?
       render partial: 'users/profile/avatar_with_upload', locals: { presenter: self }
     else
-      avatar
+      avatar(:huge)
     end
   end
 
@@ -59,7 +60,7 @@ class UserProfilePresenter < ApplicationPresenter
   #
   # Returns an HTML String.
   def followed_users_list
-    render partial: 'users/profile/followed_users', locals: { user:  self }
+    render partial: 'users/profile/followed_users', locals: { user: self }
   end
 
   # Private: Wraps user.followed_users inside presenters

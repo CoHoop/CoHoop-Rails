@@ -2,7 +2,7 @@ class TagFeed < Feed
   def initialize(user, page)
     super user, page
 
-    @filters += [:similar_content, :similar_users]
+    @filters.unshift :similar_content, :similar_users
     @filter  =  :similar_content
   end
   def type

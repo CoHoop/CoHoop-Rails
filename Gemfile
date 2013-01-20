@@ -29,6 +29,9 @@ gem 'will_paginate', '~> 3.0'
 ## String extension
 gem 'stringex'
 
+# Tag extraction
+gem 'tag-extractor'
+
 group :production do
   gem 'pg'
 end
@@ -67,3 +70,4 @@ gem 'paperclip'
 gem 'remotipart'
 gem 'awesome_print', :require => 'ap'
 gem 'etherpad-lite'
+gem 'rails3-jquery-autocomplete', git: 'git://github.com/gabriel-dehan/rails3-jquery-autocomplete.git'

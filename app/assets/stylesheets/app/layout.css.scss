@@ -1,0 +1,72 @@
+/*==============================================================================
+================================================================================
+Alpha Layout (override bootstrap)
+================================================================================
+==============================================================================*/
+.container {
+  margin: 45px auto 0;
+  width: $wrapper;
+}
+
+#content {
+  padding: $padding;
+  margin-left: 0;
+}
+
+.logged-in #content {
+  background-color: grey;
+  background-image: url('/assets/app/bg_content_alt.png');
+}
+
+#sidebar-left {
+  margin-right: $margin * 2;
+}
+
+/******************************************************************************/
+/* Forms
+/******************************************************************************/
+
+.sign-in-form {
+  width: 50%;
+  margin: ($margin * 2) auto 0;
+}
+
+#navbar .user-auth li > a {
+  float: left;
+}
+
+/******************************************************************************/
+/* Pages
+/******************************************************************************/
+#feed-content,
+#main-content,
+#sidebar-left {
+  background: white;
+  margin-left: 0;
+  padding: $padding;
+  border-radius: $radius;
+}
+
+#main-content.span12 {
+  width: 972px;
+}
+
+#main-content.span8,
+#feed-content.span8 {
+  padding-right: $padding + 4;
+}
+
+#feed-content {
+  
+}
+
+#main-content {
+  
+}
+
+/******************************************************************************/
+/* Profile
+/******************************************************************************/
+#main-content .best_in_place {
+  margin-right: 35px;
+}

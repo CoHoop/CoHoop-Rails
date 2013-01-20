@@ -9,9 +9,12 @@ CohoopRails::Application.routes.draw do
 
   root to: 'pages#home'
 
+  # MailingList
+  match '/mailslist/create' => 'mails_list#create', via: :post
+
   # Users
   devise_for :users, controllers: { registrations: 'registrations' }
-  resources  :users, :only => [:show, :update] do
+  resources  :users, :only => [:index, :show, :update] do
     resources :microhoops, only: [:create]
   end
 
@@ -32,7 +35,10 @@ CohoopRails::Application.routes.draw do
   resources :users_tags_relationships, only: [:create, :destroy]
 
   # Tags
-  resources :tags, only: [:show]
+  resources :tags, only: [:show] do
+    get :autocomplete_tag_name, on: :collection, as: :autocomplete
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
+  <%= render 'layouts/meta' %>
   <title><%= get_title @title %></title>
+  <%= favicon_link_tag %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= user_signed_in? ? 'logged-in' : 'logged-off' %>">
+  <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.
+      </p>
+      <![endif]-->
+
 <%=	render 'layouts/header' %>
-  <div class="container-fluid">
+  <div class="container">
     <%= render 'shared/flash_messages' %>
-    <div id="content">
+    <div id="content" class="row clearfix">
       <%= yield %>
     </div>
     <% if Rails.env.development? then %>
@@ -22,4 +32,3 @@
 <%= javascript_include_tag "application" %>
 </body>
 </html>
-

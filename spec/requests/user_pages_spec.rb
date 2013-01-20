@@ -13,6 +13,14 @@ describe 'User pages :' do
     end
   end
 
+  describe 'list page' do
+    it 'should show a list of all users' do
+      visit(users_path())
+      should have_selector('a', content: user.first_name)
+      should have_selector('a', content: other_user.first_name)
+    end
+  end
+
   describe 'profile page' do
     describe 'with a wrong user' do
       it 'should render 404 page' do

@@ -41,6 +41,7 @@ class UsersDocumentsController < ApplicationController
 
       @user.groups_relationships.build(group_id: group.id)
       @user.save
+      redirect_to documents_path(id: document.slug)
     else
       respond_to do |format|
         format.js

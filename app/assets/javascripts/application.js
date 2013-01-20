@@ -12,9 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require ./app/vendor/autocomplete-rails
 //= require jquery.remotipart
 //= require jquery.purr
 //= require best_in_place
 //= require bootstrap-dropdown
 //= require bootstrap-modal
-//= require_tree .
+//= require bootstrap-tooltip
+//= require_tree ./app

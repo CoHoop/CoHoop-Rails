@@ -1,5 +1,5 @@
 <%= form_for document, url: create_user_documents_path(id: @user.id, first: @user.first_name.downcase, last: @user.last_name.downcase), html: { id: 'document-creation-form' } do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
-  <%= form.submit 'Create' %>
+  <%= form.submit 'Create a new document', class: 'btn btn-cohoop' %>
 <% end %>

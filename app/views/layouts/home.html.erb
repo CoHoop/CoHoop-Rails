@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <%= render 'layouts/meta' %>
+  <title><%= get_title @title %></title>
+  <%= favicon_link_tag %>
+  <%= stylesheet_link_tag    "home", :media => "all" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.
+      </p>
+      <![endif]-->
+
+  <%=	render 'layouts/home_header' %>
+  <section id="wrap" class="clearfix">
+    <div id="logo">CoHoop</div>
+    <div id="content">
+      <%= yield %>
+    </div>
+  </section>
+  <footer id="footer">
+    <div class="disclaimer">
+      <p>CoHoop, tous droits r&eacute;serv&eacute;s.</p>
+    </div>
+  </footer>
+  <% if Rails.env.development? then %>
+  <div id="debug" style="background-color: white;">
+    <pre style="width: 1020px; margin: 0 auto; font-size: 1.4em;">
+        <%= debug(params) %>
+        <%= debug(cookies) %>
+    </pre>
+  </div>
+  <% end %>
+    
+  <script src="http://use.edgefonts.net/muli.js"></script>
+  <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+  <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5068c0c12f99a33b"></script>
+  <%= javascript_include_tag "home" %>
+</body>
+</html>

@@ -1,7 +1,7 @@
 <ul class="followed-users-list">
   <% user.followed_users.each do |followed_user| %>
   <li>
-    <%= followed_user.avatar %>
+    <%= link_to followed_user.avatar(:small), profile_path(id: followed_user.id, first: followed_user.first_name.downcase, last: followed_user.last_name.downcase), title: followed_user.name %>
   </li>
   <% end %>
 </ul>
