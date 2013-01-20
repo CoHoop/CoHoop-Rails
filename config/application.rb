@@ -71,6 +71,9 @@ module CohoopRails
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    # Add font path
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
+
     config.generators do |g|
       g.test_framework :rspec,
         :fixtures => true,

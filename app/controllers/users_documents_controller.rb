@@ -21,7 +21,7 @@ class UsersDocumentsController < ApplicationController
       document.save
       @user.documents_relationships.build(document_id: document.id)
       @user.save
-      redirect_to documents_path(id: document.name)
+      redirect_to documents_path(id: document.slug)
     else
       respond_to do |format|
         format.js

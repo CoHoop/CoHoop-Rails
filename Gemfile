@@ -61,7 +61,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
 gem 'best_in_place', git: 'git://github.com/gposton/best_in_place.git'
 gem 'rmagick'
 gem 'paperclip'

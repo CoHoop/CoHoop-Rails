@@ -4,7 +4,7 @@
     <nav class="menu pull-left">
       <ul class="cohoop-links">
         <li>
-          <a href="http://blog.cohoop.com/" title="Read our blog posts or discover more about CoHoop"><i class="icon-blog"></i> CoHoop Blog</a>
+          <a href="http://blog.cohoop.com/" title="Read our blog posts or discover more about CoHoop"><i class="icon-globe"></i> CoHoop Blog</a>
         </li>
         <li>
 <!--          <a href="http://meta.cohoop.com/" title="Get involved by tracking down bugs or suggest ideas"><i class="icon-meta"></i> CoHoop Meta</a> -->
@@ -13,8 +13,10 @@
     </nav>
     <nav class="menu pull-right">
         <ul class="cohoop-links">
-            <li><%= link_to 'Users list', users_path %></li>
-            <li><%= display_user_authentication %></li>
+          <li>
+            <%= link_to '<i class="icon-list-ul"></i> Find CoHoopers'.html_safe, users_path  %>
+          </li>
+          <li><%= display_user_authentication %></li>
         </ul>
     </nav>
   </div>

@@ -1,18 +1,39 @@
-<% if @user.can_edit? %>
-<p><%= link_to 'Add a document', new_user_documents_path(id: @user.id, first: @user.first_name, last: @user.last_name), id: 'add-document' %></p>
-<div class="modal hide" id="new-document-popin">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">×</button>
-    <h3>Create a document</h3>
-  </div>
-  <div class="modal-body">
-    <%= render partial: 'create_document_form', locals: { document: @document } %>
-  </div>
-</div> <!-- #upload-popin -->
-<% end %>
+<div id="main-content" class="row">
+  <div class="span12">
+    <h2>Manage your documents</h2>
+    <% if @user.can_edit? %>
+    <p><%= link_to 'Add a document', new_user_documents_path(id: @user.id, first: @user.first_name, last: @user.last_name), id: 'add-document', class: 'btn btn-cohoop' %></p>
+    <div class="modal hide" id="new-document-popin">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Create a document</h3>
+      </div>
+      <div class="modal-body">
+        <%= render partial: 'create_document_form', locals: { document: @document } %>
+      </div>
+    </div> <!-- #upload-popin -->
+    <% end %>
 
-<ul>
-  <% @user.documents.each do |document| %>
-  <li><%= link_to document.name, documents_path(id: document.slug) %></li>
-  <% end %>
-</ul>
+    <table id="list-documents" class="table table-hover">
+      <thead>
+        <tr>
+          <th><input type="checkbox" name="document_action" /></th>
+          <th>Title</th>
+          <th>Owner</th>
+          <th>Last modified</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.documents.each do |document| %>
+        <tr>
+          <td><input type="checkbox" name="document_action" /></td>
+          <td><%= link_to document.name, documents_path(id: document.slug) %></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

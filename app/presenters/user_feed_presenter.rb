@@ -24,6 +24,10 @@ class UserFeedPresenter < ApplicationPresenter
     render partial: 'users/microhoops/add_microhoop_form', locals: { user: current_user }
   end
 
+  def feed_title
+    feed.type.capitalize.to_s + ' feed'
+  end
+
   def feed_content
     case feed.filter
       # TODO: Need to change all target method
@@ -55,10 +59,25 @@ class UserFeedPresenter < ApplicationPresenter
   def list_all_users
     # TODO: Should make UserPresenter a class not a module, so we don't need to user UsersProfilePresenter
     # TODO: Should extract User.all in the model
-    users = UserInterface.new(User.all)
+    users = User.all
+    users.delete(current_user) if current_user
+    users = UserInterface.new(users)
     # TODO: Should use a factory for Presenter and interfaces
     all_users = users.map { |u| UserProfilePresenter.new(UserInterface.new(AuthenticationInterface.new(u, current_user)), helper, 'User') }
-    render partial: 'users/shared/list', locals: { users: all_users }
+    render partial: 'users/shared/list', locals: { users: all_users, avatar_size: :small }
+  end
+
+  def render_each_microhoop_for(query)
+    query.collect do |microhoop|
+      microhoop.content.convert_tags_to_html_links('#') { |name|
+        tag = Tag.find_by_name(name.downcase)
+        id  = tag.nil? ? '' : tag.id
+        "/tags/#{id}"
+      }
+      microhoop.content = microhoop.content.html_safe
+      user = UserFeedPresenter.new(UserInterface.new(microhoop.user), helper)
+      render(partial: 'feeds/microhoop', locals: { user: user, microhoop: microhoop })
+    end.join
   end
 
   private
@@ -76,18 +95,5 @@ class UserFeedPresenter < ApplicationPresenter
       render_each_microhoop_for(microhoops).html_safe
     end +
     _.will_paginate(microhoops)
-  end
-
-  def render_each_microhoop_for(query)
-    query.collect do |microhoop|
-      microhoop.content.convert_tags_to_html_links('#') { |name|
-        tag = Tag.find_by_name(name.downcase)
-        id  = tag.nil? ? '' : tag.id
-        "/tags/#{id}"
-      }
-      microhoop.content = microhoop.content.html_safe
-      user = UserFeedPresenter.new(UserInterface.new(microhoop.user), helper)
-      render(partial: 'feeds/microhoop', locals: { user: user, microhoop: microhoop })
-    end.join
   end
 end

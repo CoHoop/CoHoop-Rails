@@ -3,8 +3,10 @@
     <div class="microhoop-avatar">
       <%= user.avatar %>
     </div>
-    <span class="micrhoop-username"><%= user.name %></span>
-    <div class="microhoop-icon-urgent">Urgent microhoop</div>
+    <span class="microhoop-username"><%= link_to user.name, profile_path(id: user.id, first:user.first_name.downcase, last: user.last_name.downcase) %></span>
+    <div class="microhoop-urgent">
+      This microhoop is urgent !
+    </div>
   </div>
 
   <div class="microhoop-content">
@@ -12,7 +14,7 @@
   </div>
 
   <div class="microhoop-date">
-    <em>1 hour ago</em>
+    <em><%= time_ago_in_words(microhoop.created_at) %></em>
   </div>
 
 </li>

@@ -1,4 +1,4 @@
-<div class="signinForm well clearfix">
+<div class="sign-in-form well clearfix">
 <h2>Register</h2>
 <%= form_for(resource,
              :as => resource_name,
@@ -48,6 +48,6 @@
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-  <p><%= link_to "Forgot your password?", new_password_path(resource_name) %></p>
+  <p><%= link_to "Forgot your password?", new_password_path(resource_name), class: "hidden" %></p>
 <% end -%>
 </div>

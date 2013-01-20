@@ -1,1 +1,1 @@
-$('#microhoops-list .microhoops').prepend("<%= escape_javascript(render partial: 'feeds/microhoop', locals: { user: @user, microhoop: @microhoop }) %>");
+$('#microhoops-list .microhoops').prepend("<%= escape_javascript( @user.render_each_microhoop_for([@microhoop]).html_safe ) %>");

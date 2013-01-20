@@ -4,6 +4,7 @@ class RelationshipsController < ApplicationController
 
   def create
     @user = UserProfileInterface.new(User.find(params[:relationship][:followed_id]))
+    p @user
     current_user.follow!(@user)
   end
 

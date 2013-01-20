@@ -10,7 +10,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= user_signed_in? ? 'logged-in' : 'logged-off' %>">
   <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.
       </p>
@@ -19,7 +19,7 @@
 <%=	render 'layouts/header' %>
   <div class="container">
     <%= render 'shared/flash_messages' %>
-    <div id="content" class="clearfix">
+    <div id="content" class="row clearfix">
       <%= yield %>
     </div>
     <% if Rails.env.development? then %>

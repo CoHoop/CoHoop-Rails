@@ -4,14 +4,23 @@ Alpha Layout (override bootstrap)
 ================================================================================
 ==============================================================================*/
 .container {
-  margin: 52px auto 0;
+  margin: 45px auto 0;
   width: $wrapper;
 }
 
 #content {
-  margin-top: $margin * 2;
+  padding: $padding;
+  margin-left: 0;
 }
 
+.logged-in #content {
+  background-color: grey;
+  background-image: url('/assets/app/bg_content_alt.png');
+}
+
+#sidebar-left {
+  margin-right: $margin * 2;
+}
 
 /******************************************************************************/
 /* Forms
@@ -27,20 +36,37 @@ Alpha Layout (override bootstrap)
 }
 
 /******************************************************************************/
-/* Profile page
+/* Pages
 /******************************************************************************/
+#feed-content,
+#main-content,
 #sidebar-left {
-  float: left;
-  width: ((($wrapper / 12) * 3) - ($padding * 2)) - 2px; // 2px coz of well block border
+  background: white;
+  margin-left: 0;
   padding: $padding;
-  margin-right: $margin * 2;
+  border-radius: $radius;
 }
 
-#sidebar-right {
-  float: right;
+#main-content.span12 {
+  width: 972px;
+}
+
+#main-content.span8,
+#feed-content.span8 {
+  padding-right: $padding + 4;
 }
 
 #feed-content {
-  float: left;
-  width: (($wrapper / 12) * 9) - ($margin * 2);
+  
+}
+
+#main-content {
+  
+}
+
+/******************************************************************************/
+/* Profile
+/******************************************************************************/
+#main-content .best_in_place {
+  margin-right: 35px;
 }
