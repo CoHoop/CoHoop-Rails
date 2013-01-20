@@ -1,3 +1,5 @@
+require 'tag_extractor'
+
 # == Schema Information
 #
 # Table name: microhoops

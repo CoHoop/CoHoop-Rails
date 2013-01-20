@@ -29,6 +29,9 @@ gem 'will_paginate', '~> 3.0'
 ## String extension
 gem 'stringex'
 
+# Tag extraction
+gem 'tag-extractor'
+
 group :production do
   gem 'pg'
 end
