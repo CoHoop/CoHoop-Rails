@@ -75,3 +75,44 @@ var BestInPlace = (function() {
 
   return { init : _init }
 }());
+
+var Tags = (function() {
+  var tags;
+
+  function _init() {
+    tags = $('.tag-pills');
+  }
+
+  function _display() {
+    tags.on({
+      'mouseenter': function(e) {
+         var self = $(this);
+         self.removeClass('icon-white');
+      },
+      'mouseleave': function(e) {
+         var self = $(this);
+        self.addClass('icon-white');
+      }
+    }, 'button[type="submit"] i');
+  }
+
+  function _autocomplete() {
+    $('input[data-autocomplete]').railsAutocomplete({
+      delimiter       : ',',
+      insertDelimiter : true,
+      focusOnNext     : true
+    });
+
+    $('textarea[data-autocomplete]').railsAutocomplete({
+      delimiter         : '#',
+      delimiterPosition : 'before',
+      withText          : true
+    });
+  }
+
+  return {
+      init : _init,
+      display: _display,
+      autocomplete: _autocomplete
+         }
+}());
