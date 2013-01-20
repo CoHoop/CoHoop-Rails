@@ -1,5 +1,5 @@
 <%= form_for(user.microhoops.build, url: user_microhoops_path(user_id: user.id), remote: true) do |f| %>
-  <%= f.text_area :content, cols: '0', row: '0', placeholder: '...' %>
+  <%= f.text_area :content, 'data-autocomplete' => autocomplete_tags_path, cols: '0', row: '0', placeholder: '...' %>
   <div class="form-actions">
     <%= f.check_box :urgent %>
     <%= f.label :urgent %>

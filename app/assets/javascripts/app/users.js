@@ -1,3 +1,4 @@
+jQuery.railsAutocomplete.configuration.createWithDefaults = false;
 
 $(function(){
   /* Best in place configuration */
@@ -13,7 +14,9 @@ $(function(){
   document_manager.handle_creation();
 
   /* Tag-pills hover  */
-  tag_display = TagDisplay.init();
+  Tags.init();
+  Tags.display();
+  Tags.autocomplete();
 });
 
 var AvatarManager = (function() {
@@ -70,21 +73,5 @@ var BestInPlace = (function() {
     });
   }
 
-  return { init : _init }
-}());
-
-var TagDisplay = (function() {
-  function _init() {
-    $('.tag-pills').on({
-      'mouseenter': function(e) {
-         var self = $(this);
-         self.removeClass('icon-white');
-      },
-      'mouseleave': function(e) {
-         var self = $(this);
-        self.addClass('icon-white');
-      }
-    }, 'button[type="submit"] i');
-  }
   return { init : _init }
 }());
