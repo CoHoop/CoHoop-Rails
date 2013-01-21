@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/ai/remotipart.git
+  revision: 92d65bbbd3aad600af6139f7389f450f0b6c89ef
+  branch: jquery19
+  specs:
+    remotipart (1.0.2)
+
+GIT
   remote: git://github.com/gabriel-dehan/rails3-jquery-autocomplete.git
   revision: b9f09dc76f11adca4f433c81787d9d202c522dd4
   specs:
@@ -248,7 +255,7 @@ DEPENDENCIES
   rails (= 3.2.6)
   rails3-jquery-autocomplete!
   rb-fsevent
-  remotipart
+  remotipart!
   rmagick
   rspec-rails
   sass-rails (~> 3.2.3)
