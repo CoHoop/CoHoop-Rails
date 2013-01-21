@@ -5,7 +5,7 @@ class UsersDocumentsController < ApplicationController
     @user     = get_user_through_params || return
 
     ether     = EtherpadLite.connect('http://docs.cohoop.com', 'Hxo0L3mVABqNCAsGl8cEZEXCajIxMYa0')
-    ether.client.ListPadsOfAuthor(authorID: 'a.' + @user.id.to_s)
+    ep_groups = ether.client.ListPadsOfAuthor(authorID: 'a.' + @user.id.to_s)
 
     user_groups = @user.groups
     ap(ep_groups)
