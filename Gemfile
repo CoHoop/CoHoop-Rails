@@ -18,6 +18,8 @@ gem 'cells'
 # Authentication - Authorization
 ## Devise is a flexible authentication solution for Rails. See https://github.com/plataformatec/devise/
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 ## CanCan is an authorization library for Ruby on Rails. See https://github.com/ryanb/cancan
 gem 'cancan'
@@ -64,7 +66,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'best_in_place', git: 'git://github.com/gposton/best_in_place.git'
+gem 'best_in_place'
 gem 'rmagick'
 gem 'paperclip'
 gem 'remotipart', git: 'git://github.com/ai/remotipart.git', branch: 'jquery19'

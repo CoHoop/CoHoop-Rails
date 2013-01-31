@@ -38,11 +38,11 @@ class User < ActiveRecord::Base
   has_many :documents_relationships, class_name: 'UsersDocumentsRelationship', foreign_key: "user_id"
   has_many :documents, through: :documents_relationships
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid
   attr_accessible :first_name, :last_name, :avatar,
                   :university, :biography, :job, :birth_date
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :omniauthable
 
   has_attached_file :avatar, styles: {
                                        huge:   '128x128>',
@@ -74,6 +74,22 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, :if => ->{ new_record? || !password_confirmation.nil? }
   validates_confirmation_of :password
 
+  def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
+    user = self.where(:provider => auth.provider, :uid => auth.uid).first
+    unless user
+      name = auth.extra.raw_info.name.split(" ")
+      password = Devise.friendly_token[0,20]
+      user = self.create(first_name: name.first,
+        last_name: name.last,
+        provider: auth.provider,
+        uid: auth.uid,
+        email: auth.info.email,
+        password: password,
+        password_confirmation: password
+        )
+    end
+    user
+  end
   # ------------------------------------------------------
   # TODO: should refactor in a UserRelationshipInterface |
   # ------------------------------------------------------

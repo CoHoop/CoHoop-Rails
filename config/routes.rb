@@ -13,7 +13,7 @@ CohoopRails::Application.routes.draw do
   match '/mailslist/create' => 'mails_list#create', via: :post
 
   # Users
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: "users/omniauth_callbacks" }
   resources  :users, :only => [:index, :show, :update] do
     resources :microhoops, only: [:create]
   end
