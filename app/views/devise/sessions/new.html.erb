@@ -1,6 +1,5 @@
 <div class="sign-in-form well clearfix">
   <h2>Sign in</h2>
-<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: 'form-horizontal' }) do |f| %>
   <div class="control-group">
     <%= f.label :email, class: 'control-label' %>

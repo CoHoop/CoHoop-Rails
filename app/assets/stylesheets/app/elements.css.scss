@@ -1,4 +1,24 @@
 /******************************************************************************/
+/* Sign-in/Sign-up
+/******************************************************************************/
+.button-facebook {
+  background: url('/assets/app/connect_with_fb.png') no-repeat;
+  text-indent: -9999px;
+  width: 202px;
+  display: inline-block;
+  margin-left: 43px;
+}
+
+.connect-buttons {
+  float: left;
+  text-align: center;
+
+  .button-facebook {
+    margin-left: 40px;
+  }
+}
+
+/******************************************************************************/
 /* Misc
 /******************************************************************************/
 /* Override Bootstrap background icons */
@@ -12,7 +32,7 @@
   left: 0;
   top: 0;
   z-index: 9999;
-  
+
   .alert {
     font: {
       size: 1.4em;
@@ -23,7 +43,7 @@
     margin-bottom: 0;
     cursor: pointer;
   }
-  
+
   i {
     float: right;
     margin-right: $margin * 2;
@@ -35,7 +55,7 @@
 }
 
 #follow-button {
-  
+
 }
 
 .modal-header {
@@ -46,7 +66,7 @@
   #document_name {
     width: 280px;
   }
-  
+
   input[type=submit] {
     margin: -($margin / 2) 0 0 $margin;
   }
@@ -59,25 +79,25 @@
 .tabs {
   margin-bottom: $margin / 2;
   border-bottom: 1px solid $orange;
-  
+
   a {
     display: inline-block;
     padding: ($padding / 2) $padding;
     margin: 0 ($margin / 2);
-    
+
     border: 1px solid $orange;
     border-bottom: none;
     border-radius: $radius $radius 0 0;
-    
+
     background-color: lighten($orange, 40%);
-    
+
     color: $orange;
     font: {
       size: $size5;
       weight: bold;
     }
     text-transform: uppercase;
-    
+
     &:hover, &:focus {
       background-color: $orange;
       color: $white;
@@ -90,38 +110,38 @@
 /* Sidebar
 /******************************************************************************/
 #sidebar-left {
-  
+
   & > div {
     float: left;
     width: 100%;
   }
-  
+
   h4 {
     margin: $margin 0;
   }
-  
+
   ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
   }
-  
+
   #user-pinfos {
     display: block;
     float: left;
     width: 100%;
     margin-bottom: $margin;
-    
+
     & > div {
       float: left;
     }
-    
+
     .image-placeholder {
       $size: 64px;
       width: $size;
       height: $size;
     }
-    
+
     .username {
       font: {
         size: $size6;
@@ -130,45 +150,45 @@
       margin: ($margin * 2) 0 0 $margin;
     }
   }
-  
+
   #avatar-profile {
     div {
       margin: ($margin / 2) 0;
     }
   }
-  
+
   #filters {
     clear: left;
   }
-  
+
   #filters-list {
     float: left;
     width: 100%;
-    
+
     li {
       float: left;
       width: 46%;
       margin:  0 ($margin / 2) ($margin / 2);
     }
-    
+
     input[type=submit] {
       width: 100%;
     }
   }
-  
+
   #list-users {
     float: left;
   }
-  
+
   #users-list {
-    
+
     & > li {
       float: left;
       border-bottom: 1px solid $grey;
       margin-bottom: $margin;
       padding-bottom: $padding;
     }
-    
+
     .image-placeholder {
       $size: 48px;
       float: left;
@@ -176,12 +196,12 @@
       height: $size;
       margin-right: $margin;
     }
-    
+
     .user-infos {
       float: left;
       width: 240px;
     }
-    
+
     .username {
       font: {
         size: $size5;
@@ -190,12 +210,12 @@
       border: none;
       margin-bottom: $margin / 2;
     }
-    
+
     #follow-button {
       font-size: $size6;
     }
   }
-  
+
   .followers-list,
   .followed-users-list {
     li {
@@ -209,11 +229,11 @@
 /* Feed
 /******************************************************************************/
 #feed-content {
-  
+
   h3 {
     margin-top: 0;
   }
-  
+
 }
 
 #microhoops-list {
@@ -224,47 +244,47 @@
 .microhoops {
   list-style-type: none;
   padding: 0;
-  
-  
+
+
 }
 
 .microhoop {
   padding: $padding 0;
   border-bottom: 1px solid $grey;
-  
+
   .microhoop-infos {
     float: left;
     width: 100%;
   }
-  
+
   .microhoop-avatar {
     float: left;
     margin-right: $margin;
     margin-left: -$margin;
-    
+
     $size: 48px;
     width: $size;
     height: $size;
   }
-  
+
   .microhoop-username {
     float: left;
-    
+
     font-size: $size4;
   }
-  
+
   .microhoop-urgent {
     float: right;
     display: none;
   }
-  
+
   .microhoop-content {
     margin-left: 50px;
     clear: both;
     padding: $padding 0;
     font-size: $size5;
   }
-  
+
   .microhoop-date {
     color: $grey;
     text-align: right;
@@ -295,7 +315,7 @@
   padding: 0;
   clear: both;
   list-style-type: none;
-  
+
   li {
     min-width: 64px;
     position: relative;
@@ -305,16 +325,16 @@
     border-radius: $radius;
     background: $orange;
     transition: all 0.3s ease-out;
-    
+
     &:hover, &:focus {
       background: lighten($orange, 10%);
     }
-    
+
     &:active {
       background: lighten($orange, 15%);
     }
   }
-  
+
   a {
     float: left;
     font: {
@@ -324,17 +344,17 @@
     color: white;
     text-decoration: none;
   }
-  
+
   button {
     background: none;
     border: none;
     float: right;
   }
-  
+
   i {
     color: white;
   }
-  
+
   .delete-tag {
     position: absolute;
     top: 0;
@@ -359,7 +379,7 @@
   padding: 0;
   margin: 0;
   width: 100%;
-  
+
   & > li {
     width: 100%;
     min-height: 76px;
@@ -368,7 +388,7 @@
     padding: $padding 0 0 0;
     border-bottom: 1px solid $grey;
   }
-  
+
   .image-placeholder {
     float: left;
     $size: 64px;
@@ -376,23 +396,23 @@
     height: $size;
     margin-right: $margin / 2;
   }
-  
+
   .user-infos {
     float: left;
   }
-  
+
   .username {
     font: {
       size: $size4;
       weight: bold;
     };
   }
-  
+
   #follow-button {
     font-size: $size6;
     margin-top: 16px;
   }
-  
+
   #main-tags-list {
     font-size: $size6;
   }
@@ -418,14 +438,14 @@
 }
 
 #list-documents {
-  
+
   th {
     font: {
       size: $size5;
       weight: bold;
     }
   }
-  
+
   td {
     font: {
       size: $size6;
