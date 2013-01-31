@@ -23,6 +23,10 @@ class Microhoop < ActiveRecord::Base
   validates :content, presence: true
   validates :user_id, presence: true
 
+  def vote_up
+    self.update_attribute(:vote_count, self.vote_count + 1)
+  end
+
   private
     def attach_tags
       TagExtractor.tag_separator = '#'

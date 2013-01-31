@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130140428) do
+ActiveRecord::Schema.define(:version => 20130131190850) do
 
   create_table "documents", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20130130140428) do
     t.boolean  "urgent",     :default => false, :null => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+    t.integer  "vote_count", :default => 0
   end
 
   add_index "microhoops", ["user_id", "created_at"], :name => "index_microhoops_on_user_id_and_created_at"

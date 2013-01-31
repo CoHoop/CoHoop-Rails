@@ -3,6 +3,14 @@
     <div class="microhoop-avatar">
       <%= user.avatar %>
     </div>
+    <div class="microhoop-vote">
+      <span class="count">
+        <%= microhoop.vote_count %>
+      </span>
+      <%= form_tag(microhoop_vote_up_path(id: microhoop.id), remote: true) do |f| %>
+        <%= submit_tag 'Vote this microhoop up', class: 'btn-vote' %>
+      <% end %>
+    </div>
     <span class="microhoop-username"><%= link_to user.name, profile_path(id: user.id, first:user.first_name.downcase, last: user.last_name.downcase) %></span>
     <div class="microhoop-urgent">
       This microhoop is urgent !

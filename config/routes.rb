@@ -18,6 +18,8 @@ CohoopRails::Application.routes.draw do
     resources :microhoops, only: [:create]
   end
 
+  post '/microhoops/:id/vote_up' => 'microhoops#vote_up', constraints: { id: /\d+/ }, as: :microhoop_vote_up
+
   # Profile
   profile_constraints = { id: /\d+/, first: /[a-zA-Z]+/, last: /[a-zA-Z]+/ }
   match '/:id/:first-:last/' => 'users#show', constraints: profile_constraints , as: :profile

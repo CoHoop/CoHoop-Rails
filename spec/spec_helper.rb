@@ -13,10 +13,10 @@ Spork.prefork do
   include Capybara::DSL
 
   # TODO: for Google Analytics, see http://www.neotericdesign.com/blog/capybara-webkit-rspec-and-javascript
-#  Capybara.javascript_driver = :webkit
+  Capybara.javascript_driver = :webkit
 #  Capybara.server_port = '8300'
 #  Capybara.app_host = 'http://localhost:8300'
-  Capybara.javascript_driver = :selenium
+#  Capybara.javascript_driver = :selenium
 
 
   # Requires supporting ruby files with custom matchers and macros, etc,

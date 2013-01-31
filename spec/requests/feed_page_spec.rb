@@ -14,6 +14,7 @@ describe "Feeds" do
 
     describe 'can be accessed if the user is signed in' do
       before { sign_in_as user }
+
       it { should have_selector('title', content: 'News') }
 
       specify 'from root_path' do
@@ -30,10 +31,7 @@ describe "Feeds" do
     end # can be accessed if
 
     describe 'feed elements' do
-      before do
-        sign_in_as user
-        visit root_path
-      end
+      before { sign_in_as user }
 
       describe 'displays the user avatar' do
         it { should have_selector("img[src$='#{user.avatar.url(:thumb)}']") }
@@ -57,6 +55,21 @@ describe "Feeds" do
           end
         end # community feed
       end # elements
+
+      describe 'vote up microhoop button' do
+        before do
+          @mh = user.microhoops.create(content: 'Hello.')
+          visit root_path
+        end
+        let (:vote_up_button) { "#microhoop-#{@mh.id} .vote_up" }
+
+        it { should have_css(vote_up_button) }
+
+        it 'should increment the microhoop vote count when clicked' do
+          click_on vote_up_button
+          @mh.vote_count.should == 1
+        end
+      end
 
       describe 'add microhoops' do
         it { should have_css('#new_microhoop') }

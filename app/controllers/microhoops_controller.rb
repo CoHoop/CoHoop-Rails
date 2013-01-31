@@ -8,4 +8,9 @@ class MicrohoopsController < ApplicationController
     @microhoop = current_user.microhoops.create!(content: content, urgent: urgent)
     @user = UserFeedPresenter.new(UserFeedInterface.new(@microhoop.user), view_context)
   end
+
+  def vote_up
+    @microhoop = Microhoop.find params[:id]
+    @microhoop.vote_up
+  end
 end

@@ -23,6 +23,7 @@ describe Microhoop do
   it 'should have content'           do should respond_to :content end
   it 'should have an urgence state'  do should respond_to :urgent end
   it 'should have an user id'        do should respond_to :user_id end
+  it 'should have a vote count'        do should respond_to :vote_count end
   its(:urgent) { should == false }
 
   it { should be_valid }
@@ -46,6 +47,18 @@ describe Microhoop do
       expect { Microhoop.new(user_id: 1, content: 'foo') }.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
     end
   end
+
+  describe 'microhoop vote' do
+    it 'should default to 0' do
+      @micro.vote_count.should == 0
+    end
+
+    it 'should be votable' do
+      @micro.vote_up
+      @micro.vote_count.should == 1
+    end
+  end
+
   describe 'microhoop tagging' do
     before do
       @micro.content = 'MH with #tag1, #tag2, #tag3'
