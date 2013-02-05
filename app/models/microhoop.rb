@@ -32,7 +32,8 @@ class Microhoop < ActiveRecord::Base
       TagExtractor.tag_separator = '#'
       self.content.extract_tags.each do |tag_name|
         tag = Tag.find_or_create_by_name(tag_name.downcase)
-        self.tags_relationships.create!(tag_id: tag.id)
+        relation = MicrohoopsTagsRelationship.find_by_tag_id_and_microhoop_id(tag.id, self.id)
+        self.tags_relationships.create!(tag_id: tag.id) unless self.tags_relationships.include? relation
       end
     end
 end
