@@ -24,7 +24,7 @@ class Microhoop < ActiveRecord::Base
   validates :user_id, presence: true
 
   def vote_up
-    self.update_attribute(:vote_count, self.vote_count + 1)
+    self.update_attribute(:vote_count, self.vote_count.to_i + 1)
   end
 
   private
