@@ -49,7 +49,10 @@ class ApplicationController < ActionController::Base
   #
   # Returns a UserProfileDecorator or Nothing.
   def get_user_through_params
-    model_object = User.where("id = ? AND first_name = ? AND last_name = ?", params[:id], params[:first].capitalize, params[:last].capitalize).first
+    first = params[:first].capitalize || nil
+    last  = params[:last].capitalize  || nil
+
+    model_object = User.where("id = ? AND first_name = ? AND last_name = ?", params[:id], first, last).first
     if model_object.nil?
       render_404 { flash[:alert] = 'User does not exist' }
     else

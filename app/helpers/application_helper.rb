@@ -35,7 +35,7 @@ module ApplicationHelper
     if user_signed_in?
       render 'devise/menu/logged_in_links'
     else
-      render 'devise/menu/login_form'
+      #render 'devise/menu/login_form'
     end
   end
 
