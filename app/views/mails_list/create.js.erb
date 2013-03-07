@@ -1,3 +1,3 @@
-var message = $('<div id="mailMsg"><p><%= @message %></p></div>');
-$('#footer').after(message);
+var message = $('<div id="mail-msg"><p><%= @message %></p></div>');
+$('#wrapper').after(message);
 message.click(function() { $(this).fadeOut('slow'); });

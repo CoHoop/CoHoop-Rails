@@ -6,6 +6,7 @@
 <head>
   <%= render 'layouts/meta' %>
   <title><%= get_title @title %></title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:700italic,400,700' rel='stylesheet' type='text/css'>
   <%= favicon_link_tag %>
   <%= stylesheet_link_tag    "home", :media => "all" %>
   <%= csrf_meta_tags %>
@@ -16,27 +17,47 @@
       </p>
       <![endif]-->
 
-  <%=	render 'layouts/home_header' %>
-  <section id="wrap" class="clearfix">
-    <div id="logo">CoHoop</div>
-    <div id="content">
-      <%= yield %>
-    </div>
-  </section>
-  <footer id="footer">
-    <div class="disclaimer">
-      <p>CoHoop, tous droits r&eacute;serv&eacute;s.</p>
-    </div>
-  </footer>
+  <div id="wrapper">
+    <%=	render 'layouts/home_header' %>
+    <section id="content">
+    	<header>
+    		<strong>The first student driven collaborative learning network</strong>
+    		<strong id="pagination"><%= get_pagination @pagination %></strong>
+    	</header>
+      <div class="content">
+        <%= yield %>
+
+      </div>
+      <div id="horizontal-purple-line-1">
+        <div id="hpl-1-2"></div>
+        <div id="hpl-1-1"></div>
+      </div>
+      <div id="horizontal-purple-line-2">
+        <div id="hpl-2-1"></div>
+        <div id="hpl-2-2"></div>
+      </div>
+    </section>
+    <footer id="footer">
+      <div id="footer-content">
+        <div>
+          <a href="https://www.facebook.com/cohoop" target="_blank" id="facebook" class="social-links">Join us on Facebook !</a>
+          <a href="https://twitter.com/CoHoop" target="_blank" id="twitter" class="social-links">Follow us on Twitter !</a>
+          <a href="http://pinterest.com/cohoop/pins/" target="_blank" id="pinterest" class="social-links">Follow us on Pinterest !</a>
+        </div>
+      </div>
+    </footer>
+    <div id="vertical-purple-line"></div>
+  </div> <!-- Wrapper -->
+
   <% if Rails.env.development? then %>
-  <div id="debug" style="background-color: white;">
+  <div id="debug">
     <pre style="width: 1020px; margin: 0 auto; font-size: 1.4em;">
         <%= debug(params) %>
         <%= debug(cookies) %>
     </pre>
   </div>
   <% end %>
-    
+
   <script src="http://use.edgefonts.net/muli.js"></script>
   <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
   <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5068c0c12f99a33b"></script>

@@ -7,7 +7,13 @@ CohoopRails::Application.routes.draw do
     match '/:feed_type' => 'feeds#show', constraints: { feed_type: /community|tags/ }, as: :feed
   end
 
-  root to: 'pages#home'
+  # landing
+  root to: 'landing#welcome'
+  get '/how' => 'landing#how', as: :landing_how
+  get '/who' => 'landing#who', as: :landing_who
+  get '/where' => 'landing#where', as: :landing_where
+  get '/agree' => 'landing#agree', as: :landing_agree
+  get '/final' => 'landing#final', as: :landing_final
 
   # MailingList
   match '/mailslist/create' => 'mails_list#create', via: :post

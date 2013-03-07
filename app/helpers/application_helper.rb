@@ -12,6 +12,15 @@ module ApplicationHelper
     (action_name.nil? && title.nil?) ? application_name : "#{application_name} | #{title}"
   end
 
+  # Public: Get pagination on home
+  #
+  # pagination - The pagination as a Fixnum (default: 1);
+  #
+  # Returns the pagination
+  def get_pagination pagination = 1
+    pagination
+  end
+
   # Public: Used by devise to generate views
   def resource_name
     :user

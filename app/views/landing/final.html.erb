@@ -1,0 +1,12 @@
+<h2 class="final">WHO ARE WE?</h2>
+<h3>COHOOP IS A SOCIAL LEARNING NETWORK</h3>
+<p>An online platform for students to connect over shared interests or challenges and learn with a community.</p>
+
+<p id="loop">
+  <strong>SO GET INTO THE LOOP !</strong><br />Send us your email to get an invite
+</p>
+<!-- form here -->
+<%= form_for(@mail, url: mailslist_create_path, remote: true, html: { class: 'form final-form' }) do |f| %>
+  <%= f.email_field :mail, class: 'input-mail', required: true %>
+  <%= f.submit "OK", class: 'form-submit' %>
+<% end %>
